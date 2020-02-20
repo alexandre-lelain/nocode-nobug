@@ -1,0 +1,62 @@
+{
+  "name": "nocode-nobug",
+  "private": true,
+  "description": "No Code, No Bug. A blog with tech articles that might be helpful. Or not! ",
+  "version": "0.1.0",
+  "author": "Alexandre Le Lain <lelain.alexandre@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandre-lelain/nocode-nobug"
+  },
+  "keywords": [
+    "NoCode NoBug",
+    "Tech",
+    "Articles",
+    "Blog"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn clean && gatsby build",
+    "develop": "gatsby develop",
+    "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "lint": "yarn eslint --cache src/**/*.{js,ts}",
+    "check-types": "yarn tsc",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "validate": "yarn lint && yarn check-types"
+  },
+  "dependencies": {
+    "components-extra": "^2.3.4",
+    "gatsby": "^2.19.7",
+    "gatsby-image": "^2.2.39",
+    "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-manifest": "^2.2.39",
+    "gatsby-plugin-offline": "^3.0.32",
+    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-sharp": "^2.4.3",
+    "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-sharp": "^2.3.13",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3",
+    "gatsby-plugin-typescript": "^2.1.27",
+    "husky": "^4.2.3",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
