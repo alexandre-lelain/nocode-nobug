@@ -1,15 +1,16 @@
 import React from 'react'
 
-import Footer from 'components/Footer'
+import Layout from 'components/Layout'
+import SEO from 'components/Seo'
 
 let myVar: string = '42'
 
 const IndexPage = () => {
   return (
-    <div>
+    <Layout>
+      <SEO title="No Code, No Bug" />
       <h1>Hello, World! {myVar}</h1>
-      <Footer />
-    </div>
+    </Layout>
   )
 }
 export default IndexPage
