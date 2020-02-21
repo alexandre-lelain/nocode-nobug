@@ -18,7 +18,7 @@
   "scripts": {
     "build": "yarn clean && gatsby build",
     "develop": "gatsby develop",
-    "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
     "lint": "yarn eslint --cache src/**/*.{js,ts}",
     "check-types": "yarn tsc",
     "start": "npm run develop",

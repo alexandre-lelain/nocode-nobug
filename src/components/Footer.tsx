@@ -1,3 +1,3 @@
-import React from "react";
+import React from 'react'
 
-export default () => <div>This is a footer</div>;
+export default () => <div>This is a footer</div>
