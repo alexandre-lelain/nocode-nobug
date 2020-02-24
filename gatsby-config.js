@@ -6,11 +6,16 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
       },
     },
     {
@@ -18,13 +23,17 @@ module.exports = {
       options: {
         alias: {
           components: `${__dirname}/src/components`,
+          templates: `${__dirname}/src/templates`,
+          lodash: `${__dirname}/node_modules/lodash-es`,
         },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-material-ui`,
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: ['gatsby-remark-autolink-headers', 'gatsby-remark-reading-time'],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -37,7 +46,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
