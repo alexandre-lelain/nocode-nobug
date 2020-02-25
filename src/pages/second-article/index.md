@@ -2,6 +2,7 @@
 title: A second article
 date: '2020-02-27'
 spoiler: This is the best second article.
+slug: 'second-article'
 ---
 
 # A second article

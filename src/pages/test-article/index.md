@@ -2,6 +2,7 @@
 title: A test article
 date: '2020-02-24'
 spoiler: This is the best test article.
+slug: 'test-article'
 ---
 
 # A test article
