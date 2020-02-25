@@ -12,7 +12,8 @@ export default ({ data }) => {
       <SEO title="No Code, No Bug" />
       <h1>Hello World!</h1>
       {map(posts, ({ node }) => {
-        const { date, title, slug, spoiler } = get(node, 'frontmatter', {})
+        const { date, title, spoiler } = get(node, 'frontmatter', {})
+        const { slug } = get(node, 'fields', {})
         const { id, timeToRead } = node
         return (
           <article key={id}>
@@ -38,6 +39,8 @@ export const pageQuery = graphql`
             spoiler
             title
             date(formatString: "MMMM Do, YYYY")
+          }
+          fields {
             slug
           }
           id

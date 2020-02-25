@@ -15,6 +15,13 @@ This is a super awesome second article!This is a super awesome second article!
 This is a super awesome second article!This is a super awesome second article!
 This is a super awesome second article!This is a super awesome second article!
 
+```jsx
+const Toto = 'Hello'
+const Toto = 'Hello'
+const Toto = 'Hello'
+const Toto = 'Hello'
+```
+
 ## Part 2
 
 This is a super awesome second article!This is a super awesome second article!
