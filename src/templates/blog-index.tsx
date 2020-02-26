@@ -5,11 +5,11 @@ import { graphql, Link } from 'gatsby'
 
 import { Layout, SEO } from 'components'
 
-export default ({ data }) => {
+const BlogIndex = ({ data }) => {
   const posts = get(data, 'allMarkdownRemark.edges')
   return (
     <Layout>
-      <SEO title="No Code, No Bug" />
+      <SEO />
       <h1>Hello World!</h1>
       {map(posts, ({ node }) => {
         const { date, title, spoiler } = get(node, 'frontmatter', {})
@@ -28,6 +28,10 @@ export default ({ data }) => {
       })}
     </Layout>
   )
+}
+
+BlogIndex.propTypes = {
+  data: PropTypes.object,
 }
 
 export const pageQuery = graphql`
@@ -50,3 +54,4 @@ export const pageQuery = graphql`
     }
   }
 `
+export default BlogIndex

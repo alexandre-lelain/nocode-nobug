@@ -18,19 +18,22 @@ const SEO = ({ description, lang, meta, title }) => {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const { title: metaTitle, description: metaDescription } = site.siteMetadata
+  const pageTitle = title || metaTitle
+  const pageTitleTemplate = title ? `%s | ${metaTitle}` : `%s`
+  const pageDescription = description || metaDescription
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={pageTitle}
+      titleTemplate={pageTitleTemplate}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: pageDescription,
         },
         {
           property: `og:title`,
@@ -38,7 +41,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: pageDescription,
         },
         {
           property: `og:type`,
@@ -58,7 +61,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: pageDescription,
         },
       ].concat(meta)}
     >
@@ -84,7 +87,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO

@@ -1,3 +1,10 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 
-export default () => <div>I am a Header</div>
+export default () => {
+  return (
+    <header>
+      <h1>I'm a header</h1>
+    </header>
+  )
+}

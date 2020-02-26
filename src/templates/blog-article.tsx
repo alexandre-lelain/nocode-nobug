@@ -1,20 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import { graphql } from 'gatsby'
 import { get } from 'lodash'
 
-import { Layout, SEO } from 'components'
+import { Layout, SEO, Heading } from 'components'
 
-export default ({ data, pageContext }) => {
-  const { rawMarkdownBody } = get(data, 'markdownRemark', {})
+const BlogArticle = ({ data }) => {
+  const { markdownRemark = {} } = data
+  const { rawMarkdownBody } = markdownRemark
+  const { title } = get(markdownRemark, 'frontmatter', {})
 
   return (
     <Layout>
-      <SEO />
-      <h1>Hello Article!</h1>
-      <ReactMarkdown source={rawMarkdownBody} />
+      <SEO title={title} />
+      <article>
+        <ReactMarkdown
+          source={rawMarkdownBody}
+          renderers={{
+            heading: Heading,
+          }}
+        />
+      </article>
     </Layout>
   )
+}
+
+BlogArticle.propTypes = {
+  data: PropTypes.object,
 }
 
 export const pageQuery = graphql`
@@ -31,3 +44,4 @@ export const pageQuery = graphql`
     }
   }
 `
+export default BlogArticle

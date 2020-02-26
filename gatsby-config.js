@@ -24,6 +24,7 @@ module.exports = {
         alias: {
           components: `${__dirname}/src/components`,
           templates: `${__dirname}/src/templates`,
+          utils: `${__dirname}/src/utils`,
           lodash: `${__dirname}/node_modules/lodash-es`,
         },
       },
@@ -31,11 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          'gatsby-remark-autolink-headers',
-          'gatsby-remark-reading-time',
-          'gatsby-plugin-slug',
-        ],
+        plugins: ['gatsby-remark-reading-time', 'gatsby-plugin-slug'],
       },
     },
     {
