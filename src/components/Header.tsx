@@ -1,10 +1,14 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 
+import { ResetLink } from 'styles'
+
 export default () => {
   return (
     <header>
-      <h1>I'm a header</h1>
+      <Typography color="textPrimary" variant="h3" component="h2">
+        <ResetLink to="/">No Code, No Bug</ResetLink>
+      </Typography>
     </header>
   )
 }

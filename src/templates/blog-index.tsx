@@ -10,7 +10,6 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <h1>Hello World!</h1>
       {map(posts, ({ node }) => {
         const { date, title, spoiler } = get(node, 'frontmatter', {})
         const { slug } = get(node, 'fields', {})

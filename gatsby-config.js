@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `No Code, No Bug`,
-    description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not!`,
+    description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not! A blog by Alexandre Le Lain.`,
     author: `Alexandre Le Lain @a_lelain`,
   },
   plugins: [
@@ -24,6 +24,7 @@ module.exports = {
         alias: {
           components: `${__dirname}/src/components`,
           templates: `${__dirname}/src/templates`,
+          styles: `${__dirname}/src/styles`,
           utils: `${__dirname}/src/utils`,
           lodash: `${__dirname}/node_modules/lodash-es`,
         },
