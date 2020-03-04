@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import Children from 'react-children-utilities'
+import PropTypes from 'prop-types'
 
 import Anchor from './Anchor'
 import slugify from 'utils/slugify'
@@ -25,6 +26,11 @@ const Heading = ({ level, ...rest }) => {
     default:
       return <DefaultHeading level={level} {...rest} />
   }
+}
+
+Header2.propTypes = {
+  children: PropTypes.any,
+  id: PropTypes.string,
 }
 
 export { Heading, Header2 }

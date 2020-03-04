@@ -1,26 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
 import { Container } from '@material-ui/core'
+
+import { ThemeModeProvider, isDark, getNextMode } from 'hooks/ThemeContext'
+import { theme } from 'styles'
 
 import Footer from './Footer'
 import Header from './Header'
 
+type ThemeMode = 'dark' | 'light'
+
 const StyledContainer = styled(Container)`
   padding: 48px 24px;
+  max-width: 700px;
+`
+
+const GlobalStyle = createGlobalStyle`
+  ${({ theme }) => `
+    html {
+      background: ${theme.palette.background.default};
+    }
+  `};
 `
 
 const Layout = ({ children }) => {
+  const [mode, setMode] = useState<ThemeMode>('light')
+  const toggleMode = () => setMode(prevMode => getNextMode(prevMode))
+
   return (
-    <StyledProvider>
-      <StyledContainer maxWidth="sm">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <BackToTop />
-      </StyledContainer>
-    </StyledProvider>
+    <ThemeModeProvider mode={mode} setMode={toggleMode}>
+      <StyledProvider dark={isDark(mode)} theme={theme}>
+        <GlobalStyle />
+        <StyledContainer maxWidth="sm">
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <BackToTop />
+        </StyledContainer>
+      </StyledProvider>
+    </ThemeModeProvider>
   )
 }
 
