@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useEffect } from 'react'
+import React, { createContext, useContext } from 'react'
 
-export type ThemeMode = 'dark' | 'light'
+// We need null value because of ssr
+export type ThemeMode = 'dark' | 'light' | null
 
 interface ThemeModeProviderProps {
   children: any
@@ -11,14 +12,14 @@ interface ThemeModeProviderProps {
 const STORAGE_KEY = 'mode'
 const DEFAULT_MODE = 'light'
 
-const ThemeModeContext = createContext<[ThemeMode, React.Dispatch<any>, boolean]>([
+const ThemeModeContext = createContext<[ThemeMode, React.Dispatch<any>, boolean | null]>([
   DEFAULT_MODE,
   () => {},
-  false,
+  null,
 ])
 
 const ThemeModeProvider = ({ children, mode, setMode }: ThemeModeProviderProps) => {
-  const isDark = mode === 'dark'
+  const isDark = mode ? mode === 'dark' : null
   return (
     <ThemeModeContext.Provider value={[mode, setMode, isDark]}>
       {children}
@@ -32,19 +33,11 @@ const isDark = (mode: ThemeMode = DEFAULT_MODE) => mode === 'dark'
 
 const getNextMode = (mode: ThemeMode = DEFAULT_MODE): ThemeMode => (isDark(mode) ? 'light' : 'dark')
 
-const setPreferedMode = (mode: ThemeMode) => localStorage.setItem(STORAGE_KEY, mode)
+const setPreferedMode = (mode: ThemeMode) => mode && localStorage.setItem(STORAGE_KEY, mode)
 
 const getPreferedMode = (): ThemeMode => {
   const storedTheme: ThemeMode = localStorage.getItem(STORAGE_KEY) as ThemeMode
   return storedTheme || DEFAULT_MODE
 }
 
-export {
-  ThemeModeProvider,
-  useThemeMode,
-  isDark,
-  getNextMode,
-  getPreferedMode,
-  setPreferedMode,
-  DEFAULT_MODE,
-}
+export { ThemeModeProvider, useThemeMode, isDark, getNextMode, getPreferedMode, setPreferedMode }

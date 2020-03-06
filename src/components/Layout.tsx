@@ -3,16 +3,14 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
 import { Container } from '@material-ui/core'
 
-// eslint-disable-next-line no-unused-vars
 import {
   ThemeModeProvider,
   isDark,
   getNextMode,
   getPreferedMode,
   setPreferedMode,
-  ThemeMode,
-  DEFAULT_MODE,
-} from 'hooks/ThemeContext' //why in the world can't eslint see that ThemeMode is used a type ?
+  ThemeMode, // eslint-disable-line no-unused-vars
+} from 'hooks/ThemeContext' // why in the world can't eslint see that ThemeMode is used a type ?
 import { theme } from 'styles'
 
 const StyledContainer = styled(Container)`
@@ -24,12 +22,14 @@ const GlobalStyle = createGlobalStyle`
   ${({ theme }) => `
     html {
       background: ${theme.palette.background.default};
+      scrollbar-color: #bfbfbf ${theme.palette.background.default};
+      transition: color 0.2s ease-out, background 0.2s ease-out;
     }
   `};
 `
 
 const Layout = ({ children }: LayoutProps) => {
-  const [mode, setMode] = useState<ThemeMode>(DEFAULT_MODE)
+  const [mode, setMode] = useState<ThemeMode>(null)
 
   const toggleMode = () =>
     setMode(prevMode => {

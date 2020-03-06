@@ -35,17 +35,19 @@ const Header = ({ isArticle = false }: HeaderProps) => {
       <Typography color={isDark ? 'textPrimary' : 'primary'} variant={titleVariant} component="h2">
         <ResetLink to="/">No Code, No Bug</ResetLink>
       </Typography>
-      <ThemeModeContainer>
-        <Grid container item>
-          <Day color={isDark ? 'disabled' : 'primary'} />
-        </Grid>
-        <Grid item>
-          <Switch checked={isDark} value={mode} onChange={setMode} color="secondary" />
-        </Grid>
-        <Grid container item>
-          <Night color={isDark ? 'action' : 'disabled'} />
-        </Grid>
-      </ThemeModeContainer>
+      {isDark !== null && (
+        <ThemeModeContainer>
+          <Grid container item>
+            <Day color={isDark ? 'disabled' : 'primary'} />
+          </Grid>
+          <Grid item>
+            <Switch checked={isDark} value={mode} onChange={setMode} color="secondary" />
+          </Grid>
+          <Grid container item>
+            <Night color={isDark ? 'action' : 'disabled'} />
+          </Grid>
+        </ThemeModeContainer>
+      )}
     </StyledHeader>
   )
 }
