@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react'
-import { Switch, Typography } from '@material-ui/core'
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Grid, Switch, Typography } from '@material-ui/core'
 
-import { useThemeMode, isDark } from 'hooks/ThemeContext'
+import { useThemeMode } from 'hooks/ThemeContext'
 
 import { ResetLink } from 'styles'
 import { Day, Night } from 'icons'
@@ -12,26 +13,47 @@ const StyledHeader = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
 `
 
-const ThemeSwitchContainer = styled.div`
+const ThemeModeContainer = styled(Grid).attrs(() => ({
+  component: 'label',
+  spacing: 1,
+}))`
   display: flex;
   align-items: center;
+  svg {
+    cursor: pointer;
+  }
 `
 
-export default () => {
-  const [mode, setMode] = useThemeMode()
-  const isDarkMode = useMemo(() => isDark(mode), [mode])
+const Header = ({ isArticle = false }) => {
+  const [mode, setMode, isDark] = useThemeMode()
+
+  const titleVariant = isArticle ? 'h5' : 'h3'
+
   return (
     <StyledHeader>
-      <Typography color="textPrimary" variant="h3" component="h2">
+      <Typography color={isDark ? 'textPrimary' : 'primary'} variant={titleVariant} component="h2">
         <ResetLink to="/">No Code, No Bug</ResetLink>
       </Typography>
-      <ThemeSwitchContainer>
-        <Day color={isDarkMode ? 'disabled' : 'primary'} />
-        <Switch checked={isDarkMode} value={mode} onChange={setMode} color="secondary" />
-        <Night color={isDarkMode ? 'action' : 'disabled'} />
-      </ThemeSwitchContainer>
+      <ThemeModeContainer>
+        <Grid container item>
+          <Day color={isDark ? 'disabled' : 'primary'} />
+        </Grid>
+        <Grid item>
+          <Switch checked={isDark} value={mode} onChange={setMode} color="secondary" />
+        </Grid>
+        <Grid container item>
+          <Night color={isDark ? 'action' : 'disabled'} />
+        </Grid>
+      </ThemeModeContainer>
     </StyledHeader>
   )
 }
+
+Header.propTypes = {
+  isArticle: PropTypes.bool,
+}
+
+export default Header

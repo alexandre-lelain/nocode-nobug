@@ -4,11 +4,8 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
 import { Container } from '@material-ui/core'
 
-import { ThemeModeProvider, isDark, getNextMode } from 'hooks/ThemeContext'
+import { ThemeModeProvider, isDark, getNextMode, getPreferedMode } from 'hooks/ThemeContext'
 import { theme } from 'styles'
-
-import Footer from './Footer'
-import Header from './Header'
 
 type ThemeMode = 'dark' | 'light'
 
@@ -26,7 +23,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Layout = ({ children }) => {
-  const [mode, setMode] = useState<ThemeMode>('light')
+  const preferedMode = getPreferedMode()
+  const [mode, setMode] = useState<ThemeMode>(preferedMode)
   const toggleMode = () => setMode(prevMode => getNextMode(prevMode))
 
   return (
@@ -34,9 +32,7 @@ const Layout = ({ children }) => {
       <StyledProvider dark={isDark(mode)} theme={theme}>
         <GlobalStyle />
         <StyledContainer maxWidth="sm">
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          {children}
           <BackToTop />
         </StyledContainer>
       </StyledProvider>

@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { graphql } from 'gatsby'
 import { get } from 'lodash'
 
-import { Layout, SEO, Heading, Paragraph } from 'components'
+import { Footer, Header, Layout, SEO, Heading, Paragraph } from 'components'
 
 const BlogArticle = ({ data }) => {
   const { markdownRemark = {} } = data
@@ -14,15 +14,19 @@ const BlogArticle = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} />
-      <article>
-        <ReactMarkdown
-          source={rawMarkdownBody}
-          renderers={{
-            heading: Heading,
-            paragraph: Paragraph,
-          }}
-        />
-      </article>
+      <Header isArticle />
+      <main>
+        <article>
+          <ReactMarkdown
+            source={rawMarkdownBody}
+            renderers={{
+              heading: Heading,
+              paragraph: Paragraph,
+            }}
+          />
+        </article>
+      </main>
+      <Footer />
     </Layout>
   )
 }

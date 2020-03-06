@@ -3,6 +3,7 @@ module.exports = {
     title: `No Code, No Bug`,
     description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not! A blog by Alexandre Le Lain.`,
     author: `Alexandre Le Lain @a_lelain`,
+    github: 'https://github.com/alexandre-lelain',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
