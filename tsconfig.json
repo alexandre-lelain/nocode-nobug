@@ -4,13 +4,14 @@
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "noImplicitAny": false,
+    "noImplicitAny": false, // has to disable it because of 3rd parties
     "jsx": "react",
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "components/*": ["src/components/*"],
       "components": ["src/components"],
+      "images/*": ["src/images/*"],
       "utils/*": ["src/utils/*"],
       "styles": ["src/styles"],
       "hooks/*": ["src/hooks/*"],

@@ -1,6 +1,5 @@
 import React from 'react'
 import { SvgIcon } from '@material-ui/core'
-import PropTypes from 'prop-types'
 
 const LinkIcon = () => (
   <SvgIcon>
@@ -8,7 +7,7 @@ const LinkIcon = () => (
   </SvgIcon>
 )
 
-const Anchor = ({ id }) => {
+const Anchor = ({ id }: AnchorProps) => {
   return (
     <a href={`#${id}`}>
       <LinkIcon />
@@ -16,8 +15,8 @@ const Anchor = ({ id }) => {
   )
 }
 
-Anchor.propTypes = {
-  id: PropTypes.string,
+interface AnchorProps {
+  id: string
 }
 
 export default Anchor

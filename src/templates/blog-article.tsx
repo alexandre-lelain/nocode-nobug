@@ -1,15 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import { graphql } from 'gatsby'
 import { get } from 'lodash'
 
-import { Footer, Header, Layout, SEO, Heading, Paragraph } from 'components'
+import { Bio, Footer, Header, Layout, SEO, Heading, Paragraph } from 'components'
 
-const BlogArticle = ({ data }) => {
+const BlogArticle = ({ data }: BlogArticleProps) => {
   const { markdownRemark = {} } = data
   const { rawMarkdownBody } = markdownRemark
-  const { title } = get(markdownRemark, 'frontmatter', {})
+  const title = get(markdownRemark, 'frontmatter.title', {})
 
   return (
     <Layout>
@@ -26,13 +25,14 @@ const BlogArticle = ({ data }) => {
           />
         </article>
       </main>
+      <Bio />
       <Footer />
     </Layout>
   )
 }
 
-BlogArticle.propTypes = {
-  data: PropTypes.object,
+interface BlogArticleProps {
+  data: any
 }
 
 export const pageQuery = graphql`

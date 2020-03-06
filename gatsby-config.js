@@ -4,6 +4,9 @@ module.exports = {
     description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not! A blog by Alexandre Le Lain.`,
     author: `Alexandre Le Lain @a_lelain`,
     github: 'https://github.com/alexandre-lelain',
+    twitter_user: '@a_lelain',
+    twitter: 'https://mobile.twitter.com/a_lelain',
+    attineos: 'https://www.attineos.com/',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,10 +23,18 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
           components: `${__dirname}/src/components`,
+          images: `${__dirname}/src/images`,
           templates: `${__dirname}/src/templates`,
           styles: `${__dirname}/src/styles`,
           utils: `${__dirname}/src/utils`,
@@ -43,12 +54,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
-        short_name: `starter`,
+        short_name: `No Code, No Bug`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1976d2`,
+        theme_color: `#1976d2`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
       },
     },
     {

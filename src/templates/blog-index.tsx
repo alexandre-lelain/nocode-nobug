@@ -1,30 +1,28 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { get, map } from 'lodash'
 import { graphql, Link } from 'gatsby'
 
-import { Footer, Header, Layout, SEO, Paragraph } from 'components'
-import { ExternalLink } from 'styles'
+import { Bio, Footer, Header, Layout, SEO, Paragraph } from 'components'
 
-const BlogIndex = ({ data }) => {
+const StyledParagraph = styled(Paragraph)`
+  margin-bottom: 32px;
+`
+
+const BlogIndex = ({ data }: BlogIndexProps) => {
   const posts = get(data, 'allMarkdownRemark.edges')
-  const siteMetadata = get(data, 'site.siteMetadata')
 
   return (
     <Layout>
       <SEO />
       <Header />
       <main>
-        <Paragraph>
+        <StyledParagraph>
           A blog with tech articles that might be helpful. Or not! Through my journey as a Software
           Engineer I come across concepts and fancy technologies I often do not understand. When I
           do, and wish it was explained in a certain way, I write a post about it.
-        </Paragraph>
-        <br />
-        <Paragraph>
-          Brought to you by{' '}
-          <ExternalLink href={siteMetadata.github}>Alexandre Le Lain</ExternalLink>.
-        </Paragraph>
+        </StyledParagraph>
+        <Bio />
         {map(posts, ({ node }) => {
           const { date, title, spoiler } = get(node, 'frontmatter', {})
           const { slug } = get(node, 'fields', {})
@@ -46,17 +44,12 @@ const BlogIndex = ({ data }) => {
   )
 }
 
-BlogIndex.propTypes = {
-  data: PropTypes.object,
+interface BlogIndexProps {
+  data: any
 }
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        github
-      }
-    }
     allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
@@ -75,4 +68,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
 export default BlogIndex

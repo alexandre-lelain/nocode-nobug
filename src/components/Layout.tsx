@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
 import { Container } from '@material-ui/core'
 
-import { ThemeModeProvider, isDark, getNextMode, getPreferedMode } from 'hooks/ThemeContext'
+// eslint-disable-next-line no-unused-vars
+import {
+  ThemeModeProvider,
+  isDark,
+  getNextMode,
+  getPreferedMode,
+  setPreferedMode,
+  ThemeMode,
+  DEFAULT_MODE,
+} from 'hooks/ThemeContext' //why in the world can't eslint see that ThemeMode is used a type ?
 import { theme } from 'styles'
-
-type ThemeMode = 'dark' | 'light'
 
 const StyledContainer = styled(Container)`
   padding: 48px 24px;
@@ -22,10 +28,19 @@ const GlobalStyle = createGlobalStyle`
   `};
 `
 
-const Layout = ({ children }) => {
-  const preferedMode = getPreferedMode()
-  const [mode, setMode] = useState<ThemeMode>(preferedMode)
-  const toggleMode = () => setMode(prevMode => getNextMode(prevMode))
+const Layout = ({ children }: LayoutProps) => {
+  const [mode, setMode] = useState<ThemeMode>(DEFAULT_MODE)
+
+  const toggleMode = () =>
+    setMode(prevMode => {
+      const newMode = getNextMode(prevMode)
+      setPreferedMode(newMode)
+      return newMode
+    })
+
+  useEffect(() => {
+    setMode(getPreferedMode())
+  }, [])
 
   return (
     <ThemeModeProvider mode={mode} setMode={toggleMode}>
@@ -40,8 +55,8 @@ const Layout = ({ children }) => {
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node,
+interface LayoutProps {
+  children: any
 }
 
 export default Layout

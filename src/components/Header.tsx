@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Grid, Switch, Typography } from '@material-ui/core'
 
@@ -13,12 +12,11 @@ const StyledHeader = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 48px;
 `
 
 const ThemeModeContainer = styled(Grid).attrs(() => ({
   component: 'label',
-  spacing: 1,
 }))`
   display: flex;
   align-items: center;
@@ -27,7 +25,7 @@ const ThemeModeContainer = styled(Grid).attrs(() => ({
   }
 `
 
-const Header = ({ isArticle = false }) => {
+const Header = ({ isArticle = false }: HeaderProps) => {
   const [mode, setMode, isDark] = useThemeMode()
 
   const titleVariant = isArticle ? 'h5' : 'h3'
@@ -52,8 +50,8 @@ const Header = ({ isArticle = false }) => {
   )
 }
 
-Header.propTypes = {
-  isArticle: PropTypes.bool,
+interface HeaderProps {
+  isArticle?: boolean
 }
 
 export default Header

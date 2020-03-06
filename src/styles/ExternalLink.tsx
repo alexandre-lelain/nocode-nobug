@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from '@material-ui/core'
 
-const ExternalLink = styled(Link).attrs(() => ({
+export default styled(Link).attrs(() => ({
   target: '_blank',
   rel: 'noopener noreferrer',
 }))`
@@ -14,5 +14,3 @@ const ExternalLink = styled(Link).attrs(() => ({
     }
   `}
 `
-
-export default ExternalLink
