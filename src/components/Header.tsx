@@ -7,14 +7,6 @@ import { useThemeMode } from 'hooks/ThemeContext'
 import { ResetLink } from 'styles'
 import { Day, Night } from 'icons'
 
-const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 48px;
-`
-
 const ThemeModeContainer = styled(Grid).attrs(() => ({
   component: 'label',
 }))`
@@ -25,6 +17,24 @@ const ThemeModeContainer = styled(Grid).attrs(() => ({
   }
 `
 
+const Title = styled(Typography).attrs(() => ({
+  component: 'h2',
+}))``
+
+const StyledHeader = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  margin-top: -20px;
+
+  ${ThemeModeContainer}, ${Title} {
+    margin-top: 20px;
+  }
+`
+
 const Header = ({ isArticle = false }: HeaderProps) => {
   const [mode, setMode, isDark] = useThemeMode()
 
@@ -32,9 +42,9 @@ const Header = ({ isArticle = false }: HeaderProps) => {
 
   return (
     <StyledHeader>
-      <Typography color={isDark ? 'textPrimary' : 'primary'} variant={titleVariant} component="h2">
+      <Title color={isDark ? 'textPrimary' : 'primary'} variant={titleVariant}>
         <ResetLink to="/">No Code, No Bug</ResetLink>
-      </Typography>
+      </Title>
       {isDark !== null && (
         <ThemeModeContainer>
           <Grid container item>

@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { get, map } from 'lodash'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 
-import { Bio, Footer, Header, Layout, SEO, Paragraph } from 'components'
+import { Bio, Footer, Header, Layout, SEO, Paragraph, ArticlePreview } from 'components'
 
 const StyledParagraph = styled(Paragraph)`
   margin-bottom: 32px;
+`
+
+const PreviewsContainer = styled.div`
+  margin: 64px 0;
 `
 
 const BlogIndex = ({ data }: BlogIndexProps) => {
@@ -23,21 +27,11 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           do, and wish it was explained in a certain way, I write a post about it.
         </StyledParagraph>
         <Bio />
-        {map(posts, ({ node }) => {
-          const { date, title, spoiler } = get(node, 'frontmatter', {})
-          const { slug } = get(node, 'fields', {})
-          const { id, timeToRead } = node
-          return (
-            <article key={id}>
-              <h3>
-                <Link to={slug}>{title}</Link>
-              </h3>
-              <p>{date}</p>
-              <p>{spoiler}</p>
-              <p>{timeToRead} min</p>
-            </article>
-          )
-        })}
+        <PreviewsContainer>
+          {map(posts, ({ node }) => (
+            <ArticlePreview node={node} />
+          ))}
+        </PreviewsContainer>
       </main>
       <Footer />
     </Layout>
@@ -55,6 +49,7 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             spoiler
+            tags
             title
             date(formatString: "MMMM Do, YYYY")
           }

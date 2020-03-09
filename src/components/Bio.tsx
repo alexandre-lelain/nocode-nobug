@@ -6,10 +6,6 @@ import Paragraph from './Paragraph'
 
 import { ExternalLink } from 'styles'
 
-const Container = styled.section`
-  display: flex;
-`
-
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,12 +15,23 @@ const TextContainer = styled.div`
 `
 
 const StyledImage = styled(Img)`
-  width: 108px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   margin-right: 24px;
 `
 
-const Bio = () => {
+const Container = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -12px;
+
+  ${StyledImage}, ${TextContainer} {
+    margin-top: 12px;
+  }
+`
+
+const Bio = props => {
   const { placeholderImage, site } = useStaticQuery(
     graphql`
       query {
@@ -50,7 +57,7 @@ const Bio = () => {
   const { github, twitter, twitter_user, attineos } = site.siteMetadata
 
   return (
-    <Container>
+    <Container {...props}>
       <StyledImage fluid={fluid} />
       <TextContainer>
         <Paragraph>
@@ -71,4 +78,4 @@ const Bio = () => {
   )
 }
 
-export default Bio
+export default styled(Bio)``

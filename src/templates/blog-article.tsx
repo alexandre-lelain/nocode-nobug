@@ -1,9 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import { graphql } from 'gatsby'
 import { get } from 'lodash'
 
 import { Bio, Footer, Header, Layout, SEO, Heading, Paragraph } from 'components'
+import { ResetLink } from 'styles'
+
+const StyledArticle = styled.article`
+  margin: 64px 0;
+`
+
+const ReturnLink = styled(ResetLink)``
+
+const StyledBio = styled(Bio)`
+  margin-top: 24px;
+`
 
 const BlogArticle = ({ data }: BlogArticleProps) => {
   const { markdownRemark = {} } = data
@@ -15,7 +27,7 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
       <SEO title={title} />
       <Header isArticle />
       <main>
-        <article>
+        <StyledArticle>
           <ReactMarkdown
             source={rawMarkdownBody}
             renderers={{
@@ -23,9 +35,10 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
               paragraph: Paragraph,
             }}
           />
-        </article>
+        </StyledArticle>
+        <ReturnLink to="/">← Back to main page</ReturnLink>
       </main>
-      <Bio />
+      <StyledBio />
       <Footer />
     </Layout>
   )
