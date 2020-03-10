@@ -4,23 +4,40 @@ import ReactMarkdown from 'react-markdown'
 import { graphql } from 'gatsby'
 import { get } from 'lodash'
 
-import { Bio, Footer, Header, Layout, SEO, Heading, Paragraph } from 'components'
-import { ResetLink } from 'styles'
+import {
+  ArticleMeta,
+  Bio,
+  Footer,
+  Header,
+  Layout,
+  SEO,
+  Header1,
+  Heading,
+  Paragraph,
+} from 'components'
+import { InternalLink } from 'styles'
 
 const StyledArticle = styled.article`
   margin: 64px 0;
 `
 
-const ReturnLink = styled(ResetLink)``
-
 const StyledBio = styled(Bio)`
   margin-top: 24px;
 `
 
+const StyledArticleMeta = styled(ArticleMeta)`
+  margin-top: 8px;
+`
+
+const StyledSeparator = styled.hr`
+  margin-top: 16px;
+  margin-bottom: 48px;
+`
+
 const BlogArticle = ({ data }: BlogArticleProps) => {
   const { markdownRemark = {} } = data
-  const { rawMarkdownBody } = markdownRemark
-  const title = get(markdownRemark, 'frontmatter.title', {})
+  const { timeToRead, rawMarkdownBody } = markdownRemark
+  const { date, title } = get(markdownRemark, 'frontmatter', {})
 
   return (
     <Layout>
@@ -28,6 +45,9 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
       <Header isArticle />
       <main>
         <StyledArticle>
+          <Header1>{title}</Header1>
+          <StyledArticleMeta date={date} timeToRead={timeToRead} />
+          <StyledSeparator />
           <ReactMarkdown
             source={rawMarkdownBody}
             renderers={{
@@ -36,7 +56,9 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
             }}
           />
         </StyledArticle>
-        <ReturnLink to="/">← Back to main page</ReturnLink>
+        <InternalLink secondary to="/">
+          ← Back to main page
+        </InternalLink>
       </main>
       <StyledBio />
       <Footer />
@@ -57,7 +79,7 @@ export const pageQuery = graphql`
         title
         spoiler
         slug
-        date
+        date(formatString: "MMMM Do, YYYY")
       }
     }
   }

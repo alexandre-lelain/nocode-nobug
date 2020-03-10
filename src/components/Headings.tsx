@@ -1,16 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import Children from 'react-children-utilities'
+import { Typography } from '@material-ui/core'
+
+import slugify from 'utils/slugify'
+import { ResetLink } from 'styles'
 
 import Anchor from './Anchor'
-import slugify from 'utils/slugify'
+import Paragraph from './Paragraph'
+
+const Header1 = styled(Typography).attrs(() => ({
+  variant: 'h3',
+  component: 'h1',
+  color: 'textPrimary',
+}))`
+  font-weight: bold;
+`
+
+const Header2Link = styled(ResetLink)`
+  margin-top: 36px;
+  margin-bottom: 24px;
+  margin-left: -24px;
+  cursor: text;
+`
+
+const StyledHeader2 = styled(Paragraph).attrs(() => ({
+  component: 'h2',
+  variant: 'h4',
+}))``
 
 const Header2 = ({ children, id }: Header2Props) => {
+  const [showAnchor, setShowAnchor] = useState(false)
   return (
-    <h2 id={id}>
-      <Anchor id={id} />
-      {children}
-    </h2>
+    <Header2Link
+      id={id}
+      anchor
+      href={`#${id}`}
+      onMouseOver={() => setShowAnchor(true)}
+      onMouseLeave={() => setShowAnchor(false)}
+    >
+      <StyledHeader2>
+        <Anchor show={showAnchor} />
+        {children}
+      </StyledHeader2>
+    </Header2Link>
   )
 }
 
@@ -19,6 +53,8 @@ const Heading = ({ level, children, ...rest }: HeadingProps) => {
   const id = slugify(text)
   const DefaultHeading = ReactMarkdown.renderers.heading
   switch (level) {
+    case 1:
+      return <Header1 {...rest}>{children}</Header1>
     case 2:
       return (
         <Header2 {...rest} id={id}>
@@ -45,4 +81,4 @@ interface Header2Props {
   id: string
 }
 
-export { Heading, Header2 }
+export { Heading, Header1, Header2 }

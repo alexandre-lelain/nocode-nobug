@@ -4,7 +4,7 @@ export default {
       main: '#1976d2',
     },
     secondary: {
-      main: '#dc004e',
+      main: '#cc0044',
     },
   },
 }

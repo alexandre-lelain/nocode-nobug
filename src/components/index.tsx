@@ -1,4 +1,5 @@
 export { default as Anchor } from './Anchor'
+export { default as ArticleMeta } from './ArticleMeta'
 export { default as ArticlePreview } from './ArticlePreview'
 export { default as Bio } from './Bio'
 export { default as Footer } from './Footer'

@@ -1,6 +1,44 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import styled from 'styled-components'
 import { map } from 'lodash'
+import { Typography } from '@material-ui/core'
+
+import { ResetLink } from 'styles'
+import { Tag as TagIcon } from 'icons'
+
+import ArticleMeta from './ArticleMeta'
+import Paragraph from './Paragraph'
+
+const StyledArticle = styled.article`
+  margin-bottom: 64px;
+`
+
+const Title = styled(Typography).attrs(() => ({
+  component: 'h2',
+  variant: 'h4',
+}))`
+  font-weight: bold;
+  ${({ theme: { palette } }) => `
+    color: ${palette.links};
+  `};
+`
+
+const Spoiler = styled(Paragraph)`
+  margin-top: 12px;
+  margin-bottom: 8px;
+`
+
+const Tags = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+`
+
+const Tag = styled(Paragraph).attrs(() => ({
+  variant: 'body2',
+}))`
+  margin-left: 4px;
+`
 
 const ArticlePreview = ({ node }: ArticlePreviewProps) => {
   const { date, tags, title, spoiler } = node.frontmatter
@@ -8,18 +46,19 @@ const ArticlePreview = ({ node }: ArticlePreviewProps) => {
   const { id, timeToRead } = node
 
   return (
-    <article key={id}>
-      <h3>
-        <Link to={slug}>{title}</Link>
-      </h3>
-      <p>{date}</p>
-      <p>{spoiler}</p>
-      <p>{timeToRead} min</p>
-      <span>Tags:</span>
-      {map(tags, tag => (
-        <p key={`tag-${tag}`}>{tag}</p>
-      ))}
-    </article>
+    <StyledArticle key={id}>
+      <ResetLink to={slug}>
+        <Title>{title}</Title>
+      </ResetLink>
+      <Spoiler>{spoiler}</Spoiler>
+      <ArticleMeta date={date} timeToRead={timeToRead} small />
+      <Tags>
+        <TagIcon color="action" />
+        {map(tags, tag => (
+          <Tag key={`tag-${tag}`}>#{tag}</Tag>
+        ))}
+      </Tags>
+    </StyledArticle>
   )
 }
 

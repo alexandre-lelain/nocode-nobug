@@ -6,8 +6,6 @@ slug: 'second-article'
 tags: ['react', 'js']
 ---
 
-# A second article
-
 This is a super awesome second article!This is a super awesome second article!
 This is a super awesome second article!This is a super awesome second article!
 This is a super awesome second article!This is a super awesome second article!

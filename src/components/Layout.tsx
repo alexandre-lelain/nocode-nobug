@@ -31,16 +31,16 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ children }: LayoutProps) => {
   const [mode, setMode] = useState<ThemeMode>(null)
 
+  useEffect(() => {
+    setMode(getPreferedMode())
+  }, [])
+
   const toggleMode = () =>
     setMode(prevMode => {
       const newMode = getNextMode(prevMode)
       setPreferedMode(newMode)
       return newMode
     })
-
-  useEffect(() => {
-    setMode(getPreferedMode())
-  }, [])
 
   return (
     <ThemeModeProvider mode={mode} setMode={toggleMode}>

@@ -1,11 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Grid, Switch, Typography } from '@material-ui/core'
 
 import { useThemeMode } from 'hooks/ThemeContext'
 
 import { ResetLink } from 'styles'
 import { Day, Night } from 'icons'
+
+const getTitleColor = ({ isArticle, isDark, theme: { palette } }) => {
+  if (isArticle) {
+    return css`
+      color: ${isDark ? palette.primary.light : palette.primary.main};
+    `
+  }
+  return css`
+    color: ${palette.text.primary};
+  `
+}
 
 const ThemeModeContainer = styled(Grid).attrs(() => ({
   component: 'label',
@@ -17,9 +28,13 @@ const ThemeModeContainer = styled(Grid).attrs(() => ({
   }
 `
 
-const Title = styled(Typography).attrs(() => ({
+const Title = styled(Typography).attrs(({ isArticle }) => ({
   component: 'h2',
-}))``
+  variant: isArticle ? 'h5' : 'h3',
+}))`
+  font-weight: bold;
+  ${getTitleColor};
+`
 
 const StyledHeader = styled.header`
   display: flex;
@@ -38,11 +53,9 @@ const StyledHeader = styled.header`
 const Header = ({ isArticle = false }: HeaderProps) => {
   const [mode, setMode, isDark] = useThemeMode()
 
-  const titleVariant = isArticle ? 'h5' : 'h3'
-
   return (
     <StyledHeader>
-      <Title color={isDark ? 'textPrimary' : 'primary'} variant={titleVariant}>
+      <Title isArticle={isArticle} isDark={isDark}>
         <ResetLink to="/">No Code, No Bug</ResetLink>
       </Title>
       {isDark !== null && (

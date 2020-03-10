@@ -6,8 +6,6 @@ slug: 'test-article'
 tags: ['documentation']
 ---
 
-# A test article
-
 This is a super awesome test article!This is a super awesome test article!
 This is a super awesome test article!This is a super awesome test article!
 This is a super awesome test article!This is a super awesome test article!

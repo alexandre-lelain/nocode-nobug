@@ -10,7 +10,8 @@ const StyledParagraph = styled(Paragraph)`
 `
 
 const PreviewsContainer = styled.div`
-  margin: 64px 0;
+  margin-top: 64px;
+  margin-bottom: 86px;
 `
 
 const BlogIndex = ({ data }: BlogIndexProps) => {
