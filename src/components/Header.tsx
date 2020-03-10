@@ -28,10 +28,13 @@ const ThemeModeContainer = styled(Grid).attrs(() => ({
   }
 `
 
-const Title = styled(Typography).attrs(({ isArticle }) => ({
-  component: 'h2',
-  variant: isArticle ? 'h5' : 'h3',
-}))`
+// eslint-disable-next-line no-unused-vars
+const Title = styled(({ isArticle, isDark, ...rest }) => <Typography {...rest} />).attrs(
+  ({ isArticle }) => ({
+    component: 'h2',
+    variant: isArticle ? 'h5' : 'h3',
+  })
+)`
   font-weight: bold;
   ${getTitleColor};
 `

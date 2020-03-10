@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { SvgIcon } from '@material-ui/core'
 
-const StyledIcon = styled(SvgIcon)`
+// eslint-disable-next-line no-unused-vars
+const StyledIcon = styled(({ show, ...rest }) => <SvgIcon {...rest} />)`
   cursor: pointer;
   ${({ show, theme: { palette } }) => `
     visibility: ${show ? 'normal' : 'hidden'};

@@ -7,15 +7,18 @@ import { get } from 'lodash'
 import {
   ArticleMeta,
   Bio,
+  Blockquote,
   Footer,
   Header,
-  Layout,
-  SEO,
   Header1,
   Heading,
-  Paragraph,
+  InlineCode,
+  Image,
+  Layout,
+  RemarkParagraph,
+  SEO,
 } from 'components'
-import { InternalLink } from 'styles'
+import { InternalLink, ExternalLink } from 'styles'
 
 const StyledArticle = styled.article`
   margin: 64px 0;
@@ -52,7 +55,11 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
             source={rawMarkdownBody}
             renderers={{
               heading: Heading,
-              paragraph: Paragraph,
+              paragraph: RemarkParagraph,
+              blockquote: Blockquote,
+              inlineCode: InlineCode,
+              link: ExternalLink,
+              image: Image,
             }}
           />
         </StyledArticle>
@@ -73,6 +80,7 @@ interface BlogArticleProps {
 export const pageQuery = graphql`
   query ArticleQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
       timeToRead
       rawMarkdownBody
       frontmatter {

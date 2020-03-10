@@ -26,6 +26,9 @@ const ResetLink = ({ anchor = false, ...rest }: ResetLinkProps) => {
 
 interface ResetLinkProps {
   anchor?: boolean
+  children: any
+  rest?: object
+  to?: string
 }
 
 export default ResetLink

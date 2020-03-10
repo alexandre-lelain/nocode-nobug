@@ -30,7 +30,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
         <Bio />
         <PreviewsContainer>
           {map(posts, ({ node }) => (
-            <ArticlePreview node={node} />
+            <ArticlePreview key={node.id} node={node} />
           ))}
         </PreviewsContainer>
       </main>

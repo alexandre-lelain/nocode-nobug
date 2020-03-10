@@ -48,7 +48,11 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: ['gatsby-remark-reading-time', 'gatsby-plugin-slug'],
+        plugins: [
+          'gatsby-remark-reading-time',
+          'gatsby-plugin-slug',
+          'gatsby-remark-copy-linked-files',
+        ],
       },
     },
     {

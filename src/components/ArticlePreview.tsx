@@ -43,10 +43,10 @@ const Tag = styled(Paragraph).attrs(() => ({
 const ArticlePreview = ({ node }: ArticlePreviewProps) => {
   const { date, tags, title, spoiler } = node.frontmatter
   const { slug } = node.fields
-  const { id, timeToRead } = node
+  const { timeToRead } = node
 
   return (
-    <StyledArticle key={id}>
+    <StyledArticle>
       <ResetLink to={slug}>
         <Title>{title}</Title>
       </ResetLink>
@@ -75,7 +75,6 @@ interface Fields {
 
 interface ArticlePreviewProps {
   node: {
-    id: string
     timeToRead: string
     fields: Fields
     frontmatter: Frontmatter

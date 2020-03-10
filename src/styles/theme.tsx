@@ -1,5 +1,6 @@
 export default {
   palette: {
+    inlineCode: '#cce0ff',
     primary: {
       main: '#1976d2',
     },

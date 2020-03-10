@@ -19,7 +19,7 @@ const Header1 = styled(Typography).attrs(() => ({
 `
 
 const Header2Link = styled(ResetLink)`
-  margin-top: 36px;
+  margin-top: 24px;
   margin-bottom: 24px;
   margin-left: -24px;
   cursor: text;
