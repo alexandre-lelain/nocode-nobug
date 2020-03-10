@@ -15,22 +15,28 @@ const SEO = ({
       query {
         site {
           siteMetadata {
-            title
-            description
             author
-            url
+            description
             image
+            siteUrl
+            title
           }
         }
       }
     `
   )
 
-  const { author, image, title: metaTitle, description: metaDescription, url } = site.siteMetadata
+  const {
+    author,
+    description: metaDescription,
+    image,
+    siteUrl,
+    title: metaTitle,
+  } = site.siteMetadata
   const pageTitle = title || metaTitle
   const pageTitleTemplate = title ? `%s | ${metaTitle}` : `%s`
   const pageDescription = description || metaDescription
-  const pageUrl = `${url}${slug}`
+  const pageUrl = `${siteUrl}${slug}`
 
   return (
     <Helmet

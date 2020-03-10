@@ -3,7 +3,7 @@ module.exports = {
     title: `No Code, No Bug`,
     description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not! A blog by Alexandre Le Lain.`,
     author: `Alexandre Le Lain <@a_lelain>`,
-    url: 'https://nocode-nobug.com',
+    siteUrl: 'https://nocode-nobug.com',
     image: 'https://nocode-nobug.com/icons/icon-512x512.png',
     github: 'https://github.com/alexandre-lelain',
     twitter_user: '@a_lelain',
@@ -18,6 +18,7 @@ module.exports = {
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

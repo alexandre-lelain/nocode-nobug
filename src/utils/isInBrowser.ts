@@ -1,1 +1,2 @@
-export default (): boolean => typeof window !== 'undefined'
+const isInBrowser = (): boolean => typeof window !== 'undefined'
+export default isInBrowser

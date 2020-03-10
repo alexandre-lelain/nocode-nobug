@@ -32,7 +32,7 @@ const createArticlesPages = (graphql, { createPage }) => {
     posts.forEach(({ node }) => {
       const { slug } = get(node, 'fields', {})
       createPage({
-        path: slug,
+        path: `${slug}/`,
         component: path.resolve('./src/templates/blog-article.tsx'),
         context: { slug },
       })

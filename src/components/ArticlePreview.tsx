@@ -47,7 +47,7 @@ const ArticlePreview = ({ node }: ArticlePreviewProps) => {
 
   return (
     <StyledArticle>
-      <ResetLink to={slug}>
+      <ResetLink to={`${slug}/`}>
         <Title>{title}</Title>
       </ResetLink>
       <Spoiler>{spoiler}</Spoiler>
