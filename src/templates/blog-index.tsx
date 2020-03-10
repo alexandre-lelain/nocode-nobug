@@ -16,10 +16,28 @@ const PreviewsContainer = styled.div`
 
 const BlogIndex = ({ data }: BlogIndexProps) => {
   const posts = get(data, 'allMarkdownRemark.edges')
+  const meta = [
+    {
+      name: `twitter:label1`,
+      content: 'Made by',
+    },
+    {
+      name: `twitter:label2`,
+      content: 'Filed under',
+    },
+    {
+      name: `twitter:data1`,
+      content: 'Alexandre Le Lain',
+    },
+    {
+      name: `twitter:data2`,
+      content: 'Blog, Tech articles',
+    },
+  ]
 
   return (
     <Layout>
-      <SEO />
+      <SEO meta={meta} keywords="Blog, Tech articles, React, FrontEnd" />
       <Header />
       <main>
         <StyledParagraph>

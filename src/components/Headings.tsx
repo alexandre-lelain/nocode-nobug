@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import Children from 'react-children-utilities'
-import { Typography } from '@material-ui/core'
 
 import slugify from 'utils/slugify'
 import { ResetLink } from 'styles'
@@ -10,10 +9,16 @@ import { ResetLink } from 'styles'
 import Anchor from './Anchor'
 import Paragraph from './Paragraph'
 
-const Header1 = styled(Typography).attrs(() => ({
+const Header1 = styled(Paragraph).attrs(() => ({
   variant: 'h3',
   component: 'h1',
-  color: 'textPrimary',
+}))`
+  font-weight: bold;
+`
+
+const Header3 = styled(Paragraph).attrs(() => ({
+  variant: 'h5',
+  component: 'h3',
 }))`
   font-weight: bold;
 `
@@ -61,6 +66,8 @@ const Heading = ({ level, children, ...rest }: HeadingProps) => {
           {children}
         </Header2>
       )
+    case 3:
+      return <Header3 {...rest}>{children}</Header3>
     default:
       return (
         <DefaultHeading level={level} {...rest}>

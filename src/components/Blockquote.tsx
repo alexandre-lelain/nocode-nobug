@@ -4,7 +4,7 @@ const Blockquote = styled.blockquote`
   padding: 18px;
   margin: 24px 0px;
   font-style: italic;
-  opacity: 0.7;
+  opacity: 0.8;
   p {
     margin: 0;
   }

@@ -5,7 +5,8 @@ export default {
       main: '#1976d2',
     },
     secondary: {
-      main: '#cc0044',
+      main: '#b34700',
+      light: '#ffc299',
     },
   },
 }

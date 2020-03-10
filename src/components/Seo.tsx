@@ -2,7 +2,14 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const SEO = ({ description = '', lang = 'en', meta = [], title }: SEOProps) => {
+const SEO = ({
+  description = '',
+  lang = 'en',
+  meta = [],
+  title,
+  keywords,
+  slug = '',
+}: SEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -11,16 +18,19 @@ const SEO = ({ description = '', lang = 'en', meta = [], title }: SEOProps) => {
             title
             description
             author
+            url
+            image
           }
         }
       }
     `
   )
 
-  const { title: metaTitle, description: metaDescription } = site.siteMetadata
+  const { author, image, title: metaTitle, description: metaDescription, url } = site.siteMetadata
   const pageTitle = title || metaTitle
   const pageTitleTemplate = title ? `%s | ${metaTitle}` : `%s`
   const pageDescription = description || metaDescription
+  const pageUrl = `${url}${slug}`
 
   return (
     <Helmet
@@ -35,8 +45,28 @@ const SEO = ({ description = '', lang = 'en', meta = [], title }: SEOProps) => {
           content: pageDescription,
         },
         {
+          name: `author`,
+          content: author,
+        },
+        {
+          name: `application-name`,
+          content: metaTitle,
+        },
+        {
+          name: `keywords`,
+          content: keywords,
+        },
+        {
+          property: `og:url`,
+          content: pageUrl,
+        },
+        {
           property: `og:title`,
-          content: title,
+          content: pageTitle,
+        },
+        {
+          property: `og:site_name`,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -44,7 +74,11 @@ const SEO = ({ description = '', lang = 'en', meta = [], title }: SEOProps) => {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `website.blog`,
+        },
+        {
+          property: `og:image`,
+          content: image,
         },
         {
           name: `twitter:card`,
@@ -52,15 +86,27 @@ const SEO = ({ description = '', lang = 'en', meta = [], title }: SEOProps) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
+        },
+        {
+          name: `twitter:image`,
+          content: image,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           name: `twitter:description`,
           content: pageDescription,
+        },
+        {
+          name: `twitter:url`,
+          content: pageUrl,
+        },
+        {
+          name: `twitter:site`,
+          content: author,
         },
       ].concat(meta)}
     >
@@ -78,9 +124,11 @@ const SEO = ({ description = '', lang = 'en', meta = [], title }: SEOProps) => {
 
 interface SEOProps {
   description?: string
+  keywords?: string
   lang?: string
-  title?: string
   meta?: any[]
+  slug?: string
+  title?: string
 }
 
 export default SEO

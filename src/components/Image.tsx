@@ -9,6 +9,11 @@ const StyledImage = styled(Img)`
   margin: 64px auto;
 `
 
+const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid => {
+  const node = find(nodes, (node: ImageNode) => includes(src, node.fluid.originalName))
+  return node ? node.fluid : {}
+}
+
 const Image = ({ src, ...rest }: ImageProps) => {
   const { allImageSharp } = useStaticQuery(graphql`
     query {
@@ -30,9 +35,25 @@ const Image = ({ src, ...rest }: ImageProps) => {
     }
   `)
   const { nodes = [] } = allImageSharp
-  const { fluid } = find(nodes, ({ fluid }) => includes(src, fluid.originalName))
+  const fluid = getGatsbyFluidFromFileName(nodes, src)
 
   return <StyledImage fluid={fluid} {...rest} />
+}
+
+interface ImageNode {
+  fluid: Fluid
+}
+
+interface Fluid {
+  originalName?: string
+  srcWebp?: string
+  srcSet?: string
+  src?: string
+  sizes?: string
+  presentationHeight?: string
+  presentationWidth?: string
+  base64?: string
+  aspectRatio?: string
 }
 
 interface ImageProps {

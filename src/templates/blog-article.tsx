@@ -8,13 +8,16 @@ import {
   ArticleMeta,
   Bio,
   Blockquote,
+  CodeBlock,
   Footer,
   Header,
   Header1,
   Heading,
-  InlineCode,
   Image,
+  InlineCode,
   Layout,
+  ListItem,
+  Paragraph,
   RemarkParagraph,
   SEO,
 } from 'components'
@@ -40,11 +43,31 @@ const StyledSeparator = styled.hr`
 const BlogArticle = ({ data }: BlogArticleProps) => {
   const { markdownRemark = {} } = data
   const { timeToRead, rawMarkdownBody } = markdownRemark
-  const { date, title } = get(markdownRemark, 'frontmatter', {})
+  const { date, title, tags, slug, spoiler } = get(markdownRemark, 'frontmatter', {})
+
+  const stringyfiedTags = tags.join`, `
+  const meta = [
+    {
+      name: `twitter:label1`,
+      content: 'Reading time',
+    },
+    {
+      name: `twitter:label2`,
+      content: 'Tags',
+    },
+    {
+      name: `twitter:data1`,
+      content: `${timeToRead} min read`,
+    },
+    {
+      name: `twitter:data2`,
+      content: stringyfiedTags,
+    },
+  ]
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title} description={spoiler} meta={meta} slug={slug} keywords={stringyfiedTags} />
       <Header isArticle />
       <main>
         <StyledArticle>
@@ -60,12 +83,16 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
               inlineCode: InlineCode,
               link: ExternalLink,
               image: Image,
+              listItem: ListItem,
+              code: CodeBlock,
             }}
           />
         </StyledArticle>
-        <InternalLink secondary to="/">
-          ← Back to main page
-        </InternalLink>
+        <Paragraph>
+          <InternalLink secondary to="/">
+            ← Back to main page
+          </InternalLink>
+        </Paragraph>
       </main>
       <StyledBio />
       <Footer />
@@ -88,6 +115,7 @@ export const pageQuery = graphql`
         spoiler
         slug
         date(formatString: "MMMM Do, YYYY")
+        tags
       }
     }
   }

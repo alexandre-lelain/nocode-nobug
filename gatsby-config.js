@@ -2,7 +2,9 @@ module.exports = {
   siteMetadata: {
     title: `No Code, No Bug`,
     description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not! A blog by Alexandre Le Lain.`,
-    author: `Alexandre Le Lain @a_lelain`,
+    author: `Alexandre Le Lain <@a_lelain>`,
+    url: 'https://nocode-nobug.com',
+    image: 'https://nocode-nobug.com/icons/icon-512x512.png',
     github: 'https://github.com/alexandre-lelain',
     twitter_user: '@a_lelain',
     twitter: 'https://mobile.twitter.com/a_lelain',
