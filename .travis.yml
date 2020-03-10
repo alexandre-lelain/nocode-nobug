@@ -6,10 +6,14 @@ cache:
   directories:
     - node_modules
 install: yarn
+stages:
+  - Validation
+  - Build
 jobs:
   include:
-    - stage: 'Validation'
-    - script:
-        - yarn install
+    - stage: Validation
+      script:
         - yarn validate
+    - stage: Build
+      script:
         - yarn build
