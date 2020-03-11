@@ -68,7 +68,13 @@ const Header = ({ isArticle = false }: HeaderProps) => {
             <Day color={isDark ? 'disabled' : 'primary'} />
           </Grid>
           <Grid item>
-            <Switch checked={isDark} value={mode} onChange={setMode} color="secondary" />
+            <Switch
+              checked={isDark}
+              value={mode}
+              onChange={setMode}
+              color="secondary"
+              inputProps={{ 'aria-label': 'toggle theme to light/dark mode' }}
+            />
           </Grid>
           <Grid container item>
             <Night color={isDark ? 'action' : 'disabled'} />

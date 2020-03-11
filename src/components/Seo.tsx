@@ -120,9 +120,8 @@ const SEO = ({
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         media="print"
-        onLoad={function(this: HTMLLinkElement) {
-          this.media = 'all'
-        }}
+        // @ts-ignore
+        onLoad="this.media='all'"
       />
     </Helmet>
   )

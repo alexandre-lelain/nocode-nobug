@@ -71,7 +71,7 @@ const Bio = props => {
           to fix my code.
         </Paragraph>
         <Paragraph>
-          You can check out my github <ExternalLink href={github}>here</ExternalLink>.
+          You can check out my <ExternalLink href={github}>github</ExternalLink> anytime.
         </Paragraph>
       </TextContainer>
     </Container>
