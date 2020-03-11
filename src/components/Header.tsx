@@ -36,6 +36,7 @@ const Title = styled(({ isArticle, isDark, ...rest }) => <Typography {...rest} /
   })
 )`
   font-weight: bold;
+  margin-right: 12px;
   ${getTitleColor};
 `
 
