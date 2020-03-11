@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Blockquote = styled.blockquote`
   padding: 18px;
-  margin: 24px 0px;
+  margin: 32px 0px;
   font-style: italic;
   opacity: 0.8;
   p {

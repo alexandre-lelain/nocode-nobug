@@ -1,3 +1,5 @@
+require('./src/styles/codeTheme.css')
+
 const checkHash = location => {
   let { hash } = location
   if (hash) {

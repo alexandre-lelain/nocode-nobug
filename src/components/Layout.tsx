@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
 import { Container } from '@material-ui/core'
+import Prism from 'prismjs'
+import 'prismjs/components/prism-jsx.min'
 
 import {
   ThemeModeProvider,
@@ -33,6 +35,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   useEffect(() => {
     setMode(getPreferedMode())
+    Prism.highlightAll()
   }, [])
 
   const toggleMode = () =>

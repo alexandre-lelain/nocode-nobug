@@ -21,20 +21,22 @@ const Header3 = styled(Paragraph).attrs(() => ({
   component: 'h3',
 }))`
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 46px;
+  margin-top: 46px;
 `
 
 const Header2Link = styled(ResetLink)`
-  margin-top: 24px;
-  margin-bottom: 24px;
-  margin-left: -24px;
+  margin-top: 46px;
+  margin-bottom: 46px;
   cursor: text;
 `
 
 const StyledHeader2 = styled(Paragraph).attrs(() => ({
   component: 'h2',
   variant: 'h4',
-}))``
+}))`
+  font-weight: bold;
+`
 
 const Header2 = ({ children, id }: Header2Props) => {
   const [showAnchor, setShowAnchor] = useState(false)

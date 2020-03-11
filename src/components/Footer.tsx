@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
 
 import { Github, LinkedIn, Rss, Twitter } from 'icons'
-import { ExternalLink, InternalLink } from 'styles'
+import { ExternalLink } from 'styles'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Container = styled.footer`

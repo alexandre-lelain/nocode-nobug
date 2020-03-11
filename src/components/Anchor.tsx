@@ -5,6 +5,8 @@ import { SvgIcon } from '@material-ui/core'
 // eslint-disable-next-line no-unused-vars
 const StyledIcon = styled(({ show, ...rest }) => <SvgIcon {...rest} />)`
   cursor: pointer;
+  margin-left: -26px;
+  padding-right: 4px;
   ${({ show, theme: { palette } }) => `
     visibility: ${show ? 'normal' : 'hidden'};
     color: ${palette.links};

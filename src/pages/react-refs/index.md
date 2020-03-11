@@ -1,20 +1,20 @@
 ---
-title: What is hidden behind React.forwardRef ?
+title: What is hidden behind React's refs ?
 date: '2020-03-11'
 spoiler: The refs will have no more secrets for you.
-slug: 'what-is-hidden-behind-react-forwardref'
+slug: 'what-is-hidden-behind-react-refs'
 tags: ['react', 'js', 'refs', 'html', 'api']
 ---
 
-There was a time I used to struggle with manipulating the `refs` in my react components.
+There was a time I used to struggle when manipulating the `refs` in my react components.
 
-Sometimes they returned `null`, sometimes they didn't return the `html element` I was looking for. To be honest, I didn't know shit about what I was doing. I used to try any combination possible until my `ref` looked like what I wanted to get in the begining.
+Sometimes they returned `undefined`, sometimes they didn't return the **DOM element** I was looking for. To be honest, I didn't know shit about what I was doing. I used to try any combination possible until my `ref` looked like what I wanted to get in the begining.
 
 And even then, I had no clue on how to use the `ref` properly.
 
 You probably already are familiar with `refs` handling in React. But if you are not, I have good hopes this article will help you lots.
 
-**tl;dr**: You can go directly to [this part](#ReactForwardRef) to read the answer if you already are **very** familiar with `refs`. However, I recommand to read from the begining. So you can keep the best part of the cake for the end ;)
+**tl;dr**: You can go directly to [this part](#react.forwardref) to read the answer if you already are **very** familiar with `refs`. However, I recommand to read from the begining - so you can keep the best part of the cake for the end 😉
 
 ## You said ref?
 
@@ -32,6 +32,8 @@ In both cases, the `ref` is a **node** and has a `type` - it is an `instance` of
 > **Note**: While it is [discouraged](https://reactjs.org/docs/refs-and-the-dom.html) to overuse the `refs`, it can sometimes provide an efficient solution to a complex UI problem.
 
 ## The hidden truth
+
+I swear to tell the _truth_, and only the _truth_.
 
 ![source: i.imgflip.com](./the-truth.webp)
 
@@ -51,11 +53,11 @@ A DOM element:
 - implements the interface [HTMLElement](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
 - implements the interface of its tag. For example, a `<div>` implements the interface [HTMLDivElement](https://developer.mozilla.org/en/docs/Web/API/HTMLDivElement)
 
-This simply means that the `ref` you attach to a DOM element like a `<div>` will be an object that inherits of all the _properties_ & _methods_ the class & the interfaces offer. That said, you will be able, for example, to access the different _properties_ of your DOM element's **width** from the `ref` (like `clientWidth`, `offsetWidth` and so on).
+This simply means that the `ref` you attach to a DOM element like a `<div>` will be an object that inherits all the _properties_ & _methods_ the class and the interfaces offer. That said, you will be able, for example, to access the different _properties_ of your DOM element's **width** from the `ref` (like `clientWidth`, `offsetWidth` and so on).
 
-Also, React will add some hidden _properties_ & _methods_ to the `ref` object. But these are treated like `private` stuff - you don't need to use those or even know their existence.
+Also, React will add some hidden _properties_ & _methods_ to the `ref` object. But these are treated like **private** stuff - you don't need to use those or even know their existence.
 
-Depending on the browser (for example some properties & methods are not available in our worst nightmare - yes, I'm talking about IE), your `ref` will look a bit like that:
+Depending on the browser (for example some properties & methods are not available in our worst nightmare - yes, I'm talking about IE 😵), your `ref` will look a bit like that:
 
 ```js
 // the content of a ref attached to a <div>
@@ -87,15 +89,15 @@ Depending on the browser (for example some properties & methods are not availabl
 
 There might be some edge cases (_very rare_) where you might want to attach a `ref` to a React component.
 
-`refs` cannot be given to functional components as is - it requires to use the `React.forwardRef` HOC we'll go though later. After all, this is what this article is about!
+`refs` cannot be given to **functional components** as is - it requires to use the `React.forwardRef` HOC we'll go though later. After all, this is what this article is about!
 
-Functional components, or stateless components, cannot have a `ref` attached because there is no state to attach the `ref` to. It as simply as that. Like said previously, the hooks solves this problem since **react@^16.8.0**
+Functional components, or stateless components, cannot have a `ref` attached because there is no state to attach the `ref` to. It as simple as that. Like said previously, the hooks solve this problem since **react@^16.8.0**.
 
 However, you can give a `ref` to a **Class Component**.
 
 In this case, your `ref`:
 
-- is an instance of your Class
+- is an instance of your Class Component
 - extends the class [React.Component](https://en.reactjs.org/docs/react-component.html)
 
 That said, you will have access to the `state`, the `props` and the `context` of the component your `ref` was attached to.
@@ -123,11 +125,11 @@ Just like for the DOM element, React will add some private _properties_ & _metho
 
 ![source: roioverload.com](./get-to-the-point.webp)
 
-Alright, enough with the theory. Now you know exactly what you are handling, let's see how to use React's refs API!
+Alright, enough with the theory. Now you know exactly what you are handling, let's see how to use React's refs API! 🤘
 
 ## Creating the ref
 
-There are actually two methods in order to create a Ref. In both case, the method returns an object that will always have the following structure:
+There are actually **two** methods in order to create a `ref`. In both case, the method returns an object that will always have the following structure:
 
 ```jsx
 // content of your ref
@@ -138,7 +140,7 @@ There are actually two methods in order to create a Ref. In both case, the metho
 
 So you will be able to access your targeted **node** (React or DOM) via `ref.current`
 
-Creating a ref couldn't be more straight-forward. If you are in a **class component**, you can use the [React.createRef](https://reactjs.org/docs/react-api.html#reactcreateref) method.
+Creating a `ref` couldn't be more straight-forward - if you are in a **class component**, you can use the [React.createRef](https://reactjs.org/docs/react-api.html#reactcreateref) method.
 
 A good practice is to create the `ref` in your `constructor`:
 
@@ -151,7 +153,7 @@ class YourComponent extends React.Component {
 }
 ```
 
-If you are in a **functional component**, you can use the [React.useRef](https://reactjs.org/docs/hooks-reference.html#useref) hook. Here's how to use it:
+Inside a **functional component**, you can use the [React.useRef](https://reactjs.org/docs/hooks-reference.html#useref) hook. Here's how to use it:
 
 ```jsx
 const YourComponent = () => {
@@ -159,11 +161,11 @@ const YourComponent = () => {
 }
 ```
 
-Now your `ref` is initialized and ready to be attached to a **React Class Component** or a **DOM element**. let's see how to use it.
+Now your `ref` is initialized and ready to be attached to a React **class component** or a **DOM element**. Let's see how to use it.
 
 ## Using the ref
 
-Once initialized, your `ref` needs to be attached to something. If you want to attach it to a **React class component**:
+Once initialized, your `ref` needs to be attached to something. If you want to attach it to a React **class component**:
 
 ```jsx
 class DummyComponent extends React.Component {
@@ -179,8 +181,8 @@ class YourComponent extends React.Component {
   }
 
   componentDidMount() {
-    const reactNode = this.ref.current
     // reactNode: DummyComponent
+    const reactNode = this.ref.current
   }
 
   render() {
@@ -192,14 +194,14 @@ class YourComponent extends React.Component {
 If you want to attach it to a **DOM element**:
 
 ```jsx
-// You could use classes component as well.
+// You could use a class component as well.
 
 const YourComponent = () => {
   const ref = React.useRef() // mutable object
 
   React.useEffect(() => {
-    const divNode = ref.current
     // divNode: HTMLDivElement
+    const divNode = ref.current
   }, [])
 
   return <div ref={ref}>I am a div</div>
@@ -208,7 +210,7 @@ const YourComponent = () => {
 
 ## React.forwardRef
 
-Finaly getting there. If you read the previous part (which I trust you to have done) you may wonder what is [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) there for ? After all, it seems at first glance that we got all we need already.
+Finaly getting there. If you read the previous part (which I trust you to have done 🙂) you may wonder what is [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) there for ? After all, it seems at first glance that we got all we need already.
 
 Well, not quite so. We are missing one problem: what if you want the `ref` you attached to a **React component** to go through the first **DOM element** it renders ? You cannot. As seen previously, the `ref` you attach to a **React component** will return the instance of this very component.
 
@@ -222,7 +224,7 @@ It looks like:
 React.forwardRef((props, ref) => <YourComponent ref={ref} {...props}) // => returns a React component
 ```
 
-It sole purpose is to inform your **React component** to pass down the `ref` you attached to it to its `props` instead of itself. So you can pass it to the **DOM element** of your chosing in its render.
+It sole purpose is to inform your **React component** to pass down the `ref` you attached to it down to its `props` instead of itself. So you can pass it to the **DOM element** of your chosing in its render.
 
 Here's how to use it:
 
@@ -236,6 +238,7 @@ const YourComponent = () => {
   const ref = React.useRef()
 
   React.useEffect(() => {
+    // divNode: HTMLDivElement
     const divNode = ref.current
   }, [])
 
@@ -252,7 +255,7 @@ to forward this local ref to the component's parent.
 
 This can happen for exemple when you are implementating an _input-like_ component, and need to access the `HTMLInputElement`'s `ref` locally but also to forward it to the parent.
 
-Here's the secret: [React.useImperativeHandle](https://en.reactjs.org/docs/hooks-reference.html#useimperativehandle)!
+Here's the secret: [React.useImperativeHandle](https://en.reactjs.org/docs/hooks-reference.html#useimperativehandle)! 🤐
 
 This method will enable you to expose the local `ref` to the parent, while keeping the same
 source of truth.
@@ -285,7 +288,7 @@ Now you are able to handle the input's `ref` in both the parent and child compon
 
 ## Conclusion
 
-I really hope I made the whole `ref` party much more clear to you now, and that you can't wait to try out the bonus example! ;)
+I really hope I made the whole `ref` party much more clear to you now, and that you can't wait to try out the bonus example! 😉
 
 `refs` system can be quite difficult to understand at first (at least it was my case), but once
 you know what is the type of the elements your are handling and how the `refs` work behind the scene, you realize that it's quite fun in the end.
@@ -295,6 +298,8 @@ While React offers us these tools, they strongly **discourage us** from over-usi
 However there are some UI problems that cannot be solved simply: `refs` can come handy in those situations.
 
 If you have a question, a remark, or want to bark how crap you found this article, don't hesitate to dm me on Twitter! You will find the link below.
+
+Thanks for reading! 😃
 
 ## Useful links
 

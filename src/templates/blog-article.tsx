@@ -16,12 +16,14 @@ import {
   Image,
   InlineCode,
   Layout,
+  Link,
+  List,
   ListItem,
   Paragraph,
   RemarkParagraph,
   SEO,
 } from 'components'
-import { InternalLink, ExternalLink } from 'styles'
+import { InternalLink } from 'styles'
 
 const StyledArticle = styled.article`
   margin: 64px 0;
@@ -81,9 +83,10 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
               paragraph: RemarkParagraph,
               blockquote: Blockquote,
               inlineCode: InlineCode,
-              link: ExternalLink,
+              link: Link,
               image: Image,
               listItem: ListItem,
+              list: List,
               code: CodeBlock,
             }}
           />
