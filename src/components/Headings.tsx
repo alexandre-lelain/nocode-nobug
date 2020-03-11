@@ -21,6 +21,7 @@ const Header3 = styled(Paragraph).attrs(() => ({
   component: 'h3',
 }))`
   font-weight: bold;
+  margin-bottom: 24px;
 `
 
 const Header2Link = styled(ResetLink)`

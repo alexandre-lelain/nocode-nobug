@@ -4,9 +4,23 @@ import Img from 'gatsby-image'
 import { find, includes } from 'lodash'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const StyledImage = styled(Img)`
-  max-width: 500px;
+import Paragraph from './Paragraph'
+
+const Container = styled.div`
   margin: 64px auto;
+  text-align: center;
+`
+
+const StyledImage = styled(Img)`
+  margin: 0 auto;
+`
+
+const Caption = styled(Paragraph).attrs(() => ({
+  component: 'legend',
+  variant: 'caption',
+}))`
+  margin-top: 8px;
+  font-style: italic;
 `
 
 const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid => {
@@ -14,21 +28,16 @@ const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid => {
   return node ? node.fluid : {}
 }
 
-const Image = ({ src, ...rest }: ImageProps) => {
+const Image = ({ alt, src, ...rest }: ImageProps) => {
   const { allImageSharp } = useStaticQuery(graphql`
     query {
       allImageSharp {
         nodes {
-          fluid {
+          fluid(quality: 100) {
             originalName
-            srcWebp
-            srcSet
-            src
-            sizes
             presentationHeight
             presentationWidth
-            base64
-            aspectRatio
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -36,8 +45,18 @@ const Image = ({ src, ...rest }: ImageProps) => {
   `)
   const { nodes = [] } = allImageSharp
   const fluid = getGatsbyFluidFromFileName(nodes, src)
+  const { presentationHeight, presentationWidth } = fluid
 
-  return <StyledImage fluid={fluid} {...rest} />
+  return (
+    <Container>
+      <StyledImage
+        fluid={fluid}
+        {...rest}
+        style={{ maxWidth: presentationWidth, maxHeight: presentationHeight }}
+      />
+      <Caption>{alt}</Caption>
+    </Container>
+  )
 }
 
 interface ImageNode {
@@ -45,18 +64,20 @@ interface ImageNode {
 }
 
 interface Fluid {
+  aspectRatio?: string
+  base64?: string
   originalName?: string
-  srcWebp?: string
-  srcSet?: string
-  src?: string
-  sizes?: string
   presentationHeight?: string
   presentationWidth?: string
-  base64?: string
-  aspectRatio?: string
+  sizes?: string
+  src?: string
+  srcSet?: string
+  srcSetWebp?: string
+  srcWebp?: string
 }
 
 interface ImageProps {
+  alt?: string
   src: string
   rest?: object
 }

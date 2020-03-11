@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
 
-import { Github, LinkedIn, Twitter } from 'icons'
-import { ExternalLink } from 'styles'
+import { Github, LinkedIn, Rss, Twitter } from 'icons'
+import { ExternalLink, InternalLink } from 'styles'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Container = styled.footer`
@@ -56,6 +56,10 @@ const Footer = () => {
         <LinkSeparator>-</LinkSeparator>
         <ExternalLink aria-label="LinkedIn" title="Twitter" href={linkedin}>
           <LinkedIn />
+        </ExternalLink>
+        <LinkSeparator>-</LinkSeparator>
+        <ExternalLink aria-label="rss-feed" title="RSS feed" href="/rss.xml">
+          <Rss />
         </ExternalLink>
       </InnerContainer>
     </Container>

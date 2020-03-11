@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 
 const linkStyle = css`
   color: inherit;
-  display: inline-block;
   text-decoration: none;
   &:visited {
     color: inherit;
@@ -17,6 +16,7 @@ const StyledLink = styled(Link)`
 `
 
 const StyledAnchor = styled.a`
+  display: inline-block;
   ${linkStyle};
 `
 

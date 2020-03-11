@@ -18,6 +18,7 @@ const Title = styled(Typography).attrs(() => ({
   variant: 'h4',
 }))`
   font-weight: bold;
+  display: block;
   ${({ theme: { palette } }) => `
     color: ${palette.links};
   `};
@@ -37,7 +38,7 @@ const Tags = styled.div`
 const Tag = styled(Paragraph).attrs(() => ({
   variant: 'body2',
 }))`
-  margin-left: 4px;
+  margin-left: 8px;
 `
 
 const ArticlePreview = ({ node }: ArticlePreviewProps) => {
@@ -47,15 +48,18 @@ const ArticlePreview = ({ node }: ArticlePreviewProps) => {
 
   return (
     <StyledArticle>
-      <ResetLink to={`${slug}/`}>
-        <Title>{title}</Title>
-      </ResetLink>
+      <Title>
+        <ResetLink to={`${slug}/`}>{title}</ResetLink>
+      </Title>
       <Spoiler>{spoiler}</Spoiler>
       <ArticleMeta date={date} timeToRead={timeToRead} small />
       <Tags>
         <TagIcon color="action" />
         {map(tags, tag => (
-          <Tag key={`tag-${tag}`}>#{tag}</Tag>
+          <Tag key={`tag-${tag}`}>
+            <b>#</b>
+            {tag}
+          </Tag>
         ))}
       </Tags>
     </StyledArticle>
