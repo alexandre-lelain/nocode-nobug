@@ -8,7 +8,7 @@ tags: ['react', 'js', 'refs', 'html', 'api']
 
 There was a time I used to struggle when manipulating the `refs` in my react components.
 
-Sometimes they returned `undefined`, sometimes they didn't return the **DOM element** I was looking for. To be honest, I didn't know _anything_ about what I was doing. I was a total noob. I used to try any combination possible until my `ref` looked like what I wanted to get in the begining.
+Sometimes they returned `undefined`, sometimes they didn't return the **DOM element** I was looking for. To be honest, I didn't know _anything_ about what I was doing. I was a total noob. I used to try any combination possible until my `ref` looked like what I wanted to get in the beginning.
 
 And even then, I had no clue on how to use the `ref` properly.
 

@@ -42,8 +42,9 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       <main>
         <StyledParagraph>
           A blog with tech articles that might be helpful. Or not! Through my journey as a Software
-          Engineer I come across concepts and fancy technologies I often do not understand. When I
-          do, and wish it was explained in a certain way, I write a post about it.
+          Engineer I come across concepts and fancy technologies which can take some time to
+          understand. When I do, and wish it was explained in a way that might help other
+          developers, I write a post about it.
         </StyledParagraph>
         <Bio />
         <PreviewsContainer>
