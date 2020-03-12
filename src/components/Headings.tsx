@@ -21,14 +21,17 @@ const Header3 = styled(Paragraph).attrs(() => ({
   component: 'h3',
 }))`
   font-weight: bold;
-  margin-bottom: 38px;
-  margin-top: 38px;
+  display: inline-block;
+  ${({ theme: { spacing } }) => `
+    margin: ${spacing(3)}px 0;
+  `}
 `
 
 const Header2Link = styled(ResetLink)`
-  margin-top: 38px;
-  margin-bottom: 38px;
   cursor: text;
+  ${({ theme: { spacing } }) => `
+    margin: ${spacing(3)}px 0;
+  `}
 `
 
 const StyledHeader2 = styled(Paragraph).attrs(() => ({

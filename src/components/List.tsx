@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const List = styled.ul`
-  margin: 32px 0px;
-  ${({ theme: { palette } }) => `
+  ${({ theme: { palette, spacing } }) => `
     color: ${palette.text.primary};
+    margin: ${spacing(4)}px 0;
   `}
 `
 

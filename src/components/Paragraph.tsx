@@ -7,7 +7,9 @@ import isChildAnImg from 'utils/isChildAnImg'
 const Paragraph = props => <Typography variant="body1" color="textPrimary" {...props} />
 
 const SpacedParagraph = styled(Paragraph)`
-  margin-bottom: 32px;
+  ${({ theme }) => `
+    margin-bottom: ${theme.spacing(3)}px;
+  `}
 `
 
 const RemarkParagraph = ({ children, ...rest }: RemarkParagraphProps) =>

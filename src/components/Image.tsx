@@ -7,8 +7,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Paragraph from './Paragraph'
 
 const Container = styled.div`
-  margin: 64px auto;
   text-align: center;
+  ${({ theme }) => `
+    margin: ${theme.spacing(4)}px auto;
+  `}
 `
 
 const StyledImage = styled(Img)`
