@@ -89,9 +89,9 @@ Depending on the browser (for example some properties & methods are not availabl
 
 There might be some edge cases (_very rare_) where you might want to attach a `ref` to a React component.
 
-`refs` cannot be attached to **functional components** as is - it requires to use the `React.forwardRef` HOC we'll see in details later. After all, this is what this article is about!
+`refs` cannot be attached to **functional components** as is - it requires to use the `React.forwardRef` HOC we'll see in details later.
 
-Functional components, or stateless components, cannot have a `ref` attached because there is no state to attach the `ref` to. It as simple as that. Like said previously, the hooks solve this problem since **react@^16.8.0**.
+Functional components, or stateless components, cannot have a `ref` attached because there is no state to attach the `ref` to. It's as simple as that. Like said previously, the hooks solve this problem since **react@^16.8.0**.
 
 However, you can attach a `ref` to a **Class Component**.
 
@@ -129,7 +129,7 @@ Alright, enough with the theory. Now you know exactly what you are handling, let
 
 ## Creating the ref
 
-There are actually **two** methods in order to create a `ref`. In both case, the method returns an object that will always have the following structure:
+There are actually **two** methods in order to create a `ref`. In both cases, the method returns an object that will always have the following structure:
 
 ```js
 // content of your ref
@@ -138,7 +138,7 @@ There are actually **two** methods in order to create a `ref`. In both case, the
 }
 ```
 
-So you will be able to access your targeted **node** (React or DOM) via `ref.current`
+> So you will be able to access your targeted **node** (React or DOM) via `ref.current`
 
 Creating a `ref` couldn't be more straight-forward - if you are in a **class component**, you can use the [React.createRef](https://reactjs.org/docs/react-api.html#reactcreateref) method.
 
@@ -254,7 +254,7 @@ const YourComponent = () => {
 There are cases where you might need, at the same time, to have a local ref and also
 to forward this local ref to the component's parent.
 
-This can happen for exemple when you are implementating an _input-like_ component, and need to access the `HTMLInputElement`'s `ref` locally but also to forward it to the parent.
+This can happen for example when you are implementating an _input-like_ component, and need to access the `HTMLInputElement`'s `ref` locally but also to forward it to the parent.
 
 Here's the secret: [React.useImperativeHandle](https://en.reactjs.org/docs/hooks-reference.html#useimperativehandle)! 🤐
 
