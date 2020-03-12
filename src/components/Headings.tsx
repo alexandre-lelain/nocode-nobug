@@ -21,13 +21,13 @@ const Header3 = styled(Paragraph).attrs(() => ({
   component: 'h3',
 }))`
   font-weight: bold;
-  margin-bottom: 46px;
-  margin-top: 46px;
+  margin-bottom: 38px;
+  margin-top: 38px;
 `
 
 const Header2Link = styled(ResetLink)`
-  margin-top: 46px;
-  margin-bottom: 46px;
+  margin-top: 38px;
+  margin-bottom: 38px;
   cursor: text;
 `
 

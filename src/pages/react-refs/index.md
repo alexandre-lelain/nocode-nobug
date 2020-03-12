@@ -8,13 +8,13 @@ tags: ['react', 'js', 'refs', 'html', 'api']
 
 There was a time I used to struggle when manipulating the `refs` in my react components.
 
-Sometimes they returned `undefined`, sometimes they didn't return the **DOM element** I was looking for. To be honest, I didn't know shit about what I was doing. I used to try any combination possible until my `ref` looked like what I wanted to get in the begining.
+Sometimes they returned `undefined`, sometimes they didn't return the **DOM element** I was looking for. To be honest, I didn't know _anything_ about what I was doing. I was a total noob. I used to try any combination possible until my `ref` looked like what I wanted to get in the begining.
 
 And even then, I had no clue on how to use the `ref` properly.
 
-You probably already are familiar with `refs` handling in React. But if you are not, I have good hopes this article will help you lots.
+You probably already are familiar with `refs` handling in React. But if you are not, I have good hopes this article will help you a lot.
 
-**tl;dr**: You can go directly to [this part](#react.forwardref) to read the answer if you already are **very** familiar with `refs`. However, I recommand to read from the begining - so you can keep the best part of the cake for the end 😉
+**tl;dr**: You can go directly to [this part](#react.forwardref) to read the answer if you already are **very** familiar with `refs`. However, I recommend to read from the beginning - so you can keep the best part of the cake for the end 😉
 
 ## You said ref?
 
@@ -49,9 +49,9 @@ All DOM elements follow this architecture:
 
 A DOM element:
 
-- is an instance of the class [Element](https://developer.mozilla.org/en/docs/Web/API/Element)
-- implements the interface [HTMLElement](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
 - implements the interface of its tag. For example, a `<div>` implements the interface [HTMLDivElement](https://developer.mozilla.org/en/docs/Web/API/HTMLDivElement)
+- implements the interface [HTMLElement](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
+- is an instance of the class [Element](https://developer.mozilla.org/en/docs/Web/API/Element)
 
 This simply means that the `ref` you attach to a DOM element like a `<div>` will be an object that inherits all the _properties_ & _methods_ the class and the interfaces offer. That said, you will be able, for example, to access the different _properties_ of your DOM element's **width** from the `ref` (like `clientWidth`, `offsetWidth` and so on).
 
@@ -89,11 +89,11 @@ Depending on the browser (for example some properties & methods are not availabl
 
 There might be some edge cases (_very rare_) where you might want to attach a `ref` to a React component.
 
-`refs` cannot be given to **functional components** as is - it requires to use the `React.forwardRef` HOC we'll go though later. After all, this is what this article is about!
+`refs` cannot be attached to **functional components** as is - it requires to use the `React.forwardRef` HOC we'll see in details later. After all, this is what this article is about!
 
 Functional components, or stateless components, cannot have a `ref` attached because there is no state to attach the `ref` to. It as simple as that. Like said previously, the hooks solve this problem since **react@^16.8.0**.
 
-However, you can give a `ref` to a **Class Component**.
+However, you can attach a `ref` to a **Class Component**.
 
 In this case, your `ref`:
 
@@ -212,7 +212,7 @@ const YourComponent = () => {
 
 Finaly getting there. If you read the previous part (which I trust you to have done 🙂) you may wonder what is [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) there for ? After all, it seems at first glance that we got all we need already.
 
-Well, not quite so. We are missing one problem: what if you want the `ref` you attached to a **React component** to go through the first **DOM element** it renders ? You cannot. As seen previously, the `ref` you attach to a **React component** will return the instance of this very component.
+Well, not quite so. We are missing one problem: what if you want the `ref` you attached to a **React component** to go to the first **DOM element** it renders ? You cannot. As seen previously, the `ref` you attach to a **React component** will return the instance of this very component.
 
 Fortunately for us, React thought about this and offers us a simple solution: **React.forwardRef**.
 
@@ -221,7 +221,8 @@ Fortunately for us, React thought about this and offers us a simple solution: **
 It looks like:
 
 ```jsx
-React.forwardRef((props, ref) => <YourComponent ref={ref} {...props}) // => returns a React component
+// returns a React component
+React.forwardRef((props, ref) => <YourComponent forwardedRef={ref} {...props} />)
 ```
 
 It sole purpose is to inform your **React component** to pass down the `ref` you attached to it down to its `props` instead of itself. So you can pass it to the **DOM element** of your chosing in its render.
@@ -260,7 +261,11 @@ Here's the secret: [React.useImperativeHandle](https://en.reactjs.org/docs/hooks
 This method will enable you to expose the local `ref` to the parent, while keeping the same
 source of truth.
 
-You can use it this way: `React.useImperativeHandle(forwardedRef, () => localRef.current)`
+You can use it this way:
+
+```jsx
+;`React.useImperativeHandle(forwardedRef, () => localRef.current)`
+```
 
 Here's a more tangible example:
 
@@ -302,6 +307,8 @@ If you have a question, a remark, or want to bark how crap you found this articl
 Thanks for reading! 😃
 
 ## Useful links
+
+What you can read for further reading:
 
 - [React docs](https://en.reactjs.org/docs/refs-and-the-dom.html)
 - [Components-extra's CreditCardNumber](https://components-extra.netlify.com/components/credit-card-number): it implements the bonus technique.
