@@ -38,7 +38,7 @@ const SEO = ({
   const pageTitle = title || metaTitle
   const pageTitleTemplate = title ? `%s | ${metaTitle}` : `%s`
   const pageDescription = description || metaDescription
-  const pageUrl = `${siteUrl}${slug}`
+  const pageUrl = `${siteUrl}/${slug}`
 
   return (
     <Helmet
