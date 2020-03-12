@@ -68,7 +68,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `No Code, No Bug`,
         short_name: `No Code, No Bug`,
         start_url: `/`,
         background_color: `#1976d2`,
