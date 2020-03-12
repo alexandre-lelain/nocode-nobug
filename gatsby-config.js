@@ -1,3 +1,8 @@
+const path = require('path')
+require('dotenv').config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `No Code, No Bug`,
@@ -10,6 +15,7 @@ module.exports = {
     twitter: 'https://mobile.twitter.com/a_lelain',
     attineos: 'https://www.attineos.com/',
     linkedin: 'https://linkedin.com/in/alexandre-lelain',
+    google: process.env.GOOGLE || '',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

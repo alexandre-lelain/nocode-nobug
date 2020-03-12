@@ -17,6 +17,7 @@ const SEO = ({
           siteMetadata {
             author
             description
+            google
             image
             siteUrl
             title
@@ -29,6 +30,7 @@ const SEO = ({
   const {
     author,
     description: metaDescription,
+    google,
     image,
     siteUrl,
     title: metaTitle,
@@ -113,6 +115,10 @@ const SEO = ({
         {
           name: `twitter:site`,
           content: author,
+        },
+        {
+          name: `google-site-verification`,
+          content: google,
         },
       ].concat(meta)}
     >
