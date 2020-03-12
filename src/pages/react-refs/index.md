@@ -41,7 +41,7 @@ Now we know that `refs` are not just random objects, let's dive into the depth o
 
 ### When a `ref` is attached to a DOM element
 
-Before we go through examples, let's define clearly what is the instanced **Class** of a `ref` that was attached to a DOM element.
+Before we go through examples, let's define clearly what is the **instanced class** of a `ref` that was attached to a DOM element.
 
 All DOM elements follow this architecture:
 
@@ -131,7 +131,7 @@ Alright, enough with the theory. Now you know exactly what you are handling, let
 
 There are actually **two** methods in order to create a `ref`. In both case, the method returns an object that will always have the following structure:
 
-```jsx
+```js
 // content of your ref
 {
   current: HTMLElement | React.Component | undefined
@@ -264,7 +264,7 @@ source of truth.
 You can use it this way:
 
 ```jsx
-;`React.useImperativeHandle(forwardedRef, () => localRef.current)`
+React.useImperativeHandle(forwardedRef, () => localRef.current)
 ```
 
 Here's a more tangible example:
