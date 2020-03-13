@@ -16,7 +16,7 @@ You probably already are familiar with `refs` handling in React. But if you are 
 
 **tl;dr**: You can go directly to [this part](#react.forwardref) to read the answer if you already are **very** familiar with `refs`. However, I recommend to read from the beginning - so you can keep the best part of the cake for the end 😉
 
-## You said ref?
+## Refs and React
 
 First things first. What is a `ref` in React ?
 
@@ -27,7 +27,7 @@ It is very important to understand that a `ref` can be **two** distinct entities
 
 In both cases, the `ref` is a **node** and has a `type` - it is an `instance` of a JavaScript **Class** with _methods_ & _properties_. We will go through the details in the next section.
 
-`refs` allow you to manipulate an element outside of the [React's lifecycle flow](https://reactjs.org/docs/state-and-lifecycle.html), and to access some of its properties & methods.
+`refs` allow you to manipulate an element outside of the [React's lifecycle flow](https://reactjs.org/docs/state-and-lifecycle.html), and to access some of its properties & methods in an **imprative** way.
 
 > **Note**: While it is [discouraged](https://reactjs.org/docs/refs-and-the-dom.html) to overuse the `refs`, it can sometimes provide an efficient solution to a complex UI problem.
 
