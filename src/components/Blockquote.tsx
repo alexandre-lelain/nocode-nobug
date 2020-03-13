@@ -9,7 +9,7 @@ const Blockquote = styled.blockquote`
   }
   ${({ theme: { palette, shadows, shape, spacing } }) => `
     margin: ${spacing(4)}px 0;
-    border-radius: ${shape.borderRadius};
+    border-radius: ${shape.borderRadius}px;
     color: ${palette.text.secondary};
     background-color: ${palette.divider};
     border-left: 4px solid ${palette.text.secondary};

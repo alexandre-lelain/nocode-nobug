@@ -8,13 +8,16 @@ import Paragraph from './Paragraph'
 
 const Container = styled.div`
   text-align: center;
-  ${({ theme }) => `
-    margin: ${theme.spacing(4)}px auto;
+  ${({ theme: { spacing } }) => `
+    margin: ${spacing(4)}px auto;
   `}
 `
 
 const StyledImage = styled(Img)`
   margin: 0 auto;
+  ${({ theme: { shape } }) => `
+    border-radius: ${shape.borderRadius}px;
+  `}
 `
 
 const Caption = styled(Paragraph).attrs(() => ({

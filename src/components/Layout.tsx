@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
 import { Container } from '@material-ui/core'
@@ -13,7 +13,7 @@ import {
   setPreferedMode,
   ThemeMode, // eslint-disable-line no-unused-vars
 } from 'hooks/ThemeContext' // why in the world can't eslint see that ThemeMode is used a type ?
-import { theme } from 'styles'
+import { createTheme } from 'styles'
 
 const StyledContainer = styled(Container)`
   padding: 48px 24px;
@@ -32,6 +32,9 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ children }: LayoutProps) => {
   const [mode, setMode] = useState<ThemeMode>(null)
+  const dark = isDark(mode)
+
+  const theme = useMemo(() => createTheme(dark), [dark])
 
   useEffect(() => {
     setMode(getPreferedMode())
@@ -47,7 +50,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <ThemeModeProvider mode={mode} setMode={toggleMode}>
-      <StyledProvider dark={isDark(mode)} theme={theme}>
+      <StyledProvider dark={dark} theme={theme}>
         <GlobalStyle />
         <StyledContainer maxWidth="sm">
           {children}
