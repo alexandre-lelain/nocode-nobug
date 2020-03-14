@@ -82,7 +82,7 @@ const SEO = ({
         },
         {
           property: `og:type`,
-          content: `website.blog`,
+          content: `website`,
         },
         {
           property: `og:image`,

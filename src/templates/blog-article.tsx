@@ -25,6 +25,8 @@ import {
 } from 'components'
 import { InternalLink } from 'styles'
 
+import getISOString from 'utils/getISOString'
+
 const StyledArticle = styled.article`
   margin: 64px 0;
 `
@@ -43,12 +45,33 @@ const StyledSeparator = styled.hr`
 `
 
 const BlogArticle = ({ data }: BlogArticleProps) => {
-  const { markdownRemark = {} } = data
+  const { markdownRemark = {}, site = {} } = data
   const { timeToRead, rawMarkdownBody } = markdownRemark
-  const { date, title, tags, slug, spoiler } = get(markdownRemark, 'frontmatter', {})
+  const { date, description, slug, tags, title, updated } = get(markdownRemark, 'frontmatter', {})
+  const { author } = get(site, 'siteMetadata', {})
 
   const stringyfiedTags = tags.join`, `
   const meta = [
+    {
+      property: `og:type`,
+      content: `article`,
+    },
+    {
+      name: 'article:author',
+      content: author,
+    },
+    {
+      name: 'article:modified_time',
+      content: getISOString(updated),
+    },
+    {
+      name: 'article:published_time',
+      content: getISOString(date),
+    },
+    {
+      name: 'article:tag',
+      content: stringyfiedTags,
+    },
     {
       name: `twitter:label1`,
       content: 'Reading time',
@@ -69,7 +92,13 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
 
   return (
     <Layout>
-      <SEO title={title} description={spoiler} meta={meta} slug={slug} keywords={stringyfiedTags} />
+      <SEO
+        title={title}
+        description={description}
+        meta={meta}
+        slug={slug}
+        keywords={stringyfiedTags}
+      />
       <Header isArticle />
       <main>
         <StyledArticle>
@@ -109,16 +138,21 @@ interface BlogArticleProps {
 
 export const pageQuery = graphql`
   query ArticleQuery($slug: String!) {
+    site {
+      siteMetadata {
+        author
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
       timeToRead
       rawMarkdownBody
       frontmatter {
-        title
-        spoiler
-        slug
         date(formatString: "MMMM Do, YYYY")
+        description
+        slug
         tags
+        title
+        updated
       }
     }
   }
