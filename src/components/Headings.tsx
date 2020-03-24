@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import Children from 'react-children-utilities'
 
@@ -9,19 +9,24 @@ import { ResetLink } from 'styles'
 import Anchor from './Anchor'
 import Paragraph from './Paragraph'
 
+const commonStyle = css`
+  word-break: break-all;
+  font-weight: bold;
+`
+
 const Header1 = styled(Paragraph).attrs(() => ({
   variant: 'h3',
   component: 'h1',
 }))`
-  font-weight: bold;
+  ${commonStyle};
 `
 
 const Header3 = styled(Paragraph).attrs(() => ({
   variant: 'h5',
   component: 'h3',
 }))`
-  font-weight: bold;
   display: inline-block;
+  ${commonStyle};
   ${({ theme: { spacing } }) => `
     margin: ${spacing(3)}px 0;
   `}
@@ -38,7 +43,7 @@ const StyledHeader2 = styled(Paragraph).attrs(() => ({
   component: 'h2',
   variant: 'h4',
 }))`
-  font-weight: bold;
+  ${commonStyle};
 `
 
 const Header2 = ({ children, id }: Header2Props) => {

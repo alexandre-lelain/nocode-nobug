@@ -25,6 +25,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-source-filesystem`,

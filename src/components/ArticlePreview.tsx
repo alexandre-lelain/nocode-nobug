@@ -31,6 +31,7 @@ const Spoiler = styled(Paragraph)`
 
 const Tags = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: 4px;
 `
