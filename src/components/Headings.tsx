@@ -10,7 +10,7 @@ import Anchor from './Anchor'
 import Paragraph from './Paragraph'
 
 const commonStyle = css`
-  word-break: break-all;
+  word-break: break-word;
   font-weight: bold;
 `
 

@@ -7,6 +7,7 @@ import isChildAnImg from 'utils/isChildAnImg'
 const Paragraph = props => <Typography variant="body1" color="textPrimary" {...props} />
 
 const SpacedParagraph = styled(Paragraph)`
+  word-break: break-word;
   ${({ theme }) => `
     margin-bottom: ${theme.spacing(3)}px;
   `}
