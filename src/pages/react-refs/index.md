@@ -29,7 +29,7 @@ It is very important to understand that a `ref` can be **two** distinct entities
 
 In both cases, the `ref` is a **node** and has a `type` - it is an `instance` of a JavaScript **Class** with _methods_ & _properties_. We will go through the details in the next section.
 
-`refs` allow you to manipulate an element outside of the [React's lifecycle flow](https://reactjs.org/docs/state-and-lifecycle.html), and to access some of its properties & methods in an **imprative** way.
+`refs` allow you to manipulate an element outside of the [React's lifecycle flow](https://reactjs.org/docs/state-and-lifecycle.html), and to access some of its properties & methods in an **imperative** way.
 
 > **Note**: While it is [discouraged](https://reactjs.org/docs/refs-and-the-dom.html) to overuse the `refs`, it can sometimes provide an efficient solution to a complex UI problem.
 
@@ -212,7 +212,7 @@ const YourComponent = () => {
 
 ## React.forwardRef
 
-Finaly getting there. If you read the previous part (which I trust you to have done 🙂) you may wonder what is [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) there for ? After all, it seems at first glance that we got all we need already.
+Finally getting there. If you read the previous part (which I trust you to have done 🙂) you may wonder what is [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) there for ? After all, it seems at first glance that we got all we need already.
 
 Well, not quite so. We are missing one problem: what if you want the `ref` you attached to a **React component** to go to the first **DOM element** it renders ? You cannot. As seen previously, the `ref` you attach to a **React component** will return the instance of this very component.
 
