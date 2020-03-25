@@ -3,9 +3,9 @@ title: What is hidden behind React's refs ?
 date: '2020-03-11'
 updated: '2020-03-25'
 spoiler: The refs will have no more secrets for you.
-description: Learn what a React ref is, how to use React.forwardRef properly and how to share a local ref and forward it to another component.
+description: Learn what a React ref is, when to use a ref, how to create it and manipulate it, and how to use React.forwardRef properly.
 slug: 'what-is-hidden-behind-react-refs'
-tags: ['react', 'refs', 'forwardRef', 'html', 'api']
+tags: ['react', 'refs', 'js', 'api', 'forwardRef']
 img: react
 ---
 
