@@ -17,8 +17,6 @@ And even then, I had no clue on how to use the `ref` properly.
 
 You probably already are familiar with `refs` handling in React. But if you are not, I have good hopes this article will help you a lot.
 
-**tl;dr**: You can go directly to [this part](#react.forwardref) to read the answer if you already are **very** familiar with `refs`. However, I recommend to read from the beginning - so you can keep the best part of the cake for the end 😉
-
 ## Refs and React
 
 First things first. What is a `ref` in React ?
@@ -34,13 +32,35 @@ In both cases, the `ref` is a **node** and has a `type` - it is an `instance` of
 
 > **Note**: While it is [discouraged](https://reactjs.org/docs/refs-and-the-dom.html) to overuse the `refs`, it can sometimes provide an efficient solution to a complex UI problem.
 
+## When to use refs
+
+Why should we use `refs` anyway ? Isn't the [React Top-Level API](https://en.reactjs.org/docs/react-api.html) enough ? Well, in some cases it is not.
+
+Like the React's docs state it, `refs` can be used for managing the focus on an element, do operations with text selection, trigger **imperative** animations and sometimes integrate
+third-parties to your components.
+
+Still a bit unclear? No problem. Let's go through a perfect use-case (according to me) of the `refs`.
+
+Imagine you are building a credit-card payment form. You will need an `<input>` field for the credit card's number. Of course, you want to provide a good UX to your users, so
+you want to **shape the value** of the card with the following pattern: `XXXX XXXX XXXX XXXX`.
+
+When the user enters the **4** first digits of the credit card, you want the **cursor** to jump to the **5th** position and add **a space** after the last digit: `4242 |`.
+
+**Bad news**: there is no way to do this without _hacks_ or using the React API. **Good News**: `refs` will make you able to achieve that.
+
+You can indeed move the **cursor** of the `<input>` to the position of your choice using the native [JavaScript API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement).
+The two methods that will move that **cursor** for you are [setSelectionRange()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement) & [focus()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
+The `ref` you attached to the `<input>` contains those two methods!
+
+Here is a [live demo](https://components-extra.netlify.com/components/credit-card-number) of this component. Now let's go through the technical details.
+
 ## The hidden truth
 
 I swear to tell the _truth_, and only the _truth_.
 
 ![source: i.imgflip.com](./the-truth.webp)
 
-Now we know that `refs` are not just random objects, let's dive into the depth of its implementation.
+Now we know that `refs` are not just random objects, let's dive into the depth of their implementation.
 
 ### When a `ref` is attached to a DOM element
 
@@ -211,7 +231,7 @@ const YourComponent = () => {
 }
 ```
 
-## React.forwardRef
+## Forwarding the ref with forwardRef
 
 Finally getting there. If you read the previous part (which I trust you to have done 🙂) you may wonder what is [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) there for ? After all, it seems at first glance that we got all we need already.
 

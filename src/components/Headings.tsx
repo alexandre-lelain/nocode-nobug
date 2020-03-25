@@ -49,18 +49,18 @@ const StyledHeader2 = styled(Paragraph).attrs(() => ({
 const Header2 = ({ children, id }: Header2Props) => {
   const [showAnchor, setShowAnchor] = useState(false)
   return (
-    <Header2Link
-      id={id}
-      anchor
-      href={`#${id}`}
-      onMouseOver={() => setShowAnchor(true)}
-      onMouseLeave={() => setShowAnchor(false)}
-    >
-      <StyledHeader2>
+    <StyledHeader2>
+      <Header2Link
+        id={id}
+        anchor
+        href={`#${id}`}
+        onMouseOver={() => setShowAnchor(true)}
+        onMouseLeave={() => setShowAnchor(false)}
+      >
         <Anchor show={showAnchor} />
         {children}
-      </StyledHeader2>
-    </Header2Link>
+      </Header2Link>
+    </StyledHeader2>
   )
 }
 
