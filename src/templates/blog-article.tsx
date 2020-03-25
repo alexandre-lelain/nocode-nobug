@@ -45,8 +45,9 @@ const StyledSeparator = styled.hr`
 `
 
 const BlogArticle = ({ data }: BlogArticleProps) => {
-  const { markdownRemark = {}, site = {} } = data
+  const { markdownRemark = {}, site = {}, file = {} } = data
   const { timeToRead, rawMarkdownBody } = markdownRemark
+  const { publicURL } = file
   const { date, description, slug, tags, title, updated } = get(markdownRemark, 'frontmatter', {})
   const { author } = get(site, 'siteMetadata', {})
 
@@ -98,6 +99,7 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
         meta={meta}
         slug={slug}
         keywords={stringyfiedTags}
+        image={publicURL}
       />
       <Header isArticle />
       <main>
@@ -137,11 +139,14 @@ interface BlogArticleProps {
 }
 
 export const pageQuery = graphql`
-  query ArticleQuery($slug: String!) {
+  query ArticleQuery($slug: String!, $img: String!) {
     site {
       siteMetadata {
         author
       }
+    }
+    file(name: { eq: $img }) {
+      publicURL
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       timeToRead

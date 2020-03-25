@@ -4,11 +4,12 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 const SEO = ({
   description = '',
+  image,
+  keywords,
   lang = 'en',
   meta = [],
-  title,
-  keywords,
   slug = '',
+  title,
 }: SEOProps) => {
   const { site } = useStaticQuery(
     graphql`
@@ -31,7 +32,7 @@ const SEO = ({
     author,
     description: metaDescription,
     google,
-    image,
+    image: metaImage,
     siteUrl,
     title: metaTitle,
   } = site.siteMetadata
@@ -39,6 +40,7 @@ const SEO = ({
   const pageTitleTemplate = title ? `%s | ${metaTitle}` : `%s`
   const pageDescription = description || metaDescription
   const pageUrl = `${siteUrl}/${slug}`
+  const pageImage = image ? `${siteUrl}${image}` : metaImage
 
   return (
     <Helmet
@@ -86,7 +88,7 @@ const SEO = ({
         },
         {
           property: `og:image`,
-          content: image,
+          content: pageImage,
         },
         {
           name: `twitter:card`,
@@ -98,7 +100,7 @@ const SEO = ({
         },
         {
           name: `twitter:image`,
-          content: image,
+          content: pageImage,
         },
         {
           name: `twitter:title`,
@@ -123,7 +125,7 @@ const SEO = ({
       ].concat(meta)}
     >
       <link
-        rel="stylesheet"
+        rel="stylesheet preconnect"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         media="print"
         // @ts-ignore
@@ -135,6 +137,7 @@ const SEO = ({
 
 interface SEOProps {
   description?: string
+  image?: string
   keywords?: string
   lang?: string
   meta?: any[]

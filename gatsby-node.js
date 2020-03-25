@@ -9,6 +9,9 @@ const articlesQuery = `
           fields {
             slug
           }
+          frontmatter {
+            img
+          }
         }
       }
     }
@@ -31,10 +34,11 @@ const createArticlesPages = (graphql, { createPage }) => {
     const posts = get(data, 'allMarkdownRemark.edges', [])
     posts.forEach(({ node }) => {
       const { slug } = get(node, 'fields', {})
+      const { img } = get(node, 'frontmatter', {})
       createPage({
         path: `${slug}/`,
         component: path.resolve('./src/templates/blog-article.tsx'),
-        context: { slug },
+        context: { slug, img },
       })
     })
   })
