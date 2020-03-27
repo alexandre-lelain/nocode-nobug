@@ -32,6 +32,17 @@ const Header3 = styled(Paragraph).attrs(() => ({
   `}
 `
 
+const Header4 = styled(Paragraph).attrs(() => ({
+  variant: 'h6',
+  component: 'h4',
+}))`
+  display: inline-block;
+  ${commonStyle};
+  ${({ theme: { spacing } }) => `
+    margin: ${spacing(2)}px 0;
+  `}
+`
+
 const Header2Link = styled(ResetLink)`
   cursor: text;
   ${({ theme: { spacing } }) => `
@@ -79,6 +90,8 @@ const Heading = ({ level, children, ...rest }: HeadingProps) => {
       )
     case 3:
       return <Header3 {...rest}>{children}</Header3>
+    case 4:
+      return <Header4 {...rest}>{children}</Header4>
     default:
       return (
         <DefaultHeading level={level} {...rest}>
