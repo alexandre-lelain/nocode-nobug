@@ -31,7 +31,7 @@ That said, I believe we should get **as close as we can** to a perfect audit sco
 
 ## Lighthouse
 
-[Lighthouse](https://developers.google.com/web/tools/lighthouse) is a fabulous free and open-source tool from **Google**. Don't hesitate to check out the [project](https://github.com/GoogleChrome/lighthouse) on github, it's maintained actively.
+[Lighthouse](https://developers.google.com/web/tools/lighthouse) is a fabulous free and open-source tool from **Google**. Don't hesitate to check out the [github project](https://github.com/GoogleChrome/lighthouse), it's maintained actively.
 
 It aims to imrove the global quality of the web pages - it is used as an audit tooling.
 
@@ -39,8 +39,8 @@ The audit comes with **5** main categories:
 
 - [Performance](https://developers.google.com/web/tools/lighthouse/v3/scoring#perf): it measures the global performance of your page. The main metrics are the _First Meaningful & Contentful Paints_, the _Time To Interactive_ and the _Speed Index_. In brief, it audits how **fast** the page is.
 - [Accessibility](https://developers.google.com/web/tools/lighthouse/v3/scoring#a11y): it measures how **accessible** your page is. It performs various checks on the page's elements, like the _colors contrast_, the _aria-x_ attributes and many more. The audit has to pass an exhaustive list defined in [this document](https://web.dev/lighthouse-accessibility/).
-- [Best Practices](https://developers.google.com/web/tools/lighthouse/v3/scoring#best-practices): it measure how much the best practices encouraged by the [W3C](https://www.w3.org/) or [Google's standards](https://web.dev/lighthouse-best-practices/) are respected. For example, it will check if your website is served via _HTTPS_ or if errors are logged in the console. In brief, it stands for the **reliability** of your page.
-- [SEO](https://web.dev/lighthouse-seo/): it measures how optimized and **standardized** your website is for search engines. It checks, for example, if the _document_ contains _meta tags_ and _semantic titles_.
+- [Best Practices](https://developers.google.com/web/tools/lighthouse/v3/scoring#best-practices): it measure how much the best practices encouraged by the [W3C](https://www.w3.org/) or [Google's standards](https://web.dev/lighthouse-best-practices/) are respected. For example, it will check if your page is served via _HTTPS_ or if errors are logged in the console. In brief, it stands for the **reliability** of your page.
+- [SEO](https://web.dev/lighthouse-seo/): it measures how optimized and **standardized** your page is for search engines. It checks, for example, if the _document_ contains _meta tags_ and _semantic titles_.
 - [Progressive Web App (PWA)](https://developers.google.com/web/tools/lighthouse/v3/scoring#pwa): it measures if your website is able to be installable and usable by all users. It has to pass the audit basedon the [Baseline PWA Checklist](https://web.dev/pwa-checklist/#baseline). For example, one of the required items is the full responsiveness of your pages.
 
 Except for the **PWA** audit in the latest versions of the tool, they all are rated from **0** to **100**.
@@ -51,11 +51,11 @@ A score of **100** indicates that all the required checks for the category audit
 
 According to [Google](https://developers.google.com/web/tools/lighthouse/v3/scoring#perf), a score of **100** will rank your website in the top `5%` of performing sites, while a score of **50** will rank your website in the `75%` average ones.
 
-The **PWA**'s audit score is a little bit diferent in _v5_: you don't get a score like the others, you have an exhaustive list of **14** checks to pass in order to reach the perfect score: [check-list](https://developers.google.com/web/tools/lighthouse).
+The **PWA**'s audit score is a little bit different in _v5_: you don't get a score like the others, you have an exhaustive list of **14** checks to pass in order to reach the perfect score: [check-list](https://developers.google.com/web/tools/lighthouse).
 
 ## How to audit your site
 
-You can run a `lighthouse` audit on your website using [Chrome DevTool](https://developers.google.com/web/tools/lighthouse#devtools), the [CLI](https://github.com/GoogleChrome/lighthouse-ci) or the [Node API](https://github.com/GoogleChrome/lighthouse).
+You can run a `lighthouse` audit on a page using [Chrome DevTool](https://developers.google.com/web/tools/lighthouse#devtools), the [CLI](https://github.com/GoogleChrome/lighthouse-ci) or the [Node API](https://github.com/GoogleChrome/lighthouse).
 
 If you want an easy & quick way to audit your site right-away with 0 configuration, go for the Chrome DevTool.
 
@@ -86,6 +86,8 @@ This point is **important**. It's one of the best source of optimization you can
 
 That said, be sure to size as close as possible your images to their final display.
 
+> **Note**: the [srcset attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) may help you handle responsive images.
+
 **Second point**: [lazy-loading](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video). This technique will allow you to drastically improve the speed of your pages. To sum it up, this is what the `lazy-loading` does with your image:
 
 - On browser's load, only a very **low-dimensioned** and blured version of your image is fetched and rendered.
@@ -93,9 +95,9 @@ That said, be sure to size as close as possible your images to their final displ
 
 This technique allows to defer offscreen images. This is impacting drastically the pages with lots of images, since only the _placeholder_ images (those with very low dimensions) will be fetched when the page is loaded.
 
-You can implement it yourself using [event-handlers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video#using_event_handlers_the_most_compatible_way) or the [Intersection Observer pattern](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video#using_intersection_observer).
+You can implement it yourself using [event-handlers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video#using_event_handlers_the_most_compatible_way) or the [Intersection Observer API](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video#using_intersection_observer).
 
-Some frameworks like [Gatsby.js](https://www.gatsbyjs.org/) (React) wrap this implementation in a layer or plugin so you don't have to implement it yourself. [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) does it for you for example.
+Some frameworks like [Gatsby.js](https://www.gatsbyjs.org/) (React) wrap this implementation in a layer or a plugin so you don't have to implement it yourself. [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) does it for you for example.
 
 **Last, but not least:** use [next-gen](https://developers.google.com/web/tools/lighthouse/audits/webp) formats. For instance, the **WebP** (.webp) format is really under-estimated. In comparison to traditional _png_ or _jpg_ files, they are up to [25-34% smaller](https://developers.google.com/speed/webp), which is a huge gain.
 
@@ -107,13 +109,13 @@ Your **DOM** shouldn't have a too big size. The deepest and the biggest the DOM 
 
 There are multiple good practices to avoid this, for example try not to create `<div>` elements simply to add styling rules. Apply those styles on your functional elements instead and change their `display` mode if needs be.
 
-Also, if you can, try to avoid accessing **DOM** elements in JS. It's very slow as stated in the [w2schools](https://www.w3schools.com/js/js_performance.asp) docs.
+Also, if you can, try to avoid accessing **DOM** elements in JS. It's very slow as stated in the [w3schools](https://www.w3schools.com/js/js_performance.asp) docs.
 
-A word on [browser's painting](https://aerotwist.com/blog/pixels-are-expensive/): it is a very expensive calculation. Whatever framework you're working with (React, Angluar, Vue, etc...), make sure to limit the best you can the number of times your components render. The less they do, the less the broswer has to paint the new DOM, and so the **fastest** your page will be.
+A word on [browser's painting](https://aerotwist.com/blog/pixels-are-expensive/): it is a very expensive calculation. Whatever framework you're working with (React, Angluar, Vue, etc...), make sure to limit the best you can the number of times your components render. The less they do, the less the browser has to paint the new DOM, and so the **fastest** your page will be.
 
 #### CSS
 
-Consider defering the load of non-essential stylesheets. For example, if you are using **CDNs** like the famouse [Google's Roboto](https://fonts.google.com/specimen/Roboto) one, depending on how customize you want it, the stylesheet's size can jump quite quickly.
+Consider defering the load of non-essential stylesheets. For example, if you are using **CDNs** like the famous [Google's Roboto](https://fonts.google.com/specimen/Roboto) one, depending on how customize you want it, the stylesheet's size can jump quite quickly.
 
 The most native approach is to add it in the `<head>` of your document like that:
 
@@ -154,7 +156,7 @@ You can also take advantage of the [Web Workers](https://developer.mozilla.org/e
 
 ### Accessibility
 
-No magic or "hacks" here. To get the maximum score on the **Accessibility** audit, you just need to follow the exhaustive list of requirements from [this document](https://web.dev/lighthouse-accessibility/).
+No magic or "hacks" here. To get the maximum score on the **Accessibility** audit, you just need to follow the exhaustive list of requirements from [web.dev/lighthouse-accessibility](https://web.dev/lighthouse-accessibility/).
 
 I will try to sum up the main ones here:
 
@@ -162,7 +164,7 @@ First, your documents should have `<heading>` elements for your titles. A page s
 
 Overall, your **DOM** should have the most semantics possible - use an `<article>` instead of a `<div>` to wrap a blog entry or a post for instance. All these little additions will help [screen readers](https://axesslab.com/what-is-a-screen-reader/) to understand better your document.
 
-Secondly, always use `aria-x` attributes when possible, especially on elements that do not contain text. For example, the `BackToTop` button of **nocode-nobug.com** has an `aria-label` attribute to help screen-readers understand its purpose since it only contains an icon with no text.
+Secondly, always use `aria-x` attributes when possible, especially on elements that do not contain text. For example, the `BackToTop` button of **nocode-nobug.com** has an `aria-label` attribute to help screen-readers understand its purpose since it only contains an icon with no text. Also, your `<images>` should all have an `alt` attribute to describe them with text.
 
 Your `<input>` elements should all have a `<label>` element coupled to them.
 
@@ -189,7 +191,7 @@ You can check it out on the <a href="https://nocode-nobug.com">nocode-nobug home
 <!-- Oh okay. "here" is the home page from nocode-nobug. -->
 ```
 
-There are of courses more guidelines to follow, and you can check them all out on the official website.
+There are of courses more guidelines to follow, and you can check them all out on the following website: [web.dev/lighthouse-accessibility](https://web.dev/lighthouse-accessibility/)
 
 ### Best Practices
 
@@ -199,7 +201,7 @@ Your website should use `HTTPS` protocol to encrypt the network requests. It has
 
 Secondly, it should use its version 2: `HTTP/2`. It brings a lot of [performance increases](https://en.wikipedia.org/wiki/HTTP/2#Differences_from_HTTP_1.1) since it enables the multiplexing of the requests and the responses.
 
-Also, note that the use of `document.write()` should be completely avoided since it [highly increase](https://web.dev/no-document-write/?utm_source=lighthouse&utm_medium=devtools) the display of the page's content. All your links pointing to an **external destination** should have the `rel="noopener"` or `rel="noreferrer"` to prevent the destination page to have access to the `window.opener` property and hijack the redirection.
+Also, note that the use of `document.write()` should be completely avoided since it [highly increases](https://web.dev/no-document-write/?utm_source=lighthouse&utm_medium=devtools) the display of the page's content. All your links pointing to an **external destination** should have the `rel="noopener"` or `rel="noreferrer"` to prevent the destination page to have access to the `window.opener` property and hijack the redirection.
 
 Of course, your JavaScript bundle **shouldn't throw any errors** in the console: it usually indicates a feature doesn't work like it was designed to.
 
@@ -223,7 +225,7 @@ Just like for the **Accessibility** audit, your links should have a descriptive 
 
 Your [robots.txt](https://web.dev/robots-txt/) file should be valid, as well as the HTTP status code of the requests. If your page receive `400s` & `500s` errors, you will make robots flee your website ✈️.
 
-Also, making your website [mobile-friendly](https://web.dev/viewport/) will help search engines to rank it better.
+Also, making your website [mobile-friendly](https://web.dev/viewport/) will help search engines to rank it better - Google has enabled the [mobile-first indexing](https://developers.google.com/search/mobile-sites/mobile-first-indexing) by default since July 2019.
 
 > Here's the full list of the SEO audits: https://web.dev/lighthouse-seo/.
 
@@ -292,7 +294,7 @@ Your page should also have a `manifest.webmanifest` file served directly at the 
 
 The `document` of your page should also display some content if `JavaScript` is blocked on the client. Yes, this happens. And it can, for [good reasons](https://softwareengineering.stackexchange.com/questions/26179/why-do-people-disable-javascript).
 
-I will not go through all of the requirements here, since this article is already getting too long. I wouldn't want you to get caught by your boss if you're reading this at work 😉. But you can check the full list on the [pwa-checklist page](https://web.dev/pwa-checklist/).
+I will not go through all of the requirements here, since this article is already getting too long. I wouldn't want you to get caught by your boss if you're reading this at work 😉. But you can check the full list on the [pwa-checklist page](https://web.dev/pwa-checklist/). You can also build easily the manifest on [pwabuilder.com](https://www.pwabuilder.com/).
 
 > **Note**: many frameworks come with a built-in PWA configuration. If you are in the React eco-system, you can check out [create-react-app](https://github.com/facebook/create-react-app) or [gatsby.js](https://www.gatsbyjs.org/).
 
@@ -367,13 +369,11 @@ Thanks for reading! 😀 If you spotted any mistake, have a question, or want to
 
 ## Useful links
 
-- https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video
 - https://developers.google.com/web/tools/lighthouse
 - https://www.w3schools.com/js/js_performance.asp
+- The bible: https://www.smashingmagazine.com/2020/01/front-end-performance-checklist-2020-pdf-pages/
 - https://caniuse.com/#feat=webp
-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 - https://aerotwist.com/blog/pixels-are-expensive/
-- https://github.com/GoogleChrome/lighthouse-ci
 
 **lighthouse** v6 is in beta: https://github.com/GoogleChrome/lighthouse/releases/tag/v6.0.0-beta.0
