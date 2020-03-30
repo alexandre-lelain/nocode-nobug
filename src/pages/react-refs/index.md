@@ -1,7 +1,7 @@
 ---
 title: What is hidden behind React's refs ?
 date: '2020-03-11'
-updated: '2020-03-25'
+updated: '2020-03-30'
 spoiler: The refs will have no more secrets for you.
 description: Learn what a React ref is, when to use a ref, how to create it and manipulate it, and how to use React.forwardRef properly.
 slug: 'what-is-hidden-behind-react-refs'
@@ -13,7 +13,7 @@ There was a time I used to struggle when manipulating the `refs` in my react com
 
 Sometimes they returned `undefined`, sometimes they didn't return the **DOM element** I was looking for. To be honest, I didn't know _anything_ about what I was doing. I was a total noob. I used to try any combination possible until my `ref` looked like what I wanted to get in the beginning.
 
-And even then, I had no clue on how to use the `ref` properly.
+And even then, I had no clue on how to use the `ref` properly. One day, I decided to dig into the official documentation and React's code to unravel this mystery once and for all.
 
 You probably already are familiar with `refs` handling in React. But if you are not, I have good hopes this article will help you a lot.
 
@@ -28,7 +28,7 @@ It is very important to understand that a `ref` can be **two** distinct entities
 
 In both cases, the `ref` is a **node** and has a `type` - it is an `instance` of a JavaScript **Class** with _methods_ & _properties_. We will go through the details in the next section.
 
-`refs` allow you to manipulate an element outside of the [React's lifecycle flow](https://reactjs.org/docs/state-and-lifecycle.html), and to access some of its properties & methods in an **imperative** way.
+`refs` allow you to manipulate an element outside of [React's lifecycle flow](https://reactjs.org/docs/state-and-lifecycle.html), and to access some of its properties & methods in an **imperative** way.
 
 > **Note**: While it is [discouraged](https://reactjs.org/docs/refs-and-the-dom.html) to overuse the `refs`, it can sometimes provide an efficient solution to a complex UI problem.
 
@@ -44,13 +44,15 @@ Still a bit unclear? No problem. Let's go through a perfect use-case (according 
 Imagine you are building a credit-card payment form. You will need an `<input>` field for the credit card's number. Of course, you want to provide a good UX to your users, so
 you want to **shape the value** of the card with the following pattern: `XXXX XXXX XXXX XXXX`.
 
+![See the spaces between the 4-digits groups ?](./credit-card.webp)
+
 When the user enters the **4** first digits of the credit card, you want the **cursor** to jump to the **5th** position and add **a space** after the last digit: `4242 |`.
 
 **Bad news**: there is no way to do this without _hacks_ or using the React API. **Good News**: `refs` will make you able to achieve that.
 
 You can indeed move the **cursor** of the `<input>` to the position of your choice using the native [JavaScript API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement).
 The two methods that will move that **cursor** for you are [setSelectionRange()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement) & [focus()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
-The `ref` you attached to the `<input>` contains those two methods!
+Well, the `ref` you attached to the `<input>` contains those two methods!
 
 Here is a [live demo](https://components-extra.netlify.com/components/credit-card-number) of this component. Now let's go through the technical details.
 
@@ -72,7 +74,7 @@ All DOM elements follow this architecture:
 
 A DOM element:
 
-- implements the interface of its tag. For example, a `<div>` implements the interface [HTMLDivElement](https://developer.mozilla.org/en/docs/Web/API/HTMLDivElement)
+- implements the interface of its tag. For example, like in the above screenshot, a `<div>` implements the interface [HTMLDivElement](https://developer.mozilla.org/en/docs/Web/API/HTMLDivElement)
 - implements the interface [HTMLElement](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
 - is an instance of the class [Element](https://developer.mozilla.org/en/docs/Web/API/Element)
 
@@ -248,7 +250,7 @@ It looks like:
 React.forwardRef((props, ref) => <YourComponent forwardedRef={ref} {...props} />)
 ```
 
-It sole purpose is to inform your **React component** to pass down the `ref` you attached to it down to its `props` instead of itself. So you can pass it to the **DOM element** of your chosing in its render.
+Its sole purpose is to inform your **React component** to pass the `ref` you attached to it down to its `props` instead of itself. So you can pass it to the **DOM element** of your chosing in its render.
 
 Here's how to use it:
 

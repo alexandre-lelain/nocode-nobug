@@ -21,7 +21,7 @@ Please, be my guest. I would most probably do the same thing. I have been workin
 
 If you are not yet familiar with `lighthouse`, don't worry, I'll present this awesome tool in the first part of the article.
 
-**Disclaimer**: I do not pretend, in any way, to be in possesion of the unique truth that will guarantee you a perfect score on your website. [nocode-nobug.com](https://nocode-nobug.com) reaches the perfect score on the [Lightouse's Chrome DevTool - v5](https://developers.google.com/web/tools/lighthouse#devtools) with its **default preset**, but this score **may vary a little** depending on your internet connection and extensions you have installed, as well as the presets you can manually set.
+**Disclaimer**: I do not pretend, in any way, to be in possession of the unique truth that will guarantee you a perfect score on your website. [nocode-nobug.com](https://nocode-nobug.com) reaches the perfect score on the [Lightouse's Chrome DevTool - v5](https://developers.google.com/web/tools/lighthouse#devtools) with its **default preset**, but this score **may vary a little** depending on your internet connection and extensions you have installed, as well as the presets you can manually set.
 
 Also, in some situations, I would recommand **not to blindly chase the perfect score.** There might be UI choices that lower the score but are vital to your website's soul - such as a particular styleguide, effect, and so on.
 
