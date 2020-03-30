@@ -5,7 +5,7 @@ updated: '2020-03-28'
 spoiler: Make your website in the top 5% of top-performing sites.
 description: Learn what a lighthouse audit is, and how to get a perfect audit score on your website.
 slug: 'how-to-get-a-perfect-score-on-lighthouse'
-tags: ['lighthouse', 'quality', 'fast', 'accessible', 'reliable', 'react']
+tags: ['lighthouse', 'web', quality', 'fast', 'accessible', 'reliable']
 img: lighthouse
 ---
 
