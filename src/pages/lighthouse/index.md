@@ -1,7 +1,7 @@
 ---
 title: How to get a perfect score on lighthouse audit
 date: '2020-03-28'
-updated: '2020-03-28'
+updated: '2020-03-30'
 spoiler: Make your website in the top 5% of top-performing sites.
 description: Learn what a lighthouse audit is, and how to get a perfect audit score on your website.
 slug: 'how-to-get-a-perfect-score-on-lighthouse'
@@ -102,6 +102,19 @@ Some frameworks like [Gatsby.js](https://www.gatsbyjs.org/) (React) wrap this im
 **Last, but not least:** use [next-gen](https://developers.google.com/web/tools/lighthouse/audits/webp) formats. For instance, the **WebP** (.webp) format is really under-estimated. In comparison to traditional _png_ or _jpg_ files, they are up to [25-34% smaller](https://developers.google.com/speed/webp), which is a huge gain.
 
 The only drawback is its [browser support](https://caniuse.com/#feat=webp): not supported in **IE** (who cares?😉) neither in **Safari**.
+
+#### JavaScript
+
+As much as I love JavaScript and its eco-system, I have to admit that it is getting more and more bloated. A good way to optimize the performance is to **limit** the JS bundle's size
+as much as you can. The bigger your JS bundle is, the longer it takes to the broswer to download it and parse it.
+
+Before using a [third-party module](https://www.npmjs.com/), always check if it's maintained actively and if its bundle's size match your size budget. You can use the awesome [Bundlephobia](https://bundlephobia.com/) site to
+check out the build's size of the library you want to use. For instance, if you're looking for a `HTTP client`, and the library you found weights `500 kb`, then you can pass to the next one. You **don't need**
+a 500kb-big library to handle Ajax requests on client side.
+
+Whenever you can, use a bundler that can [tree-shake](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) the JS dependencies of your project. **Tree-shaking** relies on `import/export` statements from **ES2015** and
+it brings a huge difference in terms of size in your final bundle. It will cut out any JS module not being used in the final build. [webpack](https://webpack.js.org/guides/tree-shaking/) & [rollup](https://rollupjs.org/) are two
+great bundlers that enable tree-shaking.
 
 #### DOM
 
