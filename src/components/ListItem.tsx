@@ -3,6 +3,12 @@ import styled from 'styled-components'
 
 import Paragraph from './Paragraph'
 
+const StyledLi = styled.li`
+  ${({ theme: { spacing } }) => `
+    margin-bottom: ${spacing(1)}px;
+  `}
+`
+
 const ListItemContent = styled(Paragraph).attrs(() => ({
   component: 'span',
 }))``
@@ -10,9 +16,9 @@ const ListItemContent = styled(Paragraph).attrs(() => ({
 // eslint-disable-next-line no-unused-vars
 const ListItem = ({ children, ordered, tight, ...rest }: ListItem) => {
   return (
-    <li {...rest}>
+    <StyledLi {...rest}>
       <ListItemContent>{children}</ListItemContent>
-    </li>
+    </StyledLi>
   )
 }
 
