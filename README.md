@@ -6,4 +6,4 @@ https://nocode-nobug.com
 
 [![ci status](https://travis-ci.org/alexandre-lelain/nocode-nobug.svg?branch=master)](https://travis-ci.org/alexandre-lelain/nocode-nobug)
 
-Made with [components-extra](https://components-extra.netlify.com/), Material-UI, React & Gatsby with ❤️ and ☕️.
+Made with [components-extra](https://components-extra.netlify.app/), Material-UI, React & Gatsby with ❤️ and ☕️.

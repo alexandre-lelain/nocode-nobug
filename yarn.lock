@@ -4062,12 +4062,11 @@ component-inherit@0.0.3:
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
   integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
 
-components-extra@^2.6.1:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/components-extra/-/components-extra-2.6.2.tgz#5669e0b9a95f3193f040fdf5094971327d7ea1d8"
-  integrity sha512-hcJ1KqB5vYXey4XpolKFydDNtPocOuU2EgEY5CCS0lLPK11+NjJjIrdCHAS4CDBo1S3Dm5wqvGJRGTPSr9cx+Q==
+components-extra@^3.0.0-rc.1:
+  version "3.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/components-extra/-/components-extra-3.0.0-rc.1.tgz#b1640153b77695f46fa61c5b6ab5e59322458d0f"
+  integrity sha512-AEHU9mc/B6rnKuogf5Ff/XcVycvZIK3gcxc2nVNM5sLvPxcr0WaEwya7ppCsaq7VIEgF6qeCvIRsWrHdUcDTyA==
   dependencies:
-    "@babel/runtime" "^7.9.2"
     prop-types "^15.7.2"
 
 compressible@~2.0.16:

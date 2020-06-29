@@ -13,7 +13,7 @@ import {
   setPreferedMode,
   ThemeMode, // eslint-disable-line no-unused-vars
 } from 'hooks/ThemeContext' // why in the world can't eslint see that ThemeMode is used a type ?
-import { createTheme } from 'styles'
+import { lightTheme, darkTheme } from 'styles'
 
 const StyledContainer = styled(Container)`
   padding: 48px 24px;
@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
   const [mode, setMode] = useState<ThemeMode>(null)
   const dark = isDark(mode)
 
-  const theme = useMemo(() => createTheme(dark), [dark])
+  const theme = useMemo(() => (dark ? darkTheme : lightTheme), [dark])
 
   useEffect(() => {
     setMode(getPreferedMode())

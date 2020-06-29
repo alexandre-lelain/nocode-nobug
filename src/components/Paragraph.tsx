@@ -19,7 +19,7 @@ const RemarkParagraph: React.FC<RemarkParagraphProps> = ({
   children,
   ...rest
 }: RemarkParagraphProps) =>
-  isChildAnImg(children) ? <>children</> : <SpacedParagraph {...rest}>{children}</SpacedParagraph>
+  isChildAnImg(children) ? <>{children}</> : <SpacedParagraph {...rest}>{children}</SpacedParagraph>
 
 interface RemarkParagraphProps {
   children?: React.ReactNode
