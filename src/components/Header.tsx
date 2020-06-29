@@ -28,7 +28,7 @@ const ThemeModeContainer = styled(Grid).attrs(() => ({
   }
 `
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Title = styled(({ isArticle, isDark, ...rest }) => <Typography {...rest} />).attrs(
   ({ isArticle }) => ({
     component: 'h2',
@@ -54,7 +54,7 @@ const StyledHeader = styled.header`
   }
 `
 
-const Header = ({ isArticle = false }: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({ isArticle = false }: HeaderProps) => {
   const [mode, setMode, isDark] = useThemeMode()
 
   return (

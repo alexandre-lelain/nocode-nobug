@@ -14,7 +14,7 @@ const PreviewsContainer = styled.div`
   margin-bottom: 86px;
 `
 
-const BlogIndex = ({ data }: BlogIndexProps) => {
+const BlogIndex: React.FC<BlogIndexProps> = ({ data }: BlogIndexProps) => {
   const posts = get(data, 'allMarkdownRemark.edges')
   const meta = [
     {
@@ -59,7 +59,11 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
 }
 
 interface BlogIndexProps {
-  data: any
+  data: {
+    allMarkdownRemark: {
+      edges: Record<string, unknown>[]
+    }
+  }
 }
 
 export const pageQuery = graphql`

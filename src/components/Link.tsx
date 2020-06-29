@@ -3,7 +3,7 @@ import React from 'react'
 import isAnchor from 'utils/isAnchor'
 import { ExternalLink, InternalLink } from 'styles'
 
-const Link = ({ href, ...rest }: LinkProps) => {
+const Link: React.FC<LinkProps> = ({ href, ...rest }: LinkProps) => {
   const isAnchorLink = isAnchor(href)
 
   return isAnchorLink ? (
@@ -15,7 +15,6 @@ const Link = ({ href, ...rest }: LinkProps) => {
 
 interface LinkProps {
   href: string
-  rest?: object
 }
 
 export default Link

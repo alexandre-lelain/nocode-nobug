@@ -57,7 +57,7 @@ const StyledHeader2 = styled(Paragraph).attrs(() => ({
   ${commonStyle};
 `
 
-const Header2 = ({ children, id }: Header2Props) => {
+const Header2: React.FC<Header2Props> = ({ children, id }: Header2Props) => {
   const [showAnchor, setShowAnchor] = useState(false)
   return (
     <StyledHeader2>
@@ -75,7 +75,7 @@ const Header2 = ({ children, id }: Header2Props) => {
   )
 }
 
-const Heading = ({ level, children, ...rest }: HeadingProps) => {
+const Heading: React.FC<HeadingProps> = ({ level, children, ...rest }: HeadingProps) => {
   const text = Children.onlyText(children)
   const id = slugify(text)
   const DefaultHeading = ReactMarkdown.renderers.heading
@@ -103,12 +103,11 @@ const Heading = ({ level, children, ...rest }: HeadingProps) => {
 
 interface HeadingProps {
   level: number
-  children: any
-  rest?: any
+  children: React.ReactNode
 }
 
 interface Header2Props {
-  children?: any
+  children?: React.ReactNode
   id: string
 }
 

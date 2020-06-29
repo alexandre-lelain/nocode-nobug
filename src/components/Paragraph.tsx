@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Typography } from '@material-ui/core'
+import { Typography, TypographyProps } from '@material-ui/core'
 
 import isChildAnImg from 'utils/isChildAnImg'
 
-const Paragraph = props => <Typography variant="body1" color="textPrimary" {...props} />
+const Paragraph: React.FC<TypographyProps> = (props) => (
+  <Typography variant="body1" color="textPrimary" {...props} />
+)
 
 const SpacedParagraph = styled(Paragraph)`
   word-break: break-word;
@@ -13,12 +15,14 @@ const SpacedParagraph = styled(Paragraph)`
   `}
 `
 
-const RemarkParagraph = ({ children, ...rest }: RemarkParagraphProps) =>
-  isChildAnImg(children) ? children : <SpacedParagraph {...rest}>{children}</SpacedParagraph>
+const RemarkParagraph: React.FC<RemarkParagraphProps> = ({
+  children,
+  ...rest
+}: RemarkParagraphProps) =>
+  isChildAnImg(children) ? <>children</> : <SpacedParagraph {...rest}>{children}</SpacedParagraph>
 
 interface RemarkParagraphProps {
-  children?: any
-  rest?: object
+  children?: React.ReactNode
 }
 
 export default Paragraph

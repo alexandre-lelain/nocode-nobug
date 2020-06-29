@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core'
 
 import { useThemeMode } from 'hooks/ThemeContext'
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Meta = styled(({ small, isDark, ...rest }) => <Typography {...rest} />)`
   ${({ small, isDark, theme: { palette } }) => `
     color: ${isDark ? palette.secondary.light : palette.secondary.main};
@@ -25,7 +25,6 @@ interface ArticleMetaProps {
   date: string
   small?: boolean
   timeToRead: string
-  rest?: object
 }
 
 export default styled(ArticleMeta)``

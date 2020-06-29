@@ -13,8 +13,8 @@ const ListItemContent = styled(Paragraph).attrs(() => ({
   component: 'span',
 }))``
 
-// eslint-disable-next-line no-unused-vars
-const ListItem = ({ children, ordered, tight, ...rest }: ListItem) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const ListItem: React.FC<ListItem> = ({ children, ordered, tight, ...rest }: ListItem) => {
   return (
     <StyledLi {...rest}>
       <ListItemContent>{children}</ListItemContent>
@@ -23,10 +23,9 @@ const ListItem = ({ children, ordered, tight, ...rest }: ListItem) => {
 }
 
 interface ListItem {
-  children: any
+  children: React.ReactNode
   ordered?: boolean
   tight?: boolean
-  rest?: object
 }
 
 export default ListItem

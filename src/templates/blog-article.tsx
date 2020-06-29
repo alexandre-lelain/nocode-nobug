@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import { graphql } from 'gatsby'
-import { get } from 'lodash'
 
 import {
   ArticleMeta,
@@ -44,14 +43,14 @@ const StyledSeparator = styled.hr`
   margin-bottom: 48px;
 `
 
-const BlogArticle = ({ data }: BlogArticleProps) => {
-  const { markdownRemark = {}, site = {}, file = {} } = data
+const BlogArticle: React.FC<BlogArticleProps> = ({ data }: BlogArticleProps) => {
+  const { markdownRemark, site, file } = data
   const { timeToRead, rawMarkdownBody } = markdownRemark
   const { publicURL } = file
-  const { date, description, slug, tags, title, updated } = get(markdownRemark, 'frontmatter', {})
-  const { author } = get(site, 'siteMetadata', {})
+  const { date, description, slug, tags, title, updated } = markdownRemark.frontmatter
+  const { author } = site.siteMetadata
 
-  const stringyfiedTags = tags.join`, `
+  const stringyfiedTags = tags.join(', ')
   const meta = [
     {
       property: `og:type`,
@@ -135,7 +134,28 @@ const BlogArticle = ({ data }: BlogArticleProps) => {
 }
 
 interface BlogArticleProps {
-  data: any
+  data: {
+    markdownRemark: {
+      timeToRead: string
+      rawMarkdownBody: string
+      frontmatter: {
+        date: string
+        description: string
+        slug: string
+        tags: string[]
+        title: string
+        updated: string
+      }
+    }
+    site: {
+      siteMetadata: {
+        author: string
+      }
+    }
+    file: {
+      publicURL: string
+    }
+  }
 }
 
 export const pageQuery = graphql`

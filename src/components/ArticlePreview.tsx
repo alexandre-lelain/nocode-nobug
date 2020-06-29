@@ -42,7 +42,7 @@ const Tag = styled(Paragraph).attrs(() => ({
   margin-left: 8px;
 `
 
-const ArticlePreview = ({ node }: ArticlePreviewProps) => {
+const ArticlePreview: React.FC<ArticlePreviewProps> = ({ node }: ArticlePreviewProps) => {
   const { date, tags, title, spoiler } = node.frontmatter
   const { slug } = node.fields
   const { timeToRead } = node
@@ -56,7 +56,7 @@ const ArticlePreview = ({ node }: ArticlePreviewProps) => {
       <ArticleMeta date={date} timeToRead={timeToRead} small />
       <Tags>
         <TagIcon color="action" />
-        {map(tags, tag => (
+        {map(tags, (tag) => (
           <Tag key={`tag-${tag}`}>
             <b>#</b>
             {tag}

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet, MetaProps } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const SEO = ({
+const SEO: React.FC<SEOProps> = ({
   description = '',
   image,
   keywords,
@@ -140,7 +140,7 @@ interface SEOProps {
   image?: string
   keywords?: string
   lang?: string
-  meta?: any[]
+  meta?: MetaProps[]
   slug?: string
   title?: string
 }

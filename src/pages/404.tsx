@@ -9,7 +9,7 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: 12px;
 `
 
-const NotFoundPage = () => (
+const NotFoundPage: React.FC = () => (
   <Layout>
     <SEO title="404: Not found" />
     <Header1>NO CODE, NOT FOUND</Header1>

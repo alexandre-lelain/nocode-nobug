@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CodeBlock = ({ language = 'jsx', value }: CodeBlockProps) => {
+const CodeBlock: React.FC<CodeBlockProps> = ({ language = 'jsx', value }: CodeBlockProps) => {
   return (
     <pre>
       <code className={'language-' + language}>{value}</code>

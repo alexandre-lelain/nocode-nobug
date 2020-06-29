@@ -20,14 +20,13 @@ const StyledAnchor = styled.a`
   ${linkStyle};
 `
 
-const ResetLink = ({ anchor = false, ...rest }: ResetLinkProps) => {
+const ResetLink: React.FC<ResetLinkProps> = ({ anchor = false, ...rest }: ResetLinkProps) => {
   return anchor ? <StyledAnchor {...rest} /> : <StyledLink {...rest} />
 }
 
 interface ResetLinkProps {
   anchor?: boolean
-  children: any
-  rest?: object
+  children: React.ReactNode
   to?: string
 }
 

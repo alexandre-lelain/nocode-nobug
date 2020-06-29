@@ -33,7 +33,7 @@ const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid => {
   return node ? node.fluid : {}
 }
 
-const Image = ({ alt, src, ...rest }: ImageProps) => {
+const Image: React.FC<ImageProps> = ({ alt, src, ...rest }: ImageProps) => {
   const { allImageSharp } = useStaticQuery(graphql`
     query {
       allImageSharp {
@@ -84,7 +84,6 @@ interface Fluid {
 interface ImageProps {
   alt?: string
   src: string
-  rest?: object
 }
 
 export default Image

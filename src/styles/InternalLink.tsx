@@ -28,8 +28,10 @@ const linkStyle = css`
   }
 `
 
-// eslint-disable-next-line no-unused-vars
-const StyledLink = styled(({ isDark, secondary, to, ...rest }) => <Link to={to} {...rest} />)`
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const StyledLink = styled(({ isDark, secondary, to = '/', ...rest }: StyledLinkProps) => (
+  <Link to={to} {...rest} />
+))`
   ${linkStyle};
 `
 
@@ -43,9 +45,13 @@ const InternalLink = ({ anchor = false, secondary = false, ...rest }: InternalLi
   return anchor ? <StyledAnchor {...props} /> : <StyledLink {...props} />
 }
 
+interface StyledLinkProps extends InternalLinkProps {
+  isDark: boolean
+  secondary: boolean
+}
+
 interface InternalLinkProps {
   anchor?: boolean
-  rest?: object
   secondary?: boolean
   to?: string
 }

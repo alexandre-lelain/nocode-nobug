@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
   `};
 `
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
   const [mode, setMode] = useState<ThemeMode>(null)
   const dark = isDark(mode)
 
@@ -42,7 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
   }, [])
 
   const toggleMode = () =>
-    setMode(prevMode => {
+    setMode((prevMode) => {
       const newMode = getNextMode(prevMode)
       setPreferedMode(newMode)
       return newMode
@@ -62,7 +62,7 @@ const Layout = ({ children }: LayoutProps) => {
 }
 
 interface LayoutProps {
-  children: any
+  children: React.ReactNode
 }
 
 export default Layout

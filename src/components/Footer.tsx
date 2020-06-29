@@ -28,7 +28,7 @@ const LinkSeparator = styled(Typography).attrs(() => ({
   margin: 0 12px;
 `
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
