@@ -20,11 +20,20 @@ const StyledAnchor = styled.a`
   ${linkStyle};
 `
 
-const ResetLink: React.FC<ResetLinkProps> = ({ anchor = false, ...rest }: ResetLinkProps) => {
-  return anchor ? <StyledAnchor {...rest} /> : <StyledLink {...rest} />
+const ResetLink: React.FC<ResetLinkProps> = ({
+  anchor = false,
+  to = '',
+  ...rest
+}: ResetLinkProps) => {
+  return anchor ? <StyledAnchor {...rest} /> : <StyledLink to={to} {...rest} />
 }
 
+// TODO: extends correctly <a> props, or create two components instead
 interface ResetLinkProps {
+  id?: string
+  onMouseOver?: () => void
+  onMouseLeave?: () => void
+  href?: string
   anchor?: boolean
   children: React.ReactNode
   to?: string

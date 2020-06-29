@@ -15,6 +15,7 @@ const Link: React.FC<LinkProps> = ({ href, ...rest }: LinkProps) => {
 
 interface LinkProps {
   href: string
+  children: React.ReactNode
 }
 
 export default Link

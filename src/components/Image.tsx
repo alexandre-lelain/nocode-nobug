@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 import { find, includes } from 'lodash'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -28,7 +28,7 @@ const Caption = styled(Paragraph).attrs(() => ({
   font-style: italic;
 `
 
-const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid => {
+const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid | Record<string, unknown> => {
   const node = find(nodes, (node: ImageNode) => includes(src, node.fluid.originalName))
   return node ? node.fluid : {}
 }
@@ -55,7 +55,7 @@ const Image: React.FC<ImageProps> = ({ alt, src, ...rest }: ImageProps) => {
   return (
     <Container>
       <StyledImage
-        fluid={fluid}
+        fluid={fluid as FluidObject}
         {...rest}
         style={{ maxWidth: presentationWidth, maxHeight: presentationHeight }}
       />
@@ -68,17 +68,10 @@ interface ImageNode {
   fluid: Fluid
 }
 
-interface Fluid {
-  aspectRatio?: string
-  base64?: string
-  originalName?: string
+interface Fluid extends FluidObject {
   presentationHeight?: string
   presentationWidth?: string
-  sizes?: string
-  src?: string
-  srcSet?: string
-  srcSetWebp?: string
-  srcWebp?: string
+  originalName?: string
 }
 
 interface ImageProps {

@@ -1852,6 +1852,14 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.6.tgz#ed8fc802c45b8e8f54419c2d054e55c9ea344356"
   integrity sha512-GRTZLeLJ8ia00ZH8mxMO8t0aC9M1N9bN461Z2eaRurJo6Fpa+utgCwLzI4jQHcrdzuzp5WPN9jRwpsCQ1VhJ5w==
 
+"@types/hoist-non-react-statics@*":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/http-proxy@^1.17.4":
   version "1.17.4"
   resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.4.tgz#e7c92e3dbe3e13aa799440ff42e6d3a17a9d045b"
@@ -1956,6 +1964,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-native@*":
+  version "0.62.14"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.62.14.tgz#13ce7dab136bb124b6f394fe7510442557b16d29"
+  integrity sha512-ItBgiEQks2Mid6GsiLBx75grNH0glaKemTK9V7G+vSnvP+Zk3x1Wr+aTy4dJxRPPMg14DAJyYePLZwj2cigXbw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.0.tgz#882839db465df1320e4753e6e9f70ca7e9b4d46d"
@@ -1978,6 +1993,16 @@
   dependencies:
     "@types/glob" "*"
     "@types/node" "*"
+
+"@types/styled-components@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.0.tgz#24d3412ba5395aa06e14fbc93c52f9454cebd0d6"
+  integrity sha512-ZFlLCuwF5r+4Vb7JUmd+Yr2S0UBdBGmI7ctFTgJMypIp3xOHI4LCFVn2dKMvpk6xDB2hLRykrEWMBwJEpUAUIQ==
+  dependencies:
+    "@types/hoist-non-react-statics" "*"
+    "@types/react" "*"
+    "@types/react-native" "*"
+    csstype "^2.2.0"
 
 "@types/tmp@^0.0.33":
   version "0.0.33"
@@ -4062,10 +4087,10 @@ component-inherit@0.0.3:
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
   integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
 
-components-extra@^3.0.0-rc.1:
-  version "3.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/components-extra/-/components-extra-3.0.0-rc.1.tgz#b1640153b77695f46fa61c5b6ab5e59322458d0f"
-  integrity sha512-AEHU9mc/B6rnKuogf5Ff/XcVycvZIK3gcxc2nVNM5sLvPxcr0WaEwya7ppCsaq7VIEgF6qeCvIRsWrHdUcDTyA==
+components-extra@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/components-extra/-/components-extra-3.0.0.tgz#fb8d3b1d1553d687a6eafb8272f2116669fd72d0"
+  integrity sha512-D7ZSwK5LqUSj98rTZPFjEKjcTIsNcQvvZvAjLj3DVFrwqZILOTvzo1W70QlC1TdfGGQ0uNmGmjexal13ofgHTA==
   dependencies:
     prop-types "^15.7.2"
 

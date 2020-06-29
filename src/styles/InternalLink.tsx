@@ -46,13 +46,15 @@ const InternalLink = ({ anchor = false, secondary = false, ...rest }: InternalLi
 }
 
 interface StyledLinkProps extends InternalLinkProps {
-  isDark: boolean
+  isDark: boolean | null
   secondary: boolean
 }
 
 interface InternalLinkProps {
+  children: React.ReactNode
   anchor?: boolean
   secondary?: boolean
+  href?: string
   to?: string
 }
 
