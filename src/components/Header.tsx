@@ -48,6 +48,7 @@ const StyledHeader = styled.header`
   margin-bottom: 48px;
   flex-wrap: wrap;
   margin-top: -20px;
+  min-height: 58px;
 
   ${ThemeModeContainer}, ${Title} {
     margin-top: 20px;

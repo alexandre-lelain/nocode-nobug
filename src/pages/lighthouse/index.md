@@ -1,7 +1,7 @@
 ---
 title: How to get a perfect score on lighthouse audit
 date: '2020-03-28'
-updated: '2020-03-30'
+updated: '2020-07-01'
 spoiler: Make your website in the top 5% of top-performing sites.
 description: Learn what a lighthouse audit is, and how to get a perfect audit score on your website.
 slug: 'how-to-get-a-perfect-score-on-lighthouse'
@@ -148,6 +148,9 @@ No surprise here. However, this approach has a drawback: this stylesheet will be
 ```
 
 Is that **magic** ? Not quite so. In fact, it is quite simple: when the browser sees that the `media` [attribute](https://www.w3schools.com/tags/att_link_media.asp) is not the default `'all'`, it will **not** block the paint of the page and it will **not** wait for the stylesheet to load. Thus, the page will be paint while the stylesheet is being fetched. Once it is, the `onLoad` attribute will be triggered, and thus the `style` will be applied to the page thanks to the `this.media='all'` JS function.
+
+**However**: since it's loaded in a asynchronous way, the `font-family` will fallback to another value during the fetching time of that said stylesheet. That said, you might notice a weird flickering font-familly change effect on your page's texts,
+which can provide a weird UX. I don't use this technique on this blog site because I prefer losing performance on the very first page load rather than providing to my readers what I consider a bad UX.
 
 I didn't mention it, but of course make sure to use **minified** assets on the _production_ site.
 

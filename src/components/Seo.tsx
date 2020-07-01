@@ -127,9 +127,6 @@ const SEO: React.FC<SEOProps> = ({
       <link
         rel="stylesheet preconnect"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        media="print"
-        // @ts-ignore
-        onLoad="this.media='all'"
       />
     </Helmet>
   )

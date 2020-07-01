@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
       background: ${theme.palette.background.default};
       scrollbar-color: #bfbfbf ${theme.palette.background.default};
       transition: color 0.2s ease-out, background 0.2s ease-out;
+      font-family: Roboto;
     }
   `};
 `
