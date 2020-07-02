@@ -14,6 +14,10 @@ const Blockquote = styled.blockquote`
     background-color: ${palette.divider};
     border-left: 4px solid ${palette.text.secondary};
     box-shadow: ${shadows[1]};
+
+    a, a:visited {
+      color: ${palette.blockquoteLink};
+    }
   `}
 `
 
