@@ -32,7 +32,7 @@ In both cases, the `ref` is a **node** and has a `type` - it is an `instance` of
 
 > **Note**: While it is [discouraged](https://reactjs.org/docs/refs-and-the-dom.html) to overuse the `refs`, it can sometimes provide an efficient solution to a complex UI problem.
 
-## When to use refs
+## When to use refs ?
 
 Why should we use `refs` anyway ? Isn't the [React Top-Level API](https://en.reactjs.org/docs/react-api.html) enough ? Well, in some cases it is not.
 

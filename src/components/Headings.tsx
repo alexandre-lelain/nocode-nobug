@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import Children from 'react-children-utilities'
 
-import slugify from 'utils/slugify'
+import { slugify } from 'js-extra'
 import { ResetLink } from 'styles'
 
 import Anchor from './Anchor'
