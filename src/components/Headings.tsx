@@ -21,17 +21,6 @@ const Header1 = styled(Paragraph).attrs(() => ({
   ${commonStyle};
 `
 
-const Header3 = styled(Paragraph).attrs(() => ({
-  variant: 'h5',
-  component: 'h3',
-}))`
-  display: inline-block;
-  ${commonStyle};
-  ${({ theme: { spacing } }) => `
-    margin: ${spacing(3)}px 0;
-  `}
-`
-
 const Header4 = styled(Paragraph).attrs(() => ({
   variant: 'h6',
   component: 'h4',
@@ -43,34 +32,55 @@ const Header4 = styled(Paragraph).attrs(() => ({
   `}
 `
 
-const Header2Link = styled(ResetLink)`
-  cursor: text;
+const StyledHeader2 = styled(Paragraph).attrs(() => ({
+  component: 'h2',
+  variant: 'h4',
+}))`
+  display: inline-block;
+  ${commonStyle};
+  ${({ theme: { spacing } }) => `
+    margin: ${spacing(4)}px 0;
+  `}
+`
+
+const StyledHeader3 = styled(Paragraph).attrs(() => ({
+  variant: 'h5',
+  component: 'h3',
+}))`
+  display: inline-block;
+  ${commonStyle};
   ${({ theme: { spacing } }) => `
     margin: ${spacing(3)}px 0;
   `}
 `
 
-const StyledHeader2 = styled(Paragraph).attrs(() => ({
-  component: 'h2',
-  variant: 'h4',
-}))`
-  ${commonStyle};
-`
-
-const Header2: React.FC<Header2Props> = ({ children, id }: Header2Props) => {
+const AnchorHeader: React.FC<AnchorHeaderProps> = ({ children, id }: AnchorHeaderProps) => {
   const [showAnchor, setShowAnchor] = useState(false)
   return (
-    <StyledHeader2>
-      <Header2Link
-        id={id}
-        anchor
-        href={`#${id}`}
-        onMouseOver={() => setShowAnchor(true)}
-        onMouseLeave={() => setShowAnchor(false)}
-      >
-        <Anchor show={showAnchor} />
-        {children}
-      </Header2Link>
+    <ResetLink
+      anchor
+      href={`#${id}`}
+      onMouseOver={() => setShowAnchor(true)}
+      onMouseLeave={() => setShowAnchor(false)}
+    >
+      <Anchor show={showAnchor} />
+      {children}
+    </ResetLink>
+  )
+}
+
+const Header3: React.FC<AnchorHeaderProps> = ({ id, ...rest }: AnchorHeaderProps) => {
+  return (
+    <StyledHeader3 id={id}>
+      <AnchorHeader id={id} {...rest} />
+    </StyledHeader3>
+  )
+}
+
+const Header2: React.FC<AnchorHeaderProps> = ({ id, ...rest }: AnchorHeaderProps) => {
+  return (
+    <StyledHeader2 id={id}>
+      <AnchorHeader id={id} {...rest} />
     </StyledHeader2>
   )
 }
@@ -89,7 +99,11 @@ const Heading: React.FC<HeadingProps> = ({ level, children, ...rest }: HeadingPr
         </Header2>
       )
     case 3:
-      return <Header3 {...rest}>{children}</Header3>
+      return (
+        <Header3 {...rest} id={id}>
+          {children}
+        </Header3>
+      )
     case 4:
       return <Header4 {...rest}>{children}</Header4>
     default:
@@ -106,9 +120,9 @@ interface HeadingProps {
   children: React.ReactNode
 }
 
-interface Header2Props {
-  children?: React.ReactNode
+interface AnchorHeaderProps {
   id: string
+  children?: React.ReactNode
 }
 
 export { Heading, Header1, Header2 }

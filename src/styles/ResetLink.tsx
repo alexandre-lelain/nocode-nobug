@@ -16,8 +16,12 @@ const StyledLink = styled(Link)`
 `
 
 const StyledAnchor = styled.a`
-  display: inline-block;
+  display: flex;
+  align-items: center;
   ${linkStyle};
+  code {
+    margin: 0 6px;
+  }
 `
 
 const ResetLink: React.FC<ResetLinkProps> = ({
