@@ -62,7 +62,7 @@ Here's my succinct definition of the pattern, applied to React:
 
 This pattern cannot, and should not, be applied to all your components. For example, it should not be applied to your [atomic components](https://atomicdesign.bradfrost.com/chapter-2/), because it simply doesn't make any sense to compound an _atom_.
 
-Instead, it makes total sense when used in your `molecule` components, that are made of _atomic_ components.
+Instead, it makes total sense when used in your _molecule_ components, that are made of _atomic_ components.
 
 For example, the pattern cannot be applied to a `<Button>` component because it's an atomic component. However, it's perfect for an `<Alert>` component because it's a _molecule_ component, which renders a view built with multiple atomic components, like a `<Paragraph>` or a `<Button>`.
 
@@ -218,13 +218,13 @@ In my opinion, the first variation is the best one because:
 - You don't end up with `<AlertControlsLeftButton>`-like names, which are hardly readable.
 - You can take advantage of TypeScript to define those properties inside the `root` component.
 
-However, there is one dis-advantage, which is [Tree Shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking). Since all the `children` components are imported as properties, your bundler will not tree-shake them if, even if you do not use all of them in your code. The 2nd variation (used by Material-UI), will enable `Tree-Shaking` by design.
+However, there is one dis-advantage, which is [Tree Shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking). Since all the `children` components are imported as properties, your bundler will not tree-shake them if, even if you do not use all of them in your code. The 2nd variation (used by Material-UI), will enable Tree-Shaking by design.
 
 ## To conclude
 
 If you've already opened your favourite IDE to start experimenting with this pattern, or if you discovered it thanks to this article, then I hope you enjoyed this article and that it was not _too_ messy, as my articles usually are 🙃.
 
-On a more serious note, the **Compound** pattern really is a great solution to enhance considerably the custumizability of your components. However, please note that it's great only when applied on complex and `molecule-like` components. As always, it's a question of finding the best balance for your problem.
+On a more serious note, the **Compound** pattern really is a great solution to enhance considerably the custumizability of your components. However, please note that it's great only when applied on complex and _molecule-like_ components. As always, it's a question of finding the best balance for your problem.
 
 Please, not do not hesitate to reach out on Twitter if you want to comment on this article.
 
