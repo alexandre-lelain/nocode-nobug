@@ -139,9 +139,39 @@ That said, here's how our components **hierarchy** will look like:
 
 The main component, `<Alert>` is really light. All it does is setting the correct `background-color` of the alert, and it simply renders any `children` you pass to it. Remember: **Composition** 😉.
 
+Simplified for the purposes of this article, it will look similar to this:
+
+```jsx
+import React from 'react'
+
+const Alert = ({ children, status = 'info' }) => {
+  return <div className={`AlertContainer-${status}`}>{children}</div>
+}
+```
+
+It mainly acts as a container. Now if you add the `<Alert.Body>` to the example:
+
+```jsx
+import React from 'react'
+
+const Body = (props) => <p className="AlertBody" {...props} />
+
+const Alert = ({ children, status = 'info' }) => {
+  return <div className={`AlertContainer-${status}`}>{children}</div>
+}
+
+// We expose the children components here, as properties.
+Alert.Body = Body
+
+// We only export the root component.
+export default Alert
+```
+
+The same goes for the other `children` components: the Title, the Controls and the Button.
+
 What is awesome with this pattern, is the fact there is not a unique way of using the component. We can use it and override it **any way** we want to.
 
-Here's **one possible** way to use it, and the one that renders the Alert in the image above.
+Here's **one possible** way to use it, and the one that renders the Alert in the image above:
 
 ```jsx
 import React from 'react'
