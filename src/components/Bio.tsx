@@ -31,7 +31,7 @@ const Container = styled.section`
   }
 `
 
-const Bio = props => {
+const Bio = (props) => {
   const { placeholderImage, site } = useStaticQuery(
     graphql`
       query {

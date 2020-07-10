@@ -144,8 +144,12 @@ Simplified for the purposes of this article, it will look similar to this:
 ```jsx
 import React from 'react'
 
-const Alert = ({ children, status = 'info' }) => {
-  return <div className={`AlertContainer-${status}`}>{children}</div>
+const Alert = ({ children, status = 'info', ...rest }) => {
+  return (
+    <div className={`AlertContainer-${status}`} {...rest}>
+      {children}
+    </div>
+  )
 }
 ```
 
@@ -156,8 +160,12 @@ import React from 'react'
 
 const Body = (props) => <p className="AlertBody" {...props} />
 
-const Alert = ({ children, status = 'info' }) => {
-  return <div className={`AlertContainer-${status}`}>{children}</div>
+const Alert = ({ children, status = 'info', ...rest }) => {
+  return (
+    <div className={`AlertContainer-${status}`} {...rest}>
+      {children}
+    </div>
+  )
 }
 
 // We expose the children components here, as properties.
