@@ -125,7 +125,7 @@ Don't get me wrong, components **should be** resilient enough to be robust when 
 
 Rather than using props to specify the entire component, we can apply the **Compound** pattern.
 
-Remember its (well, my) [definition](#compound-in-a-nutshell) above ? Well, here our `root` component is going to be the `<Alert>` itself, and the `children` components are going to be the `<Title>`, the `<Body>`, and the `<Button>`. We'll also have a `<Controls>` component to containerize the buttons.
+Remember the [definition](#compound-in-a-nutshell) of the pattern above ? Well, here our `root` component is going to be the `<Alert>` itself, and the `children` components are going to be the `<Title>`, the `<Body>`, and the `<Button>`. We'll also have a `<Controls>` component to containerize the buttons.
 
 The `children` components will be accessible as **properties** from the `root` component. This is one variation of the pattern, we'll see that there also are other approaches. However, this is the _best_ solution in my eyes, and I'll detail why later in this article. However note that the variation itself is not really important, the pattern remains the same.
 
@@ -226,7 +226,7 @@ That's the power of the pattern: we keep the **functional** behavior of our `<Al
 Also, it really helps other developers to understand and "preview" the DOM your component will render, since the pattern is following a [Declarative paradigm](https://en.wikipedia.org/wiki/Declarative_programming),
 just like pure HTML does.
 
-This pattern is a **must do** for components libraries, as it offers so much customization to its users. The most used react libraries out there are built on this pattern: [Material-UI](https://material-ui.com/), [Ant Design](https://ant.design), [React Bootstrap](https://react-bootstrap.github.io/), [Components-extra](https://components-extra.netlify.app/) (okay, this one is mine, I'm guilty), and many others.
+This pattern is a **must do** for components libraries, as it offers so much customization to its users. The most used react libraries out there are built on this pattern: [Material-UI](https://material-ui.com/), [Ant Design](https://ant.design), [React Bootstrap](https://react-bootstrap.github.io/), [Components-extra](https://components-extra.netlify.app/) (okay, this one is mine), and many others.
 
 > You will find the full example and implementation on this CodeSandbox: https://codesandbox.io/s/serene-snyder-led4l.
 
@@ -260,9 +260,9 @@ However, there is one dis-advantage, which is [Tree Shaking](https://developer.m
 
 ## To conclude
 
-If you've already opened your favourite IDE to start experimenting with this pattern, or if you discovered it thanks to this article, then I hope you enjoyed this article and that it was not _too_ messy, as my articles usually are 🙃.
+If you've already opened your favourite IDE to start experimenting with this pattern, or if you discovered it thanks to this article, then I hope you enjoyed this article and that it was not _too_ messy.
 
-On a more serious note, the **Compound** pattern really is a great solution to enhance considerably the custumizability of your components. However, please note that it's great only when applied on complex and _molecule-like_ components. As always, it's a question of finding the best balance for your problem.
+On a more serious note, the **Compound** pattern really is a great solution to enhance considerably the custumizability of your components. However, note that it's great only when applied on complex and _molecule-like_ components. As always, it's a question of finding the best balance for your problem.
 
 Please, not do not hesitate to reach out on Twitter if you want to comment on this article.
 
