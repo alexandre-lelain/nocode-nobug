@@ -1,7 +1,7 @@
 ---
 title: Compound your React
 date: '2020-07-09'
-updated: '2020-07-09'
+updated: '2020-07-13'
 spoiler: Take your React components to another level.
 description: Learn what the compound pattern is, what problems composition solves and when to use it in React.
 slug: 'compound-your-react'
@@ -74,7 +74,7 @@ Since an example is worth a thousand words, let's work on our `<Alert>` componen
 
 ### Some context first
 
-Before anything, let's make some _specs_ together (well, I'll write them, but you can read them, team work!).
+Before anything, let's make some _specs_ together.
 
 Here's what our `<Alert>` component should do:
 

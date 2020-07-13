@@ -1,7 +1,7 @@
 ---
 title: What is hidden behind React's refs ?
 date: '2020-03-11'
-updated: '2020-03-30'
+updated: '2020-07-13'
 spoiler: The refs will have no more secrets for you.
 description: Learn what a React ref is, when to use a ref, how to create it and manipulate it, and how to use React.forwardRef properly.
 slug: 'what-is-hidden-behind-react-refs'
@@ -64,7 +64,7 @@ I swear to tell the _truth_, and only the _truth_.
 
 Now we know that `refs` are not just random objects, let's dive into the depth of their implementation.
 
-### When a `ref` is attached to a DOM element
+### When a ref is attached to a DOM element
 
 Before we go through examples, let's define clearly what is the **instanced class** of a `ref` that was attached to a DOM element.
 
@@ -110,7 +110,7 @@ Depending on the browser (for example some properties & methods are not availabl
 }
 ```
 
-### When a `ref` is attached to a React component
+### When a ref is attached to a React component
 
 There might be some edge cases (_very rare_) where you might want to attach a `ref` to a React component.
 
@@ -239,7 +239,7 @@ Finally getting there. If you read the previous part (which I trust you to have 
 
 Well, not quite so. We are missing one problem: what if you want the `ref` you attached to a **React component** to go to the first **DOM element** it renders ? You cannot. As seen previously, the `ref` you attach to a **React component** will return the instance of this very component.
 
-Fortunately for us, React thought about this and offers us a simple solution: **React.forwardRef**.
+Fortunately for us, React thought about this and offers us a simple solution: `React.forwardRef`.
 
 > **Note**: It is an [HOC](https://en.reactjs.org/docs/higher-order-components.html). So, in brief, it's a function that takes a **React component** as parameter, and also returns a **React component**.
 
@@ -320,7 +320,7 @@ Now you are able to handle the input's `ref` in both the parent and child compon
 
 I really hope I made the whole `ref` party much more clear to you now, and that you can't wait to try out the bonus example! 😉
 
-`refs` system can be quite difficult to understand at first (at least it was my case), but once
+`refs` system can be quite difficult to understand at first, but once
 you know what is the type of the elements your are handling and how the `refs` work behind the scene, you realize that it's quite fun in the end.
 
 While React offers us these tools, they strongly **discourage us** from over-using them because their **imperative pattern** goes against the asynchronous pattern of React's components lifecycle.
