@@ -1,7 +1,7 @@
 ---
 title: Compound your React
 date: '2020-07-09'
-updated: '2020-07-13'
+updated: '2020-07-16'
 spoiler: Take your React components to another level.
 description: Learn what the compound pattern is, what problems composition solves and when to use it in React.
 slug: 'compound-your-react'
