@@ -238,13 +238,14 @@ At least, I was skeptic for some time.
 
 The first version of my [react components](https://components-extra.netlify.app/) lib was not implementing this pattern, and that was a big mistake. I use it on several projects, and I quickly realized that its components were not customizable enough for all my use-cases. So I rewrotte it entirely using the **Compound** pattern, and it solved many, many problems.
 
-You could also argue that this pattern makes your components not _resilient_ enough. And to this question I'll answer simply: nothing stops you to abstract it by wrapping one of its implementations in another component of your own. Just like in the above examples, in the `<MyAlert>` component. You won't have to duplicate it doing so.
+You could also argue that this pattern makes your components not _resilient_ enough. And to this I'll simply answer: nothing stops you from abstracting your component by wrapping one of its implementations in another component of your own. Just like in the above examples, in the `<MyAlert>` component. You won't have to duplicate it doing so.
 
 You could also argue that this pattern increase the _verbosity_ of React, which is already quite verbose to start with. Well, to that I will answer that, according to me, trading some extra lines to get a fully customizable component is the best deal you can make.
 
 ## The variations
 
-Like I wrote earlier, there are two variations of the pattern: one consists into adding the `children` components as **properties** in the `root` component, like in this article, and the other consists into exporting them aside the `root` one, as independant components.
+Like I wrote earlier, there are mutliple variations of the pattern - however we'll only go through the 2 main ones here.
+The first consists into adding the `children` components as **properties** in the `root` component, like in this article, and the other consists into exporting them aside the `root` one, as independant components.
 
 So, in other words, if we use the same example: `<Alert.Body>` versus `<AlertBody>`.
 
