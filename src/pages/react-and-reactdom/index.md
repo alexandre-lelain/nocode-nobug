@@ -5,7 +5,7 @@ updated: '2020-07-16'
 spoiler: Let's break the ice between them.
 description: Learn how React interact with ReactDOM.
 slug: 'how-react-and-reactdom-interact-together'
-tags: ['React', 'ReactDOM', 'DOM', 'HTML', 'UI']
+tags: ['react', 'react-dom', 'dom', 'html', 'ui']
 img: react
 ---
 
