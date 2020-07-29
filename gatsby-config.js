@@ -23,7 +23,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-feed`,
@@ -75,9 +74,18 @@ module.exports = {
         background_color: `#1976d2`,
         theme_color: `#1976d2`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        icon: 'src/images/favicon.png',
+        icons: [
+          {
+            src: '/icons/favicon.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
