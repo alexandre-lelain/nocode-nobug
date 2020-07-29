@@ -179,3 +179,9 @@ styled-components is an awesome css-in-js library that offers plenty of tools to
 It has its _pros_ & _cons_, depending on your context and your needs, but it fits perfectly in the whole React eco-system.
 
 I hope I gave you a better understanding of how styled-components work under the hood through this article. If not, or if you spotted a mistake, do not hesitate to reach me on Twitter!
+
+## Useful links
+
+- [Styled-components docs](https://styled-components.com/)
+- [Gapur Kassym's guide](https://medium.com/better-programming/first-steps-in-styled-components-1b1703ce16c1): a good tutorial that covers all the basics.
+- [Babel's plugin](https://medium.com/better-programming/first-steps-in-styled-components-1b1703ce16c1) for styled-components.
