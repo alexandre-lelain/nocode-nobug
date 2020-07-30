@@ -1,7 +1,7 @@
 ---
 title: Things to know about styled-components
 date: '2020-07-29'
-updated: '2020-07-29'
+updated: '2020-07-30'
 spoiler: It's all about classNames.
 description: Learn how styled-components generates and handles the classNames of your components.
 slug: 'things-to-know-about-styled-components'
@@ -18,7 +18,11 @@ const Button = styled.button`
 `
 ```
 
-into the HTML element `<button className="sc-some-hash some-other-hash">` you see in your page ?
+into the following HTML element you see in your page:
+
+```html
+<button className="sc-some-hash some-other-hash"></button>
+```
 
 Perhaps you also wonder how to take leverage of styled-components to style your ReactComponent? Or maybe how to make your ReactComponent selectable from a parent component to apply styles on it like this:
 
@@ -51,7 +55,7 @@ The web witnesses many [debates](https://www.reddit.com/r/reactjs/comments/ekh9p
 
 ## From styled-component to HTML element
 
-So, let's go back into business. What happens between the moment you implement your **styled-component** (like the one in the introduction) and the moment it becomes an **HTML element** in the DOM of your page ?
+So, let's go back into business. What happens between the moment you implement your **styled-component** (like the one in the introduction) and the moment it becomes an **HTML element** in the DOM of your page with dynamically generated classNames bound to your styles?
 
 Well, first of all, it's probably worth to mention that you can add styles using [styled()](https://styled-components.com/docs/api#styled) function on HTML elements like a `h1`, on a `StyledComponent` (like our `<Button>` example above), and on a `ReactComponent`.
 
@@ -127,7 +131,7 @@ In **production** mode however, things are a bit different. Since we need to opi
 <style data-styled="active" data-styled-version="5.1.1"></style>
 ```
 
-Remember that styled-components is a css-in-js solution ? Well in addition to write styles in js files, all your styles will be injected in this `<style>` tag via a **js script** compiled by your bundler on runtime.
+Remember that styled-components is a css-in-js solution ? Well in addition to write styles in js files, all your styles will be injected on runtime in this `<style>` tag via a **JS script** from your build.
 
 Please note that this process might differ a little depending on the bundler you are using inside your project and its configuration.
 
