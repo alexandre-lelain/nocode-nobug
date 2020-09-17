@@ -25,7 +25,7 @@ This API enables you to create declarative views, and connect them to states, ri
 
 However, the API might seem a bit verbose at first glance, and that's the reason why React is usually used within [JSX](https://en.reactjs.org/docs/introducing-jsx.html). This is the API React developers use most of the time when coding the UIs.
 
-Basically, JSX is just syntaxic sugar, to take leverage of the declarativity React offers. Note that you can perfectly use React without JSX, and create the UI views using their API to [create elements](https://en.reactjs.org/docs/react-api.html#creating-react-elements).
+Basically, JSX is just syntaxic sugar, to leverage the declarativity React offers. Note that you can perfectly use React without JSX, and create the UI views using their API to [create elements](https://en.reactjs.org/docs/react-api.html#creating-react-elements).
 
 That encapsulation is the **highest-level API** of React, and is focused on the **developer experience**.
 

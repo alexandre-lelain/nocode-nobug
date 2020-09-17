@@ -24,7 +24,7 @@ into the following HTML element you see in your page:
 <button className="sc-some-hash some-other-hash"></button>
 ```
 
-Perhaps you also wonder how to take leverage of styled-components to style your ReactComponent? Or maybe how to make your ReactComponent selectable from a parent component to apply styles on it like this:
+Perhaps you also wonder how to leverage styled-components to style your ReactComponent? Or maybe how to make your ReactComponent selectable from a parent component to apply styles on it like this:
 
 ```jsx
 import MyCompo from './MyCompo'
@@ -47,7 +47,7 @@ styled-components is a JavaScript (🥰) open-source library that helps you **st
 
 When using native **CSS** and its extensions, like **SASS** and **LESS** (that's usually the default approach when we learn web development), you implement your styles in `.css` files (or `.less|.scss`) using, for example, selectors like the HTML `<tags>`, the `classNames` & `ids`, and you can use [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) or SASS/LESS variables. This approach has one limitation in particular: your whole theming system is hardly dynamic on runtime.
 
-CSS-in-JS is different, and provides a solution to this problem (among others): all your styles are implemented in `.js` files, using JavaScript. This means you can **fully take leverage of the whole JavaScript eco-system** to build and handle your styles.
+CSS-in-JS is different, and provides a solution to this problem (among others): all your styles are implemented in `.js` files, using JavaScript. This means you can **fully leverage the whole JavaScript eco-system** to build and handle your styles.
 
 There are multiple css-in-jss libraries out there like [emotion](https://github.com/emotion-js/emotion), [jss](https://cssinjs.org/?v=v10.3.0) and our [styled-components](https://styled-components.com/) one. Their implementation differs: some offer the features of ES6 with its tagged template litterals, other prefer to use JS objects.
 
