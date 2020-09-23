@@ -1,7 +1,7 @@
 ---
 title: How React and ReactDOM interact together
 date: '2020-07-16'
-updated: '2020-07-16'
+updated: '2020-09-23'
 spoiler: Let's break the ice between them.
 description: Learn how React interact with ReactDOM.
 slug: 'how-react-and-reactdom-interact-together'
@@ -71,7 +71,7 @@ const App = () => {
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
-Since we used JSX, it will be compiled into the following **React** code:
+Since we used JSX, it will be compiled into the following **JavaScript** code:
 
 ```jsx
 var MyParagraph = function (_ref) {
@@ -117,6 +117,37 @@ This is another interesting topic that surely would deserve an article of its ow
 As seen previously, **ReactDOM** & **ReactDOMServer** are the bridge between your React components and your **browser**.
 
 **ReactNative** is quite different: it is the bridge between your React components and the smartphones OS, namely **Android** and **iOS**. Unlike ReactDOM that will output an HTML DOM, ReactNative will turn your React components into **native** elements, that Android & iOS can understand. The [ReactNative docs](https://reactnative.dev/docs/intro-react-native-components) page about this compilation step illustrates it very well.
+
+## React v17
+
+React v17 is bringing small changes under the hood, among which a new version of the **JSX transform**, which will probably make some parts of this article obsolete 😅
+
+One of the main feature of this new version is that we will be able to use **JSX** without having **React** in the scope. Apart from that, there is no other change on the developer side. Most
+of them will happen under the hood.
+
+Basically, it will provide an encapsulation on top of **React**, so instead of having our current **JSX + React** compiled into this JavaScript bit:
+
+```jsx
+// Transpiled file with old JSX Transform
+import React from 'react'
+
+function App() {
+  return React.createElement(MyParagraph, {}, 'Hello, world!')
+}
+```
+
+The new **JSX Transform** will output this:
+
+```jsx
+// Transpiled file with new JSX Transform
+import { jsx as _jsx } from 'react/jsx-runtime'
+
+function App() {
+  return _jsx(MyParagraph, { children: 'Hello, world!' })
+}
+```
+
+You can find more about this new release on [React official site](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
 
 ## TL;DR
 
