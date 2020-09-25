@@ -17,7 +17,7 @@ export const lightTheme = merge({}, baseTheme, {
   palette: {
     type: 'light',
     links: '#0066cc',
-    blockquoteLink: '#0057ad',
+    blockquoteLink: '#003aad',
     text: {
       primary: 'rgba(0, 0, 0, 0.87)',
     },
