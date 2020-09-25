@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img, { FluidObject } from 'gatsby-image'
+import Img, { FluidObject, GatsbyImageFluidProps } from 'gatsby-image'
 import { find, includes } from 'lodash'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -13,7 +13,7 @@ const Container = styled.div`
   `}
 `
 
-const StyledImage = styled(Img)`
+const StyledImage = styled(Img)<GatsbyImageFluidProps>`
   margin: 0 auto;
   ${({ theme: { shape } }) => `
     border-radius: ${shape.borderRadius}px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Img, { GatsbyImageFluidProps } from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import Paragraph from './Paragraph'
 
@@ -14,7 +14,7 @@ const TextContainer = styled.div`
   }
 `
 
-const StyledImage = styled(Img)`
+const StyledImage = styled(Img)<GatsbyImageFluidProps>`
   width: 96px;
   height: 96px;
   border-radius: 50%;
