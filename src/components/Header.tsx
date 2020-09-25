@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { Grid, Switch, Typography } from '@material-ui/core'
-
-import { useThemeMode } from 'hooks/ThemeContext'
+import { useThemeMode } from 'react-theme-mode'
 
 import { ResetLink } from 'styles'
 import { Day, Night } from 'icons'
@@ -55,15 +54,35 @@ const StyledHeader = styled.header`
   }
 `
 
+const DARK = 'dark'
+const LIGHT = 'light'
+
 const Header: React.FC<HeaderProps> = ({ isArticle = false }: HeaderProps) => {
-  const [mode, setMode, isDark] = useThemeMode()
+  const [mode, setMode] = useThemeMode()
+  const [showSwitch, setShowSwitch] = useState(false)
+  const isDark = mode === DARK
+
+  useEffect(() => {
+    /**
+     * Not too proud of this tbh. But if I want to avoid the clipping effect
+     * on the switch due to SRR + css-in-js, I need to make sure the
+     * switch will only render once mounted, when we have the final theme-mode.
+     * Note for later: make an article about that.
+     */
+    setShowSwitch(true)
+  }, [])
+
+  const onChangeMode = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const previousMode = e.target.value
+    setMode(previousMode === DARK ? LIGHT : DARK)
+  }
 
   return (
     <StyledHeader>
       <Title isArticle={isArticle} isDark={isDark}>
         <ResetLink to="/">No Code, No Bug</ResetLink>
       </Title>
-      {isDark !== null && (
+      {showSwitch && (
         <ThemeModeContainer>
           <Grid container item>
             <Day color={isDark ? 'disabled' : 'primary'} />
@@ -72,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ isArticle = false }: HeaderProps) => {
             <Switch
               checked={isDark}
               value={mode}
-              onChange={setMode}
+              onChange={onChangeMode}
               color="secondary"
               inputProps={{ 'aria-label': 'toggle theme to light/dark mode' }}
             />

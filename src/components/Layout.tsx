@@ -1,18 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { BackToTop, StyledProvider } from 'components-extra'
+import { ThemeModeProvider, useThemeMode } from 'react-theme-mode'
 import { Container } from '@material-ui/core'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-jsx.min'
 
-import {
-  ThemeModeProvider,
-  isDark,
-  getNextMode,
-  getPreferedMode,
-  setPreferedMode,
-  ThemeMode, // eslint-disable-line no-unused-vars
-} from 'hooks/ThemeContext' // why in the world can't eslint see that ThemeMode is used a type ?
 import { lightTheme, darkTheme } from 'styles'
 
 const StyledContainer = styled(Container)`
@@ -31,33 +24,31 @@ const GlobalStyle = createGlobalStyle`
   `};
 `
 
-const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
-  const [mode, setMode] = useState<ThemeMode>(null)
-  const dark = isDark(mode)
+const LayoutContent: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+  const [mode] = useThemeMode()
+  const dark = mode === 'dark'
 
   const theme = useMemo(() => (dark ? darkTheme : lightTheme), [dark])
 
+  return (
+    <StyledProvider dark={dark} theme={theme}>
+      <GlobalStyle />
+      <StyledContainer maxWidth="sm">
+        {children}
+        <BackToTop />
+      </StyledContainer>
+    </StyledProvider>
+  )
+}
+
+const Layout: React.FC<LayoutProps> = (props) => {
   useEffect(() => {
-    setMode(getPreferedMode())
     Prism.highlightAll()
   }, [])
 
-  const toggleMode = () =>
-    setMode((prevMode) => {
-      const newMode = getNextMode(prevMode)
-      setPreferedMode(newMode)
-      return newMode
-    })
-
   return (
-    <ThemeModeProvider mode={mode} setMode={toggleMode}>
-      <StyledProvider dark={dark} theme={theme}>
-        <GlobalStyle />
-        <StyledContainer maxWidth="sm">
-          {children}
-          <BackToTop />
-        </StyledContainer>
-      </StyledProvider>
+    <ThemeModeProvider defaultTheme="light" isSSR>
+      <LayoutContent {...props} />
     </ThemeModeProvider>
   )
 }

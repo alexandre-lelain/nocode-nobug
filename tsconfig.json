@@ -14,8 +14,6 @@
       "images/*": ["src/images/*"],
       "utils/*": ["src/utils/*"],
       "styles": ["src/styles"],
-      "hooks/*": ["src/hooks/*"],
-      "hooks": ["src/hooks"],
       "icons": ["src/icons"]
     },
     "types": ["styled-components", "@material-ui/core"]

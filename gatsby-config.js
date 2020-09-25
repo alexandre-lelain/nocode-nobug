@@ -49,7 +49,6 @@ module.exports = {
           templates: `${__dirname}/src/templates`,
           styles: `${__dirname}/src/styles`,
           utils: `${__dirname}/src/utils`,
-          hooks: `${__dirname}/src/hooks`,
           icons: `${__dirname}/src/icons`,
           lodash: `${__dirname}/node_modules/lodash-es`,
         },

@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
-
-import { useThemeMode } from 'hooks/ThemeContext'
+import { useThemeMode } from 'react-theme-mode'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Meta = styled(({ small, isDark, ...rest }) => <Typography {...rest} />)`
@@ -13,9 +12,9 @@ const Meta = styled(({ small, isDark, ...rest }) => <Typography {...rest} />)`
 `
 
 const ArticleMeta = ({ date, small = false, timeToRead, ...rest }: ArticleMetaProps) => {
-  const [, , isDark] = useThemeMode()
+  const [mode] = useThemeMode()
   return (
-    <Meta isDark={isDark} small={small} {...rest}>
+    <Meta isDark={mode === 'dark'} small={small} {...rest}>
       {date} - <b>{timeToRead} min read</b>
     </Meta>
   )

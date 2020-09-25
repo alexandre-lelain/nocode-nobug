@@ -1,8 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
-
-import { useThemeMode } from 'hooks/ThemeContext'
+import { useThemeMode } from 'react-theme-mode'
 
 const getColor = ({ isDark, secondary, theme: { palette } }) => {
   if (secondary) {
@@ -40,7 +39,8 @@ const StyledAnchor = styled.a`
 `
 
 const InternalLink = ({ anchor = false, secondary = false, ...rest }: InternalLinkProps) => {
-  const [, , isDark] = useThemeMode()
+  const [mode] = useThemeMode()
+  const isDark = mode === 'dark'
   const props = { isDark, secondary, ...rest }
   return anchor ? <StyledAnchor {...props} /> : <StyledLink {...props} />
 }
