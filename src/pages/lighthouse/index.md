@@ -176,7 +176,7 @@ No magic or "hacks" here. To get the maximum score on the **Accessibility** audi
 
 I will try to sum up the main ones here:
 
-First, your documents should have `<heading>` elements for your titles. A page should have [only one](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) main title `<h1>`, but you can use as many `<h2>` as you want for your sections and anchors, as well as the other `h3-h6` headings.
+First, your documents should have `<heading>` elements for your titles. Acording to the [MDN docs on heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements), a page should have only one main title `<h1>`, but you can use as many `<h2>` as you want for your sections and anchors, as well as the other `h3-h6` headings.
 
 Overall, your **DOM** should have the most semantics possible - use an `<article>` instead of a `<div>` to wrap a blog entry or a post for instance. All these little additions will help [screen readers](https://axesslab.com/what-is-a-screen-reader/) to understand better your document.
 
@@ -189,9 +189,9 @@ The background-color of your page should have enough contrast with the foregroun
 - Text with a font-size of _14px_ to _18px_ and _bold_ needs a contrast ratio of **3:1**
 - Else, othe texts need a ratio of **4.5:1**
 
-You can can read more about this rule on this [w3c page](https://www.w3.org/TR/WCAG21/#contrast-minimum).
+You can can read more about this rule on this [w3c page on the contrasts](https://www.w3.org/TR/WCAG21/#contrast-minimum).
 
-Your `links` should have a meaningful text content to [improve](https://web.dev/link-name/) the navigation experience of your users and help the screen-readers.
+Your `links` should have a meaningful text content to the navigation experience of your users and help the screen-readers. You will find more details about those rules on the [web.dev site](https://web.dev/link-name/).
 
 **Bad**:
 
