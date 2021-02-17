@@ -1,9 +1,9 @@
-const path = require('path')
 require('dotenv').config({
   path: `.env`,
 })
 
 module.exports = {
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: `No Code, No Bug`,
     description: `No Code, No Bug. A blog with tech articles that might be helpful. Or not! A blog by Alexandre Le Lain.`,
