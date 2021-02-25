@@ -385,11 +385,11 @@ Thanks for reading! 😀 If you spotted any mistake, have a question, or want to
 
 ## Useful links
 
-- https://developers.google.com/web/tools/lighthouse
-- https://www.w3schools.com/js/js_performance.asp
-- The bible: https://www.smashingmagazine.com/2020/01/front-end-performance-checklist-2020-pdf-pages/
-- https://caniuse.com/#feat=webp
-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element
-- https://aerotwist.com/blog/pixels-are-expensive/
+- [https://developers.google.com/web/tools/lighthouse](https://developers.google.com/web/tools/lighthouse)
+- [https://www.w3schools.com/js/js_performance.asp](https://www.w3schools.com/js/js_performance.asp)
+- The bible: [https://www.smashingmagazine.com/2020/01/front-end-performance-checklist-2020-pdf-pages/](https://www.smashingmagazine.com/2020/01/front-end-performance-checklist-2020-pdf-pages/)
+- [https://caniuse.com/#feat=webp](https://caniuse.com/#feat=webp)
+- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [https://aerotwist.com/blog/pixels-are-expensive/](https://aerotwist.com/blog/pixels-are-expensive/)
 
-**lighthouse** v6 is in beta: https://github.com/GoogleChrome/lighthouse/releases/tag/v6.0.0-beta.0
+**lighthouse** v6 is in beta: [https://github.com/GoogleChrome/lighthouse/releases/tag/v6.0.0-beta.0](https://github.com/GoogleChrome/lighthouse/releases/tag/v6.0.0-beta.0)
