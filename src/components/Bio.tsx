@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img, { GatsbyImageFluidProps } from 'gatsby-image'
+import { GatsbyImage, GatsbyImageFluidProps, getImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import Paragraph from './Paragraph'
 
@@ -14,7 +14,7 @@ const TextContainer = styled.div`
   }
 `
 
-const StyledImage = styled(Img)<GatsbyImageFluidProps>`
+const StyledImage = styled(GatsbyImage)<GatsbyImageFluidProps>`
   width: 96px;
   height: 96px;
   border-radius: 50%;
@@ -32,7 +32,7 @@ const Container = styled.section`
 `
 
 const Bio = (props) => {
-  const { placeholderImage, site } = useStaticQuery(
+  const { bio, site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -43,22 +43,20 @@ const Bio = (props) => {
             twitter_user
           }
         }
-        placeholderImage: file(relativePath: { eq: "bio.webp" }) {
+        bio: file(relativePath: { eq: "bio.webp" }) {
           childImageSharp {
-            fluid(quality: 100, maxWidth: 128) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 128, placeholder: BLURRED)
           }
         }
       }
     `
   )
-  const { fluid } = placeholderImage.childImageSharp
+  const image = getImage(bio)
   const { github, twitter, twitter_user, attineos } = site.siteMetadata
 
   return (
     <Container {...props}>
-      <StyledImage fluid={fluid} />
+      <StyledImage image={image} alt="Alexandre Le Lain" />
       <TextContainer>
         <Paragraph>
           <b>

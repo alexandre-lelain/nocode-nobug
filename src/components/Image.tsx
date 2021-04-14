@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img, { FluidObject, GatsbyImageFluidProps } from 'gatsby-image'
+import { FluidObject, GatsbyImage, GatsbyImageFluidProps, getImage } from 'gatsby-plugin-image'
 import { find, includes } from 'lodash'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -13,7 +13,7 @@ const Container = styled.div`
   `}
 `
 
-const StyledImage = styled(Img)<GatsbyImageFluidProps>`
+const StyledImage = styled(GatsbyImage)<GatsbyImageFluidProps>`
   margin: 0 auto;
   ${({ theme: { shape } }) => `
     border-radius: ${shape.borderRadius}px;
@@ -28,44 +28,39 @@ const Caption = styled(Paragraph).attrs(() => ({
   font-style: italic;
 `
 
-const getGatsbyFluidFromFileName = (nodes: [], src: string): Fluid | Record<string, unknown> => {
-  const node = find(nodes, (node: ImageNode) => includes(src, node.fluid.originalName))
-  return node ? node.fluid : {}
+const getGatsbyImagedFromFileName = (nodes: [], src: string): Fluid | Record<string, unknown> => {
+  const node = find(nodes, ({ parent }) => {
+    return includes(src, parent.name)
+  })
+  return node ? getImage(node.gatsbyImageData) : {}
 }
 
-const Image: React.FC<ImageProps> = ({ alt, src, ...rest }: ImageProps) => {
+const Image: React.FC<ImageProps> = ({ alt, src }: ImageProps) => {
   const { allImageSharp } = useStaticQuery(graphql`
     query {
       allImageSharp {
         nodes {
-          fluid(quality: 100) {
-            originalName
-            presentationHeight
-            presentationWidth
-            ...GatsbyImageSharpFluid
+          gatsbyImageData(placeholder: BLURRED)
+          parent {
+            ... on File {
+              id
+              name
+              relativePath
+            }
           }
         }
       }
     }
   `)
   const { nodes = [] } = allImageSharp
-  const fluid = getGatsbyFluidFromFileName(nodes, src)
-  const { presentationHeight, presentationWidth } = fluid
+  const image = getGatsbyImagedFromFileName(nodes, src)
 
   return (
     <Container>
-      <StyledImage
-        fluid={fluid as FluidObject}
-        {...rest}
-        style={{ maxWidth: presentationWidth, maxHeight: presentationHeight }}
-      />
+      <StyledImage image={image} alt={alt} />
       <Caption>{alt}</Caption>
     </Container>
   )
-}
-
-interface ImageNode {
-  fluid: Fluid
 }
 
 interface Fluid extends FluidObject {

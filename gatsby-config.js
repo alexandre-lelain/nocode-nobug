@@ -21,11 +21,11 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -57,11 +57,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          'gatsby-remark-reading-time',
-          'gatsby-plugin-slug',
-          'gatsby-remark-copy-linked-files',
-        ],
+        plugins: ['gatsby-remark-copy-linked-files'],
       },
     },
     {

@@ -168,7 +168,7 @@ export const pageQuery = graphql`
     file(name: { eq: $img }) {
       publicURL
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       timeToRead
       rawMarkdownBody
       frontmatter {

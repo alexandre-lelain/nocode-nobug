@@ -43,8 +43,7 @@ const Tag = styled(Paragraph).attrs(() => ({
 `
 
 const ArticlePreview: React.FC<ArticlePreviewProps> = ({ node }: ArticlePreviewProps) => {
-  const { date, tags, title, spoiler } = node.frontmatter
-  const { slug } = node.fields
+  const { date, tags, title, slug, spoiler } = node.frontmatter
   const { timeToRead } = node
 
   return (

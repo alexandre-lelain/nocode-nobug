@@ -74,11 +74,9 @@ export const pageQuery = graphql`
           frontmatter {
             spoiler
             tags
+            slug
             title
             date(formatString: "MMMM Do, YYYY")
-          }
-          fields {
-            slug
           }
           id
           timeToRead
