@@ -71,16 +71,12 @@ interface Frontmatter {
   tags: string[]
   title: string
   spoiler: string
-}
-
-interface Fields {
   slug: string
 }
 
 interface ArticlePreviewProps {
   node: {
     timeToRead: string
-    fields: Fields
     frontmatter: Frontmatter
   }
 }

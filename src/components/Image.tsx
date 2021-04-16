@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FluidObject, GatsbyImage, GatsbyImageFluidProps, getImage } from 'gatsby-plugin-image'
+import { IGatsbyImageData, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { find, includes } from 'lodash'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -13,7 +13,7 @@ const Container = styled.div`
   `}
 `
 
-const StyledImage = styled(GatsbyImage)<GatsbyImageFluidProps>`
+const StyledImage = styled(GatsbyImage)`
   margin: 0 auto;
   ${({ theme: { shape } }) => `
     border-radius: ${shape.borderRadius}px;
@@ -28,11 +28,14 @@ const Caption = styled(Paragraph).attrs(() => ({
   font-style: italic;
 `
 
-const getGatsbyImagedFromFileName = (nodes: [], src: string): Fluid | Record<string, unknown> => {
+const getGatsbyImagedFromFileName = (
+  nodes: IallImageSharp[],
+  src: string
+): IGatsbyImageData | undefined => {
   const node = find(nodes, ({ parent }) => {
     return includes(src, parent.name)
   })
-  return node ? getImage(node.gatsbyImageData) : {}
+  return node ? getImage(node.gatsbyImageData) : undefined
 }
 
 const Image: React.FC<ImageProps> = ({ alt, src }: ImageProps) => {
@@ -57,20 +60,21 @@ const Image: React.FC<ImageProps> = ({ alt, src }: ImageProps) => {
 
   return (
     <Container>
-      <StyledImage image={image} alt={alt} />
+      {image && <StyledImage image={image} alt={alt} />}
       <Caption>{alt}</Caption>
     </Container>
   )
 }
 
-interface Fluid extends FluidObject {
-  presentationHeight?: string
-  presentationWidth?: string
-  originalName?: string
+interface IallImageSharp {
+  parent: {
+    name: string
+  }
+  gatsbyImageData: IGatsbyImageData
 }
 
 interface ImageProps {
-  alt?: string
+  alt: string
   src: string
 }
 

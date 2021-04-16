@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { GatsbyImage, GatsbyImageFluidProps, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import Paragraph from './Paragraph'
 
@@ -14,7 +14,7 @@ const TextContainer = styled.div`
   }
 `
 
-const StyledImage = styled(GatsbyImage)<GatsbyImageFluidProps>`
+const StyledImage = styled(GatsbyImage)`
   width: 96px;
   height: 96px;
   border-radius: 50%;
@@ -56,7 +56,7 @@ const Bio = (props) => {
 
   return (
     <Container {...props}>
-      <StyledImage image={image} alt="Alexandre Le Lain" />
+      {image && <StyledImage image={image} alt="Alexandre Le Lain" />}
       <TextContainer>
         <Paragraph>
           <b>
