@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/alexandre-lelain/nocode-nobug"
   },
+  "engines": {
+    "node": ">=12.13.0"
+  },
   "keywords": [
     "NoCode NoBug",
     "Tech",
