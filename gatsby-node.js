@@ -6,10 +6,8 @@ const articlesQuery = `
     allMarkdownRemark {
       edges {
         node {
-          fields {
-            slug
-          }
           frontmatter {
+            slug
             img
           }
         }
@@ -26,15 +24,14 @@ const createIndexPage = ({ createPage }) => {
 }
 
 const createArticlesPages = (graphql, { createPage }) => {
-  return graphql(articlesQuery).then(result => {
+  return graphql(articlesQuery).then((result) => {
     const { errors, data } = result
     if (errors) {
       throw errors
     }
     const posts = get(data, 'allMarkdownRemark.edges', [])
     posts.forEach(({ node }) => {
-      const { slug } = get(node, 'fields', {})
-      const { img } = get(node, 'frontmatter', {})
+      const { img, slug } = get(node, 'frontmatter', {})
       createPage({
         path: `${slug}/`,
         component: path.resolve('./src/templates/blog-article.tsx'),

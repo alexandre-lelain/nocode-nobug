@@ -1,7 +1,7 @@
 ---
 title: How to get a perfect score on lighthouse audit
 date: '2020-03-28'
-updated: '2020-07-01'
+updated: '2021-04-14'
 spoiler: Make your website in the top 5% of top-performing sites.
 description: Learn what a lighthouse audit is, and how to get a perfect audit score on your website.
 slug: 'how-to-get-a-perfect-score-on-lighthouse'
@@ -97,7 +97,7 @@ This technique allows to defer offscreen images. This is impacting drastically t
 
 You can implement it yourself using [event-handlers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video#using_event_handlers_the_most_compatible_way) or the [Intersection Observer API](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video#using_intersection_observer).
 
-Some frameworks like [Gatsby.js](https://www.gatsbyjs.org/) (React) wrap this implementation in a layer or a plugin so you don't have to implement it yourself. [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) does it for you for example.
+Some frameworks like [Gatsby.js](https://www.gatsbyjs.org/) (React) wrap this implementation in a layer or a plugin so you don't have to implement it yourself. [gatsby-plugin-image](https://www.gatsbyjs.org/packages/gatsby-plugin-image) does it for you for example.
 
 **Last, but not least:** use [next-gen](https://developers.google.com/web/tools/lighthouse/audits/webp) formats. For instance, the **WebP** (.webp) format is really under-estimated. In comparison to traditional _png_ or _jpg_ files, they are up to [25-34% smaller](https://developers.google.com/speed/webp), which is a huge gain.
 

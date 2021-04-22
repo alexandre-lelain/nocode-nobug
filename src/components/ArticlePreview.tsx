@@ -43,8 +43,7 @@ const Tag = styled(Paragraph).attrs(() => ({
 `
 
 const ArticlePreview: React.FC<ArticlePreviewProps> = ({ node }: ArticlePreviewProps) => {
-  const { date, tags, title, spoiler } = node.frontmatter
-  const { slug } = node.fields
+  const { date, tags, title, slug, spoiler } = node.frontmatter
   const { timeToRead } = node
 
   return (
@@ -72,16 +71,12 @@ interface Frontmatter {
   tags: string[]
   title: string
   spoiler: string
-}
-
-interface Fields {
   slug: string
 }
 
 interface ArticlePreviewProps {
   node: {
     timeToRead: string
-    fields: Fields
     frontmatter: Frontmatter
   }
 }
