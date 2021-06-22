@@ -75,7 +75,30 @@ Well, surprise: we can. And we can use **JavaScript events** to achieve so.
 
 ### The optimized solution
 
-qsd
+The key is to bind the native JS events to the React component's state, so that when the event is triggered from outside, it performs the actions we want on the local state.
+
+#### Registering the event
+
+```jsx
+const [count, setCount] = React.useState(0)
+
+const increment = () => setCount((prevCount) => prevCount + 1)
+
+useEffect(() => {
+  document.addEventListener('setCounter', increment)
+  return () => document.removeEventListener('setCounter', increment)
+}, [])
+```
+
+In the example above, we bound the event `setCounter` to the `count` state.
+
+#### Firing the event
+
+```jsx
+const counterEvent = new Event('setCounter', { bubbles: true })
+
+<button onClick={() => document.dispatchEvent(counterEvent)}>click me</button>
+```
 
 ## Useful links
 
